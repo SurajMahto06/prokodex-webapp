@@ -1,0 +1,26 @@
+[
+  {
+    "id": "CL-2026-AJ01",
+    "studentName": "Alex Johnson",
+    "role": "Frontend Developer Intern",
+    "duration": "March 2026 - June 2026",
+    "issueDate": "June 15, 2026",
+    "credentialUrl": "https://prokodex.vercel.app/verify?id=CL-2026-AJ01"
+  },
+  {
+    "id": "CL-2026-PS02",
+    "studentName": "Priya Sharma",
+    "role": "Node.js Backend Intern",
+    "duration": "Jan 2026 - April 2026",
+    "issueDate": "April 30, 2026",
+    "credentialUrl": "https://prokodex.vercel.app/verify?id=CL-2026-PS02"
+  },
+  {
+    "id": "CL-2026-AD102",
+    "studentName": "Alex Developer",
+    "role": "Elite Full-Stack Development",
+    "duration": "Jan 2026 - April 2026",
+    "issueDate": "April 30, 2026",
+    "credentialUrl": "https://prokodex.vercel.app/verify?id=CL-2026-AD102"
+  }
+]
