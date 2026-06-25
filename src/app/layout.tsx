@@ -69,10 +69,10 @@ export const metadata: Metadata = {
     siteName: "Prokodex",
     images: [
       {
-        url: "/logo-dark.png",
+        url: "/images/seo-banner.png",
         width: 1200,
         height: 630,
-        alt: "Prokodex Logo",
+        alt: "Prokodex - AI & Software Agency Banner",
       },
     ],
     locale: "en_US",
@@ -82,7 +82,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Prokodex - AI, Web & APP Development, Digital Marketing & Graphics Design Services",
     description: "Prokodex provides AI automation, web development, mobile app development, digital marketing, graphic design, video editing, internships, and custom software solutions for startups and businesses.",
-    images: ["/logo-dark.png"],
+    images: ["/images/seo-banner.png"],
     creator: "@prokodex",
   },
   robots: {
