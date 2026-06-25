@@ -418,7 +418,7 @@ export default function InternshipPage() {
 
       {/* Available Programs Grid */}
       <section className="py-16 bg-muted/30 relative">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-4xl font-bold mb-6">Available <span className="text-secondary">Programs</span></h2>
             <p className="text-lg text-muted-foreground">
@@ -426,7 +426,7 @@ export default function InternshipPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {programs.map((program, i) => (
               <ProgramCard key={i} program={program} index={i} />
             ))}

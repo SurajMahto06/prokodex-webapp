@@ -39,6 +39,7 @@ export function Navbar() {
     { name: "Services", href: "/services" },
     { name: "Demos", href: "/demos" },
     { name: "Internship", href: "/internship" },
+    { name: "Blog", href: "/blog" },
   ]
 
   return (
@@ -82,7 +83,7 @@ export function Navbar() {
                 key={link.name}
                 href={link.href}
                 onClick={(e) => { if (pathname === link.href) scrollToTop(); }}
-                className={`text-sm font-medium transition-colors ${pathname === link.href
+                className={`text-base font-medium transition-colors ${pathname === link.href
                   ? "text-secondary"
                   : "text-foreground/80 hover:text-secondary"
                   }`}
