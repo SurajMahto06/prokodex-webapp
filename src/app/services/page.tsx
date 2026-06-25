@@ -14,8 +14,8 @@ export default function ServicesPage() {
     "provider": {
       "@type": "Organization",
       "name": "Prokodex",
-      "url": "https://prokodex.com",
-      "logo": "https://prokodex.com/logo-dark.png"
+      "url": "https://prokodex.in",
+      "logo": "https://prokodex.in/logo-dark.png"
     },
     "areaServed": "Worldwide",
     "hasOfferCatalog": {

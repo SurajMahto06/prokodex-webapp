@@ -11,17 +11,17 @@ export default function HomePage() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Prokodex",
-    "url": "https://prokodex.com",
+    "url": "https://prokodex.in",
     "description": "Build smarter with AI-powered software. AI chatbots, custom dashboards, industry CRMs, mobile apps, and modern websites — built for your business, delivered in weeks.",
     "publisher": {
       "@type": "Organization",
       "name": "Prokodex",
-      "url": "https://prokodex.com",
-      "logo": "https://prokodex.com/logo-dark.png"
+      "url": "https://prokodex.in",
+      "logo": "https://prokodex.in/logo-dark.png"
     },
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://prokodex.com/search?q={search_term_string}",
+      "target": "https://prokodex.in/search?q={search_term_string}",
       "query-input": "required name=search_term_string"
     }
   }

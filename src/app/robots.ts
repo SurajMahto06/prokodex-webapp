@@ -1,8 +1,8 @@
 import { MetadataRoute } from "next"
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = "https://prokodex.com"
-  
+  const baseUrl = "https://prokodex.in"
+
   return {
     rules: {
       userAgent: "*",

@@ -6,7 +6,7 @@ import "./globals.css"
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://prokodex.com"),
+  metadataBase: new URL("https://prokodex.in"),
   title: {
     default: "Prokodex | Premium Software Agency",
     template: "%s | Prokodex"
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     "Software Engineering Training",
     "Prokodex"
   ],
-  authors: [{ name: "Prokodex Team", url: "https://prokodex.com" }],
+  authors: [{ name: "Prokodex Team", url: "https://prokodex.in" }],
   creator: "Prokodex",
   publisher: "Prokodex",
   formatDetection: {
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Prokodex | Premium Software Agency",
     description: "Building Modern Digital Products That Scale. We help startups and businesses build websites, ERP systems, mobile apps, and custom software solutions.",
-    url: "https://prokodex.com",
+    url: "https://prokodex.in",
     siteName: "Prokodex",
     images: [
       {
@@ -93,15 +93,15 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Prokodex",
-    "url": "https://prokodex.com",
-    "logo": "https://prokodex.com/logo-dark.png",
+    "url": "https://prokodex.in",
+    "logo": "https://prokodex.in/logo-dark.png",
     "description": "Building Modern Digital Products That Scale. We help startups and businesses build websites, ERP systems, mobile apps, and custom software solutions.",
 
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+91-72505-91448",
       "contactType": "customer service",
-      "email": "hello@prokodex.com",
+      "email": "info@prokodex.in",
       "availableLanguage": ["English", "Hindi"]
     },
     "sameAs": [

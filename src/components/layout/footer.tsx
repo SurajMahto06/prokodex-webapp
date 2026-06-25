@@ -62,7 +62,7 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex items-center gap-3 text-sm text-muted-foreground">
                 <Mail className="h-5 w-5 text-secondary flex-shrink-0" />
-                <a href="mailto:hello@prokodex.com" className="hover:text-secondary transition-colors">hello@prokodex.com</a>
+                <a href="mailto:info@prokodex.in" className="hover:text-secondary transition-colors">info@prokodex.in</a>
               </li>
               <li className="flex items-center gap-3 text-sm text-muted-foreground">
                 <Phone className="h-5 w-5 text-secondary flex-shrink-0" />

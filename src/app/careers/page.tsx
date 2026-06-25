@@ -18,8 +18,8 @@ export default function CareersPage() {
       "hiringOrganization": {
         "@type": "Organization",
         "name": "Prokodex",
-        "sameAs": "https://prokodex.com",
-        "logo": "https://prokodex.com/logo-dark.png"
+        "sameAs": "https://prokodex.in",
+        "logo": "https://prokodex.in/logo-dark.png"
       },
       "jobLocation": {
         "@type": "Place",
@@ -45,8 +45,8 @@ export default function CareersPage() {
       "hiringOrganization": {
         "@type": "Organization",
         "name": "Prokodex",
-        "sameAs": "https://prokodex.com",
-        "logo": "https://prokodex.com/logo-dark.png"
+        "sameAs": "https://prokodex.in",
+        "logo": "https://prokodex.in/logo-dark.png"
       },
       "jobLocation": {
         "@type": "Place",
@@ -68,8 +68,8 @@ export default function CareersPage() {
       "hiringOrganization": {
         "@type": "Organization",
         "name": "Prokodex",
-        "sameAs": "https://prokodex.com",
-        "logo": "https://prokodex.com/logo-dark.png"
+        "sameAs": "https://prokodex.in",
+        "logo": "https://prokodex.in/logo-dark.png"
       },
       "jobLocation": {
         "@type": "Place",
@@ -90,8 +90,8 @@ export default function CareersPage() {
       "hiringOrganization": {
         "@type": "Organization",
         "name": "Prokodex",
-        "sameAs": "https://prokodex.com",
-        "logo": "https://prokodex.com/logo-dark.png"
+        "sameAs": "https://prokodex.in",
+        "logo": "https://prokodex.in/logo-dark.png"
       },
       "jobLocation": {
         "@type": "Place",

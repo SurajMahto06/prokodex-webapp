@@ -11,20 +11,20 @@ export default function ContactPage() {
     "@context": "https://schema.org",
     "@type": "ContactPage",
     "name": "Contact Prokodex",
-    "url": "https://prokodex.com/contact",
+    "url": "https://prokodex.in/contact",
     "description": "Get in touch with Prokodex. Reach out to discuss project development, consulting, partnerships, career opportunities, or internships.",
     "mainEntity": {
       "@type": "Organization",
       "name": "Prokodex",
-      "url": "https://prokodex.com",
-      "email": "hello@prokodex.com",
+      "url": "https://prokodex.in",
+      "email": "info@prokodex.in",
       "telephone": "+91-72505-91448",
 
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "+91-72505-91448",
         "contactType": "customer service",
-        "email": "hello@prokodex.com",
+        "email": "info@prokodex.in",
         "availableLanguage": ["English", "Hindi"]
       }
     }

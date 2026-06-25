@@ -11,7 +11,7 @@ export default function FaqPage() {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "name": "Prokodex FAQ",
-    "url": "https://prokodex.com/faq",
+    "url": "https://prokodex.in/faq",
     "mainEntity": [
       {
         "@type": "Question",

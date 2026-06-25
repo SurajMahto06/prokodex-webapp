@@ -11,12 +11,12 @@ export default function DemoPage() {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "Prokodex Demos",
-    "url": "https://prokodex.com/demos",
+    "url": "https://prokodex.in/demos",
     "description": "Try before you buy. Click any demo to see it in action.",
     "provider": {
       "@type": "Organization",
       "name": "Prokodex",
-      "url": "https://prokodex.com"
+      "url": "https://prokodex.in"
     },
     "hasPart": [
       {

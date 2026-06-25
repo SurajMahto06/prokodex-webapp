@@ -23,7 +23,7 @@ export default function InternshipPage() {
           "provider": {
             "@type": "Organization",
             "name": "Prokodex",
-            "url": "https://prokodex.com"
+            "url": "https://prokodex.in"
           }
         }
       },
@@ -37,7 +37,7 @@ export default function InternshipPage() {
           "provider": {
             "@type": "Organization",
             "name": "Prokodex",
-            "url": "https://prokodex.com"
+            "url": "https://prokodex.in"
           }
         }
       },
@@ -51,7 +51,7 @@ export default function InternshipPage() {
           "provider": {
             "@type": "Organization",
             "name": "Prokodex",
-            "url": "https://prokodex.com"
+            "url": "https://prokodex.in"
           }
         }
       },
@@ -65,7 +65,7 @@ export default function InternshipPage() {
           "provider": {
             "@type": "Organization",
             "name": "Prokodex",
-            "url": "https://prokodex.com"
+            "url": "https://prokodex.in"
           }
         }
       },
@@ -79,7 +79,7 @@ export default function InternshipPage() {
           "provider": {
             "@type": "Organization",
             "name": "Prokodex",
-            "url": "https://prokodex.com"
+            "url": "https://prokodex.in"
           }
         }
       },
@@ -93,7 +93,7 @@ export default function InternshipPage() {
           "provider": {
             "@type": "Organization",
             "name": "Prokodex",
-            "url": "https://prokodex.com"
+            "url": "https://prokodex.in"
           }
         }
       },
@@ -107,7 +107,7 @@ export default function InternshipPage() {
           "provider": {
             "@type": "Organization",
             "name": "Prokodex",
-            "url": "https://prokodex.com"
+            "url": "https://prokodex.in"
           }
         }
       },
@@ -121,7 +121,7 @@ export default function InternshipPage() {
           "provider": {
             "@type": "Organization",
             "name": "Prokodex",
-            "url": "https://prokodex.com"
+            "url": "https://prokodex.in"
           }
         }
       },
@@ -135,7 +135,7 @@ export default function InternshipPage() {
           "provider": {
             "@type": "Organization",
             "name": "Prokodex",
-            "url": "https://prokodex.com"
+            "url": "https://prokodex.in"
           }
         }
       }
