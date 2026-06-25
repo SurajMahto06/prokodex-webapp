@@ -335,15 +335,15 @@ export default function InternshipPage() {
       originalPrice: "₹999",
       description: "Perfect for self-paced learners who just need materials.",
       features: [
+        "Portal Access: Access to curriculum and reading materials",
         "PDF Materials: Comprehensive guides and project briefs",
-        "Doubt Sessions: Weekly group Q&A sessions",
+        "Assessments: Module-wise quizzes & interview questions",
         "Certificate: Verified internship certificate"
       ],
       buttonText: "Enroll Standard",
       popular: false,
       id: "standard"
     },
-    /*
     {
       name: "Premium",
       price: "₹1,199",
@@ -352,13 +352,15 @@ export default function InternshipPage() {
       features: [
         "Video Portal: Access to our premium video lectures",
         "PDF Materials: Comprehensive guides and project briefs",
+        "Assessments: Module-wise quizzes & interview questions",
         "Doubt Sessions: Weekly group Q&A sessions",
         "Capstone Projects: Build advanced real-world projects",
         "Certificate: Verified internship certificate"
       ],
       buttonText: "Enroll Premium",
-      popular: true,
-      id: "premium"
+      popular: false,
+      id: "premium",
+      isComingSoon: true
     },
     {
       name: "Elite Mentorship",
@@ -369,14 +371,15 @@ export default function InternshipPage() {
         "1-on-1 Mentorship: Dedicated senior engineer mentor",
         "Video Portal: Full access to premium video content",
         "PDF Materials: Comprehensive guides and project briefs",
+        "Assessments: Module-wise quizzes & interview questions",
         "Capstone Projects: Build advanced real-world projects",
         "Certificate: Verified internship certificate"
       ],
       buttonText: "Enroll Elite",
       popular: false,
-      id: "elite"
+      id: "elite",
+      isComingSoon: true
     }
-    */
   ]
 
   return (
@@ -549,31 +552,44 @@ export default function InternshipPage() {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ delay: i * 0.15, duration: 0.6, ease: "easeOut" }}
                 className={`relative p-8 rounded-[2rem] border transition-[border-color,box-shadow] duration-300 flex flex-col ${tier.popular
-                    ? "bg-card/60 backdrop-blur-md border-secondary shadow-[0_0_40px_-10px_rgba(6,182,212,0.3)] lg:scale-105 z-10"
-                    : "bg-card/30 backdrop-blur-sm border-border/60 hover:border-secondary/50"
+                  ? "bg-card/60 backdrop-blur-md border-secondary shadow-[0_0_40px_-10px_rgba(6,182,212,0.3)] lg:scale-105 z-10"
+                  : "bg-card/30 backdrop-blur-sm border-border/60 hover:border-secondary/50"
                   }`}
               >
-                {tier.popular && (
+                {tier.popular && !tier.isComingSoon && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-secondary text-secondary-foreground text-sm font-bold uppercase tracking-wider rounded-full shadow-lg">
                     Most Popular
                   </div>
                 )}
 
-                <div className="mb-8">
+                {tier.isComingSoon && (
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-muted/80 text-muted-foreground text-sm font-bold uppercase tracking-wider rounded-full shadow-md border border-border">
+                    Coming Soon
+                  </div>
+                )}
+
+                <div className={`mb-8 ${tier.isComingSoon ? "opacity-60" : ""}`}>
                   <h3 className="text-2xl font-bold mb-2">{tier.name}</h3>
                   <p className="text-muted-foreground text-sm h-10">{tier.description}</p>
                 </div>
 
-                <div className="mb-8 pb-8 border-b border-border/50">
-                  <div className="flex items-baseline gap-3">
-                    <span className="text-5xl font-black">{tier.price}</span>
-                    {tier.originalPrice && (
-                      <span className="text-2xl font-bold text-muted-foreground/60 line-through decoration-muted-foreground/40">{tier.originalPrice}</span>
+                <div className={`mb-8 pb-8 border-b border-border/50 ${tier.isComingSoon ? "opacity-60" : ""}`}>
+                  <div className="flex items-center gap-3 flex-wrap">
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-5xl font-black">{tier.price}</span>
+                      {tier.originalPrice && (
+                        <span className="text-xl font-bold text-muted-foreground/60 line-through decoration-muted-foreground/40">{tier.originalPrice}</span>
+                      )}
+                    </div>
+                    {tier.originalPrice && parseInt(tier.originalPrice.replace(/\D/g, "")) > parseInt(tier.price.replace(/\D/g, "")) && (
+                      <span className="text-sm font-bold text-emerald-500 bg-emerald-500/10 px-2.5 py-1 rounded-full whitespace-nowrap ml-1 border border-emerald-500/20">
+                        Save ₹{(parseInt(tier.originalPrice.replace(/\D/g, "")) - parseInt(tier.price.replace(/\D/g, ""))).toLocaleString('en-IN')}
+                      </span>
                     )}
                   </div>
                 </div>
 
-                <ul className="space-y-4 mb-8 flex-1">
+                <ul className={`space-y-4 mb-8 flex-1 ${tier.isComingSoon ? "opacity-60" : ""}`}>
                   {tier.features.map((feature, j) => (
                     <li key={j} className="flex items-start gap-3">
                       <CheckCircle2 className="h-5 w-5 text-secondary shrink-0 mt-0.5" />
@@ -582,15 +598,16 @@ export default function InternshipPage() {
                   ))}
                 </ul>
 
-                <Link href={`/internship/apply?plan=${tier.id}`} className="w-full">
+                <Link href={`/internship/apply?plan=${tier.id}`} className={`w-full ${tier.isComingSoon ? "pointer-events-none" : ""}`}>
                   <Button
                     variant={tier.popular ? "default" : "outline"}
-                    className={`w-full h-12 rounded-xl font-bold text-lg transition-all cursor-pointer ${tier.popular
-                        ? "bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-[0_0_20px_-5px_rgba(6,182,212,0.4)] hover:shadow-[0_0_30px_-5px_rgba(6,182,212,0.5)]"
-                        : "bg-background/50 border-border/60 hover:bg-secondary hover:text-secondary-foreground hover:border-secondary"
+                    disabled={tier.isComingSoon}
+                    className={`w-full h-12 rounded-xl font-bold text-lg transition-all ${tier.isComingSoon ? "cursor-not-allowed opacity-50 bg-secondary/10 text-secondary border-secondary/20 hover:bg-secondary/10" : "cursor-pointer"} ${tier.popular && !tier.isComingSoon
+                      ? "bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-[0_0_20px_-5px_rgba(6,182,212,0.4)] hover:shadow-[0_0_30px_-5px_rgba(6,182,212,0.5)]"
+                      : !tier.isComingSoon ? "bg-background/50 border-border/60 hover:bg-secondary hover:text-secondary-foreground hover:border-secondary" : ""
                       }`}
                   >
-                    {tier.buttonText}
+                    {tier.isComingSoon ? "Coming Soon" : tier.buttonText}
                   </Button>
                 </Link>
               </motion.div>

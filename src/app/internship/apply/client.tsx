@@ -76,12 +76,12 @@ const pricingTiers = [
     originalPrice: "₹999",
     description: "Perfect for self-paced learners who just need materials.",
     features: [
+      { title: "Portal Access", desc: "Access to curriculum and reading materials." },
       { title: "PDF Materials", desc: "Comprehensive guides and project briefs." },
-      { title: "Doubt Sessions", desc: "Weekly group Q&A sessions." },
+      { title: "Assessments", desc: "Module-wise quizzes & interview questions." },
       { title: "Certificate", desc: "Verified internship certificate." }
     ]
   },
-  /*
   {
     id: "premium",
     name: "Premium Plan",
@@ -91,10 +91,12 @@ const pricingTiers = [
     features: [
       { title: "Video Portal", desc: "Access to our premium video lectures." },
       { title: "PDF Materials", desc: "Comprehensive guides and project briefs." },
+      { title: "Assessments", desc: "Module-wise quizzes & interview questions." },
       { title: "Doubt Sessions", desc: "Weekly group Q&A sessions." },
       { title: "Capstone Projects", desc: "Build advanced real-world projects." },
       { title: "Certificate", desc: "Verified internship certificate." }
-    ]
+    ],
+    isComingSoon: true
   },
   {
     id: "elite",
@@ -106,11 +108,12 @@ const pricingTiers = [
       { title: "1-on-1 Mentorship", desc: "Dedicated senior engineer mentor." },
       { title: "Video Portal", desc: "Full access to premium video content." },
       { title: "PDF Materials", desc: "Comprehensive guides and project briefs." },
+      { title: "Assessments", desc: "Module-wise quizzes & interview questions." },
       { title: "Capstone Projects", desc: "Build advanced real-world projects." },
       { title: "Certificate", desc: "Verified internship certificate." }
-    ]
+    ],
+    isComingSoon: true
   }
-  */
 ]
 
 function ApplicationForm() {
@@ -681,8 +684,8 @@ function ApplicationForm() {
                   className="w-full h-12 bg-background border rounded-xl px-4 text-sm outline-none transition-all focus:ring-2 focus:ring-secondary/50 border-border/60 focus:border-secondary appearance-none cursor-pointer text-foreground"
                 >
                   {pricingTiers.map(tier => (
-                    <option key={tier.id} value={tier.id}>
-                      {tier.name} - {tier.price}
+                    <option key={tier.id} value={tier.id} disabled={tier.isComingSoon}>
+                      {tier.name} - {tier.price} {tier.isComingSoon ? "(Coming Soon)" : ""}
                     </option>
                   ))}
                 </select>
@@ -696,17 +699,34 @@ function ApplicationForm() {
                 animate={{ opacity: 1, y: 0 }}
                 className="bg-secondary/5 border border-secondary/20 rounded-xl p-4"
               >
-                <div className="flex justify-between items-center mb-3 pb-3 border-b border-secondary/10">
+                <div className="flex justify-between items-start mb-3 pb-3 border-b border-secondary/10">
                   <h4 className="font-bold text-sm text-foreground">{pricingTiers.find(p => p.id === watchedPlan)?.name}</h4>
-                  <div className="flex items-center gap-2">
-                    {pricingTiers.find(p => p.id === watchedPlan)?.originalPrice && (
-                      <span className="text-xs font-semibold text-muted-foreground line-through decoration-muted-foreground/50">
-                        {pricingTiers.find(p => p.id === watchedPlan)?.originalPrice}
+                  <div className="flex flex-col items-end gap-1.5">
+                    <div className="flex items-center gap-2">
+                      {pricingTiers.find(p => p.id === watchedPlan)?.originalPrice && (
+                        <span className="text-xs font-semibold text-muted-foreground line-through decoration-muted-foreground/50">
+                          {pricingTiers.find(p => p.id === watchedPlan)?.originalPrice}
+                        </span>
+                      )}
+                      <span className="text-xs font-bold text-secondary bg-secondary/10 px-2 py-1 rounded-md">
+                        {pricingTiers.find(p => p.id === watchedPlan)?.price}
                       </span>
-                    )}
-                    <span className="text-xs font-bold text-secondary bg-secondary/10 px-2 py-1 rounded-md">
-                      {pricingTiers.find(p => p.id === watchedPlan)?.price}
-                    </span>
+                    </div>
+                    {(() => {
+                      const selected = pricingTiers.find(p => p.id === watchedPlan);
+                      if (selected?.originalPrice && selected?.price) {
+                        const originalNum = parseInt(selected.originalPrice.replace(/\D/g, ""));
+                        const priceNum = parseInt(selected.price.replace(/\D/g, ""));
+                        if (originalNum > priceNum) {
+                          return (
+                            <span className="text-[10px] font-bold text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded-sm border border-emerald-500/20">
+                              Save ₹{(originalNum - priceNum).toLocaleString('en-IN')}
+                            </span>
+                          )
+                        }
+                      }
+                      return null;
+                    })()}
                   </div>
                 </div>
                 <p className="text-xs text-muted-foreground mb-4">
