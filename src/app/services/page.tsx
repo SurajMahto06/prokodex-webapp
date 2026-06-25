@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import ServicesClient from "./client"
 
 export const metadata: Metadata = {
-  title: "Our Services",
-  description: "Explore custom software solutions at Prokodex. We build scalable web applications, mobile apps, custom ERP/CRM portals, and generative AI features.",
+  title: "Web Design, App Dev & Digital Marketing Services",
+  description: "Explore Prokodex's premium IT services: AI Automation, Web & Mobile App Development, Digital Marketing, SEO, Graphic Design, and Custom SaaS solutions.",
 }
 
 export default function ServicesPage() {
@@ -84,3 +84,4 @@ export default function ServicesPage() {
     </>
   )
 }
+

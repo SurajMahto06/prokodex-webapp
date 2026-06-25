@@ -8,21 +8,33 @@ const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] })
 export const metadata: Metadata = {
   metadataBase: new URL("https://prokodex.in"),
   title: {
-    default: "Prokodex | Premium Software Agency",
+    default: "Prokodex - AI, Web & APP Development, Digital Marketing & Graphics Design Services",
     template: "%s | Prokodex"
   },
-  description: "Building Modern Digital Products That Scale. We help startups and businesses build websites, ERP systems, mobile apps, and custom software solutions.",
+  description: "Prokodex provides AI automation, web development, mobile app development, digital marketing, graphic design, video editing, internships, and custom software solutions for startups and businesses.",
   keywords: [
-    "Software Agency",
+    "AI Automation",
+    "AI Chatbots",
+    "Custom Software Development",
     "Web Development",
     "Mobile App Development",
-    "Custom ERP Systems",
     "Next.js Development",
-    "React Agency",
-    "Laravel Development",
-    "AI Integration",
-    "Coding Internships",
-    "Software Engineering Training",
+    "React.js Development",
+    "Node.js Development",
+    "Digital Marketing",
+    "SEO Services",
+    "Social Media Marketing",
+    "Graphic Design",
+    "Logo Design",
+    "Video Editing",
+    "UI UX Design",
+    "Business Automation",
+    "SaaS Development",
+    "Internship Program",
+    "Frontend Development",
+    "Website Design",
+    "Software Agency India",
+    "Digital Agency India",
     "Prokodex"
   ],
   authors: [{ name: "Prokodex Team", url: "https://prokodex.in" }],
@@ -35,16 +47,24 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon_io/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon_io/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon_io/favicon-32x32.png", sizes: "32x32", type: "image/png", media: "(prefers-color-scheme: light)" },
+      { url: "/favicon_io/favicon-16x16.png", sizes: "16x16", type: "image/png", media: "(prefers-color-scheme: light)" },
+      { url: "/favicon_io-dark-mode/favicon-32x32.png", sizes: "32x32", type: "image/png", media: "(prefers-color-scheme: dark)" },
+      { url: "/favicon_io-dark-mode/favicon-16x16.png", sizes: "16x16", type: "image/png", media: "(prefers-color-scheme: dark)" },
     ],
-    shortcut: "/favicon_io/favicon.ico",
-    apple: "/favicon_io/apple-touch-icon.png",
+    shortcut: [
+      { url: "/favicon_io/favicon.ico", media: "(prefers-color-scheme: light)" },
+      { url: "/favicon_io-dark-mode/favicon.ico", media: "(prefers-color-scheme: dark)" },
+    ],
+    apple: [
+      { url: "/favicon_io/apple-touch-icon.png", sizes: "180x180", media: "(prefers-color-scheme: light)" },
+      { url: "/favicon_io-dark-mode/apple-touch-icon.png", sizes: "180x180", media: "(prefers-color-scheme: dark)" },
+    ],
   },
   manifest: "/favicon_io/site.webmanifest",
   openGraph: {
-    title: "Prokodex | Premium Software Agency",
-    description: "Building Modern Digital Products That Scale. We help startups and businesses build websites, ERP systems, mobile apps, and custom software solutions.",
+    title: "Prokodex - AI, Web & APP Development, Digital Marketing & Graphics Design Services",
+    description: "Prokodex provides AI automation, web development, mobile app development, digital marketing, graphic design, video editing, internships, and custom software solutions for startups and businesses.",
     url: "https://prokodex.in",
     siteName: "Prokodex",
     images: [
@@ -60,8 +80,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Prokodex | Premium Software Agency",
-    description: "Building Modern Digital Products That Scale. We help startups and businesses build websites, ERP systems, mobile apps, and custom software solutions.",
+    title: "Prokodex - AI, Web & APP Development, Digital Marketing & Graphics Design Services",
+    description: "Prokodex provides AI automation, web development, mobile app development, digital marketing, graphic design, video editing, internships, and custom software solutions for startups and businesses.",
     images: ["/logo-dark.png"],
     creator: "@prokodex",
   },
@@ -95,7 +115,7 @@ export default function RootLayout({
     "name": "Prokodex",
     "url": "https://prokodex.in",
     "logo": "https://prokodex.in/logo-dark.png",
-    "description": "Building Modern Digital Products That Scale. We help startups and businesses build websites, ERP systems, mobile apps, and custom software solutions.",
+    "description": "Prokodex provides AI automation, web development, mobile app development, digital marketing, graphic design, video editing, internships, and custom software solutions for startups and businesses.",
 
     "contactPoint": {
       "@type": "ContactPoint",

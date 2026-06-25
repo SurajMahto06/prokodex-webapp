@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import ContactClient from "./client"
 
 export const metadata: Metadata = {
-  title: "Contact Us",
-  description: "Get in touch with Prokodex. Reach out to discuss project development, consulting, partnerships, career opportunities, or internships.",
+  title: "Contact Prokodex for IT & Marketing Services",
+  description: "Get in touch with Prokodex. Reach out to discuss web development, mobile apps, digital marketing, AI solutions, consulting, and project partnerships.",
 }
 
 export default function ContactPage() {
@@ -40,3 +40,4 @@ export default function ContactPage() {
     </>
   )
 }
+

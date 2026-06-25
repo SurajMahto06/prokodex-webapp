@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import DemoClient from "./client"
 
 export const metadata: Metadata = {
-  title: "Live Demos",
-  description: "Try before you buy. Click any demo to see it in action.",
+  title: "Live Software Demos & Templates",
+  description: "Explore live working demos of Prokodex projects including custom ERPs, AI chatbots, SaaS platforms, and modern web templates built for scalable businesses.",
 }
 
 export default function DemoPage() {
@@ -47,3 +47,4 @@ export default function DemoPage() {
     </>
   )
 }
+

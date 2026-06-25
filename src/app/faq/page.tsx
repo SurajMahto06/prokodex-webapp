@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import FaqClient from "./client"
 
 export const metadata: Metadata = {
-  title: "Frequently Asked Questions",
-  description: "Find answers to frequently asked questions about Prokodex custom software services, project management, and developer internships.",
+  title: "Frequently Asked Questions (FAQ)",
+  description: "Find answers about Prokodex's custom software development, digital marketing packages, pricing, project timelines, and developer internship programs.",
 }
 
 export default function FaqPage() {
@@ -74,3 +74,4 @@ export default function FaqPage() {
     </>
   )
 }
+

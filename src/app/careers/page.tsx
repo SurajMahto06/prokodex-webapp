@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import CareersClient from "./client"
 
 export const metadata: Metadata = {
-  title: "Careers",
-  description: "Join the Prokodex team. Explore full-time job openings in frontend development, backend systems, UI/UX design, and QA automation, and build modern digital products.",
+  title: "Careers & Job Openings",
+  description: "Join the Prokodex team! We are hiring talented developers, UI/UX designers, digital marketers, and software engineers to build next-generation AI and web applications.",
 }
 
 export default function CareersPage() {
@@ -115,3 +115,4 @@ export default function CareersPage() {
     </>
   )
 }
+

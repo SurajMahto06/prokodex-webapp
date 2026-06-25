@@ -1,10 +1,6 @@
 import type { Metadata } from "next"
 import HomeClient from "./client"
 
-export const metadata: Metadata = {
-  title: "Prokodex — AI-Powered Software Development & Internships",
-  description: "Build smarter with AI-powered software. AI chatbots, custom dashboards, industry CRMs, mobile apps, and modern websites — built for your business, delivered in weeks.",
-}
 
 export default function HomePage() {
   const jsonLd = {
@@ -12,7 +8,7 @@ export default function HomePage() {
     "@type": "WebSite",
     "name": "Prokodex",
     "url": "https://prokodex.in",
-    "description": "Build smarter with AI-powered software. AI chatbots, custom dashboards, industry CRMs, mobile apps, and modern websites — built for your business, delivered in weeks.",
+    "description": "Prokodex provides AI automation, web development, mobile app development, digital marketing, graphic design, video editing, internships, and custom software solutions for startups and businesses.",
     "publisher": {
       "@type": "Organization",
       "name": "Prokodex",

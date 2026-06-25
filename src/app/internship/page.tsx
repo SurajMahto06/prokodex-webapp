@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import InternshipClient from "./client"
 
 export const metadata: Metadata = {
-  title: "Internship Programs",
-  description: "Fast-track your software career. Join Prokodex internships to work on live systems with senior dev mentors in React, Next.js, Node.js, mobile app dev, and UI/UX design.",
+  title: "Software Engineering Internship Programs",
+  description: "Kickstart your IT career with Prokodex. Join our live project-based internships for Web Development, React, Node.js, AI, and Digital Marketing training.",
 }
 
 export default function InternshipPage() {
@@ -152,3 +152,4 @@ export default function InternshipPage() {
     </>
   )
 }
+

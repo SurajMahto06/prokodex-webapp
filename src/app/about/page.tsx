@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import AboutClient from "./client"
 
 export const metadata: Metadata = {
-  title: "About Us",
-  description: "Learn more about Prokodex. Founded by software architects, we bridge the gap between stunning UI/UX designs and high-performance server architectures.",
+  title: "About Us - Innovative Software & Digital Agency",
+  description: "Discover Prokodex, a forward-thinking software and digital marketing agency. We specialize in AI automation, custom web development, mobile apps, and scalable IT solutions.",
 }
 
 export default function AboutPage() {
@@ -33,3 +33,4 @@ export default function AboutPage() {
     </>
   )
 }
+

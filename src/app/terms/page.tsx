@@ -2,8 +2,8 @@ import { Metadata } from "next"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Terms of Service | Prokodex",
-  description: "Terms and conditions for using Prokodex services.",
+  title: "Terms of Service",
+  description: "Review the Terms of Service for using Prokodex. Detailed terms regarding our software development, digital marketing, and internship programs.",
 }
 
 export default function TermsOfServicePage() {
@@ -52,3 +52,4 @@ export default function TermsOfServicePage() {
     </div>
   )
 }
+
