@@ -25,6 +25,7 @@ import countryCodes from "@/data/countryCodes.json"
 import { z } from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
+import toast from "react-hot-toast"
 
 const applySchema = z.object({
   fullName: z.string().min(1, "Full name is required"),
@@ -248,11 +249,11 @@ function ApplicationForm() {
           setResumeFile(null)
           setIsSuccess(true)
         } else {
-          alert('Failed to submit application. Please try again.')
+          toast.error('Failed to submit application. Please try again.')
         }
       } catch (error) {
         console.error('Submission error:', error)
-        alert('An error occurred. Please try again later.')
+        toast.error('An error occurred. Please try again later.')
       }
     } else {
       // Payment Integration Flow
@@ -267,7 +268,7 @@ function ApplicationForm() {
         const orderData = await orderResponse.json()
 
         if (!orderResponse.ok) {
-          alert(orderData.error || 'Failed to initialize payment')
+          toast.error(orderData.error || 'Failed to initialize payment')
           return
         }
 
@@ -315,11 +316,11 @@ function ApplicationForm() {
                 setResumeFile(null)
                 setIsSuccess(true)
               } else {
-                alert('Payment verification failed. Please contact support.')
+                toast.error('Payment verification failed. Please contact support.')
               }
             } catch (err) {
               console.error(err)
-              alert('An error occurred during verification.')
+              toast.error('An error occurred during verification.')
             } finally {
               setIsVerifyingPayment(false)
             }

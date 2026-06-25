@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { z } from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
+import toast from "react-hot-toast"
 
 const contactSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
@@ -80,13 +81,15 @@ export default function ContactPage() {
         setIsSuccess(true)
         reset()
         if (fileInput) fileInput.value = ''
+        toast.success("Message sent successfully!")
         setTimeout(() => setIsSuccess(false), 5000)
       } else {
-        alert('Failed to send message. Please try again.')
+        const data = await response.json().catch(() => ({}));
+        toast.error(data.error || 'Failed to send message. Please try again.')
       }
     } catch (error) {
       console.error('Submission error:', error)
-      alert('An error occurred. Please try again later.')
+      toast.error('An error occurred. Please try again later.')
     }
   }
 

@@ -82,6 +82,7 @@ import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { ThemeProvider } from "@/components/theme-provider"
 import NextTopLoader from "nextjs-toploader"
+import { Toaster } from "react-hot-toast"
 
 export default function RootLayout({
   children,
@@ -157,6 +158,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <Toaster position="top-right" />
         </ThemeProvider>
       </body>
     </html>
