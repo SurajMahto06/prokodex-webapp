@@ -179,7 +179,7 @@ function ApplicationForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ couponCode: couponCode.trim(), plan: watchedPlan })
       });
-      
+
       const data = await response.json();
       if (data.success) {
         setCouponStatus("valid");
@@ -792,7 +792,7 @@ function ApplicationForm() {
 
               <Button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={isSubmitting || isApplyingCoupon}
                 className="w-full h-12 rounded-xl bg-secondary hover:bg-secondary/90 text-secondary-foreground font-semibold text-base shadow-lg shadow-secondary/20 transition-all hover:shadow-secondary/40"
               >
                 {isSubmitting ? (
