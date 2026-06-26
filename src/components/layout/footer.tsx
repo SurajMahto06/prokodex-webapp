@@ -48,6 +48,7 @@ export function Footer() {
             <h4 className="font-semibold mb-6">Company</h4>
             <ul className="space-y-4">
               <li><Link href="/about" className="text-sm text-muted-foreground hover:text-secondary transition-colors">About Us</Link></li>
+              <li><Link href="/blog" className="text-sm text-muted-foreground hover:text-secondary transition-colors">Blog</Link></li>
               <li><Link href="/demos" className="text-sm text-muted-foreground hover:text-secondary transition-colors">Demos</Link></li>
               <li><Link href="/careers" className="text-sm text-muted-foreground hover:text-secondary transition-colors">Careers</Link></li>
               <li><Link href="/internship" className="text-sm text-muted-foreground hover:text-secondary transition-colors">Internships</Link></li>
@@ -86,6 +87,7 @@ export function Footer() {
           <div className="flex gap-6">
             <Link href="/privacy" className="text-sm text-muted-foreground hover:text-secondary transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="text-sm text-muted-foreground hover:text-secondary transition-colors">Terms of Service</Link>
+            <Link href="/refund-policy" className="text-sm text-muted-foreground hover:text-secondary transition-colors">Refund Policy</Link>
           </div>
         </div>
       </div>

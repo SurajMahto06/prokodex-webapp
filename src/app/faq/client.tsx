@@ -6,28 +6,36 @@ import { ChevronDown, MessageCircleQuestion } from "lucide-react";
 
 const faqs = [
   {
-    question: "What services does Prokodex provide?",
-    answer: "Prokodex specializes in building modern digital products. Our core services include Web Development, Mobile App Development, Custom ERP Systems, and UI/UX Design."
+    question: "What specific IT and digital services does Prokodex provide?",
+    answer: "Prokodex is a full-service agency specializing in Custom Web Development, Mobile App Development, AI Automation Solutions, Enterprise ERP Systems, UI/UX Design, Graphic Design, Video Editing, and comprehensive Digital Marketing strategies."
   },
   {
-    question: "Do you work with startups or established enterprises?",
-    answer: "We work with both! We help early-stage startups build their MVP and scale, while also providing robust, scalable solutions and ERP systems for established enterprises."
+    question: "How does Prokodex handle project pricing and estimations?",
+    answer: "We offer tailored pricing based on the unique requirements, scope, and complexity of your project. After an initial discovery call, we provide a detailed proposal breaking down the costs, milestones, and deliverables so there are no hidden fees."
   },
   {
-    question: "How long does a typical project take?",
-    answer: "Project timelines vary significantly based on complexity and scope. A simple landing page might take a few weeks, while a full-scale ERP system could take several months. We provide detailed timelines during our initial consultation."
+    question: "How long does a typical software development project take?",
+    answer: "Project timelines vary significantly based on complexity. A standard corporate website might take 2-4 weeks, while a full-scale mobile app or custom ERP system could take 3-6 months. We always provide a transparent timeline during our proposal phase."
   },
   {
-    question: "What technologies do you use?",
-    answer: "We leverage modern, scalable technology stacks. This typically includes Next.js, React, Node.js, and TypeScript for web applications, along with React Native or Flutter for mobile apps. We also use cloud infrastructure like AWS or Vercel."
+    question: "What technology stack do you use for development?",
+    answer: "We leverage modern, highly scalable technologies. Our primary stack includes Next.js, React, Node.js, and TypeScript for web applications. For mobile apps, we utilize React Native and Flutter. We also deploy on robust cloud infrastructures like AWS and Vercel."
   },
   {
-    question: "Do you offer post-launch support and maintenance?",
-    answer: "Yes, we offer comprehensive post-launch support and maintenance packages to ensure your application remains secure, up-to-date, and performs optimally as your user base grows."
+    question: "Do you offer post-launch support and server maintenance?",
+    answer: "Absolutely. We offer comprehensive post-launch support, server maintenance, and SEO optimization packages to ensure your digital product remains secure, up-to-date, and performs optimally as your user base grows."
   },
   {
-    question: "Do you provide internships for students?",
-    answer: "Yes! We run comprehensive internship and training programs. You can check out our Careers & Internships page to learn more and apply for open positions."
+    question: "How do your Digital Marketing and SEO services work?",
+    answer: "Our digital marketing team focuses on ROI-driven campaigns. We handle everything from Technical SEO and Content Marketing to Social Media Management and Paid Advertising (Google Ads, Meta Ads) to help scale your online presence and generate qualified leads."
+  },
+  {
+    question: "Do you provide professional internships for students?",
+    answer: "Yes! We run comprehensive internship and training programs designed to bridge the gap between academic learning and industry requirements. Our programs cover full-stack development, UI/UX design, and digital marketing. Check our Internships page to apply."
+  },
+  {
+    question: "Who owns the intellectual property (IP) of the software built?",
+    answer: "Once the project is completed and the final payment is cleared, the intellectual property rights and source code ownership are fully transferred to the client, unless otherwise specified in an ongoing partnership agreement."
   }
 ];
 
