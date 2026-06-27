@@ -45,16 +45,10 @@ type ApplyFormValues = z.infer<typeof applySchema>
 
 // Need to match the tracks from the main internship page
 const tracks = [
-  "Frontend Development",
-  "Node.js & Express Backend",
-  "MERN Stack Development",
-  "MEAN Stack Development",
-  "Laravel Backend",
-  "React Native App Dev",
-  "Flutter App Development",
-  "UI/UX Design",
-  "Gen AI & AI Web Dev",
-  "Digital Marketing"
+  "Frontend Development Internship",
+  "Backend Development Internship",
+  "Full Stack Development Internship",
+  "Mobile Development Internship"
 ]
 
 const pricingTiers = [

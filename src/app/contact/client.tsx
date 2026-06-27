@@ -277,8 +277,8 @@ export default function ContactPage() {
                       >
                         <option value="">Select a topic</option>
                         <option value="project">Project Development</option>
-                        <option value="digital-marketing">Digital Marketing</option>
-                        <option value="video-graphics">Video & Graphic Design</option>
+                        {/* <option value="digital-marketing">Digital Marketing</option> */}
+                        {/* <option value="video-graphics">Video & Graphic Design</option> */}
                         <option value="consulting">Consulting & Strategy</option>
                         <option value="career">Careers & Jobs</option>
                         <option value="internship">Internships & Training</option>
