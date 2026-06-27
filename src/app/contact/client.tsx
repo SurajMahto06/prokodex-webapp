@@ -177,7 +177,7 @@ export default function ContactPage() {
                   <div>
                     <h4 className="font-bold mb-1">Address</h4>
                     <p className="text-sm text-muted-foreground leading-relaxed">
-                      Pulhatu New Colony, Chaibasa,<br />Jharkhand - 833201
+                      Pulhatu New Colony, Chaibasa,<br />Jharkhand - 833201, India
                     </p>
                   </div>
                 </div>

@@ -79,12 +79,13 @@ export default function HomeClient() {
   }
 
   const testimonials = [
-    { quote: "Prokodex transformed our legacy systems into a modern, lightning-fast ERP. The attention to detail is unmatched.", author: "Rajesh Sharma", role: "CTO, GlobalLogistics" },
-    { quote: "The team's expertise in Next.js and React is phenomenal. They delivered our SaaS product 3 weeks ahead of schedule.", author: "Amit Verma", role: "Founder, SaaSFlow" },
-    { quote: "Our interns from Prokodex were incredibly well-trained. They contributed to our live codebase from week one.", author: "Vikas Choudhary", role: "VP Engineering, TechNova" },
-    { quote: "The mobile app they built for us has a 4.9 rating on the App Store. The UX is flawless and the performance is buttery smooth.", author: "Priya Desai", role: "Product Manager, FitLife" },
-    { quote: "We hired their enterprise consulting team for our microservices migration. It was the best technical decision we made this year.", author: "Sanjay Gupta", role: "Director of Engineering, FinTrust" },
-    { quote: "Their internship program is a game changer. We regularly hire graduates from Prokodex and they are always production-ready.", author: "Anita Patel", role: "HR Head, TechInnovate" }
+    { quote: "Prokodex delivered a highly robust inventory and digital platform that has completely transformed how our business operates.", author: "Ramant Kumar", role: "Founder, Tatvam Electronics" },
+    { quote: "Prokodex transformed our legacy systems into a modern, lightning-fast ERP. The attention to detail is unmatched.", author: "Rajesh Sharma", role: "CTO" },
+    { quote: "The team's expertise in Next.js and React is phenomenal. They delivered our SaaS product 3 weeks ahead of schedule.", author: "Amit Verma", role: "Founder" },
+    { quote: "Our interns from Prokodex were incredibly well-trained. They contributed to our live codebase from week one.", author: "Vikas Choudhary", role: "VP Engineering" },
+    { quote: "The mobile app they built for us has a 4.9 rating on the App Store. The UX is flawless and the performance is buttery smooth.", author: "Priya Desai", role: "Product Manager" },
+    { quote: "We hired their enterprise consulting team for our microservices migration. It was the best technical decision we made this year.", author: "Sanjay Gupta", role: "Director of Engineering" },
+    { quote: "Their internship program is a game changer. We regularly hire graduates from Prokodex and they are always production-ready.", author: "Anita Patel", role: "HR Head" }
   ]
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },

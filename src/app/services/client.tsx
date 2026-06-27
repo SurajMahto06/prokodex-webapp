@@ -88,7 +88,7 @@ export default function ServicesPage() {
       description: "Reel editing, YouTube videos, invitation cards, posters, logo design, and complete brand identity creation.",
       features: ["Video Editing", "Poster Design", "UI/UX Design", "Graphics"]
     }, */
-    {
+    /* {
       icon: CircleDollarSign,
       title: "Transparent Pricing",
       description: "No hidden fees. Starting at $50. You own your API keys.",
@@ -99,13 +99,13 @@ export default function ServicesPage() {
       title: "Full Source Code",
       description: "You own everything. No vendor lock-in. We hand over code, docs, and deploy guides.",
       features: ["No Vendor Lock-in", "Full Documentation", "Deploy Guides", "100% Ownership"]
-    },
-    {
+    }, */
+    /* {
       icon: GraduationCap,
       title: "Internship Programs",
       description: "Industry-aligned training programs for aspiring developers.",
       features: ["Live Projects", "1-on-1 Mentorship", "Certifications", "Job Ready"]
-    }
+    } */
   ]
 
 

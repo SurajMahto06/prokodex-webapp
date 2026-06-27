@@ -77,7 +77,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-3 text-sm text-muted-foreground pt-2">
                 <MapPin className="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" />
-                <span className="leading-relaxed">Pulhatu New Colony, Chaibasa,<br />Jharkhand - 833201</span>
+                <span className="leading-relaxed">Pulhatu New Colony, Chaibasa,<br />Jharkhand - 833201, India</span>
               </li>
 
             </ul>
