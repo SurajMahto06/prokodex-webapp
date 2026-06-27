@@ -21,7 +21,7 @@ export default function TermsOfServicePage() {
 
           <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">1. Scope of Services</h2>
           <p>
-            Prokodex provides a wide range of services including, but not limited to, Custom Web Development, Mobile App Development, Digital Marketing, UI/UX Design, and Professional Internships. 
+            Prokodex provides a wide range of services including, but not limited to, Custom Web Development, Mobile App Development, Digital Marketing, UI/UX Design, and Professional Internships.
             The specific scope, deliverables, timeline, and cost for any project will be outlined in a separate written agreement or proposal provided to the client prior to project commencement.
           </p>
 

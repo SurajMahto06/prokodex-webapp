@@ -79,11 +79,11 @@ export default function HomeClient() {
   }
 
   const testimonials = [
-    { quote: "Prokodex transformed our legacy systems into a modern, lightning-fast ERP. The attention to detail is unmatched.", author: "Sarah Jenkins", role: "CTO, GlobalLogistics" },
-    { quote: "The team's expertise in Next.js and React is phenomenal. They delivered our SaaS product 3 weeks ahead of schedule.", author: "David Chen", role: "Founder, SaaSFlow" },
-    { quote: "Our interns from Prokodex were incredibly well-trained. They contributed to our live codebase from week one.", author: "Michael Ross", role: "VP Engineering, TechNova" },
-    { quote: "The mobile app they built for us has a 4.9 rating on the App Store. The UX is flawless and the performance is buttery smooth.", author: "Emily Watson", role: "Product Manager, FitLife" },
-    { quote: "We hired their enterprise consulting team for our microservices migration. It was the best technical decision we made this year.", author: "James Carter", role: "Director of Engineering, FinTrust" },
+    { quote: "Prokodex transformed our legacy systems into a modern, lightning-fast ERP. The attention to detail is unmatched.", author: "Rajesh Sharma", role: "CTO, GlobalLogistics" },
+    { quote: "The team's expertise in Next.js and React is phenomenal. They delivered our SaaS product 3 weeks ahead of schedule.", author: "Amit Verma", role: "Founder, SaaSFlow" },
+    { quote: "Our interns from Prokodex were incredibly well-trained. They contributed to our live codebase from week one.", author: "Vikas Choudhary", role: "VP Engineering, TechNova" },
+    { quote: "The mobile app they built for us has a 4.9 rating on the App Store. The UX is flawless and the performance is buttery smooth.", author: "Priya Desai", role: "Product Manager, FitLife" },
+    { quote: "We hired their enterprise consulting team for our microservices migration. It was the best technical decision we made this year.", author: "Sanjay Gupta", role: "Director of Engineering, FinTrust" },
     { quote: "Their internship program is a game changer. We regularly hire graduates from Prokodex and they are always production-ready.", author: "Anita Patel", role: "HR Head, TechInnovate" }
   ]
   const fadeIn = {
@@ -149,11 +149,11 @@ export default function HomeClient() {
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
-                <Link href="/internship" className="w-full sm:w-auto">
+                {/* <Link href="/internship" className="w-full sm:w-auto">
                   <Button size="lg" variant="outline" className="h-12 px-8 text-base w-full hover:border-secondary/50 hover:text-secondary hover:bg-secondary/10 transition-colors">
                     Explore Internships
                   </Button>
-                </Link>
+                </Link> */}
               </motion.div>
             </motion.div>
           </div>
@@ -167,7 +167,7 @@ export default function HomeClient() {
               {[
                 {
                   label: "Projects Delivered",
-                  value: "150+",
+                  value: "10+",
                   shape: "rounded-[60%_40%_30%_70%/60%_30%_70%_40%]",
                   hoverShape: "group-hover:rounded-[30%_60%_70%_40%/50%_60%_30%_60%]"
                 },
@@ -178,16 +178,16 @@ export default function HomeClient() {
                   hoverShape: "group-hover:rounded-[70%_30%_50%_50%/30%_60%_40%_70%]"
                 },
                 {
-                  label: "Interns Trained",
-                  value: "500+",
-                  shape: "rounded-[40%_60%_60%_40%/60%_40%_70%_30%]",
-                  hoverShape: "group-hover:rounded-[50%_50%_40%_60%/40%_60%_50%_50%]"
+                  label: "Services Offered",
+                  value: "6+",
+                  shape: "rounded-[70%_30%_40%_60%/30%_60%_40%_70%]",
+                  hoverShape: "group-hover:rounded-[40%_60%_70%_30%/60%_40%_30%_70%]"
                 },
                 {
                   label: "Years of Experience",
-                  value: "5+",
-                  shape: "rounded-[70%_30%_40%_60%/30%_60%_40%_70%]",
-                  hoverShape: "group-hover:rounded-[40%_60%_70%_30%/60%_40%_30%_70%]"
+                  value: "1+",
+                  shape: "rounded-[40%_60%_60%_40%/60%_40%_70%_30%]",
+                  hoverShape: "group-hover:rounded-[50%_50%_40%_60%/40%_60%_50%_50%]"
                 }
               ].map((stat, i) => (
                 <motion.div
@@ -237,11 +237,11 @@ export default function HomeClient() {
               { icon: Smartphone, title: "App Development", desc: "iOS & Android apps — cross-platform, fast, built for your business. From $499." },
               { icon: Globe, title: "Web Design & Deployment", desc: "Responsive websites & e-commerce. SEO-optimized, mobile-first. From $50." },
               { icon: Code2, title: "Custom Software", desc: "Automate workflows, integrate APIs, build micro SaaS. Your idea, our code." },
-              { icon: TrendingUp, title: "Digital Marketing", desc: "Comprehensive marketing including On-page & Off-page SEO, social media management, Google Ads, and lead generation." },
-              { icon: Video, title: "Video & Graphic Design", desc: "Reel editing, YouTube videos, invitation cards, posters, logo design, and complete brand identity creation." },
-              { icon: CircleDollarSign, title: "Transparent Pricing", desc: "No hidden fees. Starting at $50. You own your API keys." },
-              { icon: Unlock, title: "Full Source Code", desc: "You own everything. No vendor lock-in. We hand over code, docs, and deploy guides." },
-              { icon: GraduationCap, title: "Internship Programs", desc: "Industry-aligned training programs for aspiring developers." },
+              /* { icon: TrendingUp, title: "Digital Marketing", desc: "Comprehensive marketing including On-page & Off-page SEO, social media management, Google Ads, and lead generation." },
+              { icon: Video, title: "Video & Graphic Design", desc: "Reel editing, YouTube videos, invitation cards, posters, logo design, and complete brand identity creation." }, */
+              /* { icon: CircleDollarSign, title: "Transparent Pricing", desc: "No hidden fees. Starting at $50. You own your API keys." },
+              { icon: Unlock, title: "Full Source Code", desc: "You own everything. No vendor lock-in. We hand over code, docs, and deploy guides." }, */
+              // { icon: GraduationCap, title: "Internship Programs", desc: "Industry-aligned training programs for aspiring developers." },
             ].map((service, i) => (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -500,7 +500,7 @@ export default function HomeClient() {
         </div>
       </section>
 
-      {/* Internship Program Preview */}
+      {/* Internship Program Preview 
       <section className="py-16 bg-muted/50 border-y border-border">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -513,7 +513,6 @@ export default function HomeClient() {
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-16 relative">
-            {/* Glowing orb behind */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-secondary/10 rounded-full blur-[80px] pointer-events-none" />
 
             {[
@@ -546,6 +545,7 @@ export default function HomeClient() {
           </div>
         </div>
       </section>
+      */}
 
       {/* CTA Section */}
       <CtaSection

@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Code2, Users, Target, Globe2, Cpu, Zap, Heart, Award, ArrowRight, Compass } from "lucide-react"
+import { Code2, Users, Target, Globe2, Cpu, Zap, Heart, Award, ArrowRight, Compass, CheckCircle2 } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { CtaSection } from "@/components/sections/cta-section"
@@ -45,52 +45,39 @@ export default function AboutPage() {
       </section>
 
 
-      {/* Mission & Vision (Asymmetrical Grid) */}
-      <section className="py-20 bg-background relative overflow-hidden">
+      {/* Simplified Mission & Vision */}
+      <section className="py-24 bg-background border-y border-border/40">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
-            <div className="relative group perspective-1000">
-              <div className="absolute -inset-4 bg-gradient-to-tr from-secondary/20 to-primary/20 blur-3xl rounded-[3rem] opacity-50 group-hover:opacity-70 transition-opacity duration-700" />
-              <div className="aspect-[4/5] md:aspect-square bg-card/80 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] shadow-2xl overflow-hidden relative flex flex-col justify-end p-8 transform transition-transform duration-700 group-hover:-rotate-y-2 group-hover:-translate-y-2">
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent z-10" />
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
+              Built by Developers, for Real Businesses
+            </h2>
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              Prokodex was started by a small team of developers who were tired of seeing businesses get overcharged for clunky, slow software. We wanted to create an agency that actually cares about how an app feels and how fast it runs. We write clean, modern code so our clients can focus on growing their business instead of fixing tech issues.
+            </p>
+          </div>
 
-                {/* Decorative Tech Graphic inside the box */}
-                <div className="absolute inset-0 z-0 flex items-center justify-center opacity-20">
-                  <div className="w-[150%] h-[150%] border-[2px] border-secondary/30 rounded-full animate-[spin_40s_linear_infinite]" />
-                  <div className="absolute w-[100%] h-[100%] border-[2px] border-primary/30 rounded-full animate-[spin_20s_linear_infinite_reverse]" />
-                  <Code2 className="absolute h-32 w-32 text-secondary" />
-                </div>
-
-                <div className="relative z-20 space-y-6">
-                  <div className="h-16 w-16 bg-secondary/20 rounded-2xl flex items-center justify-center border border-secondary/30 mb-8 backdrop-blur-sm">
-                    <Target className="h-8 w-8 text-secondary" />
-                  </div>
-                  <h3 className="text-3xl font-bold">Our Mission</h3>
-                  <p className="text-lg text-muted-foreground leading-relaxed">
-                    To empower visionary companies with robust, scalable, and elegantly designed software. We transform complex business problems into seamless digital realities.
-                  </p>
-                </div>
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Mission */}
+            <div className="bg-card border border-border rounded-2xl p-8 lg:p-10 hover:border-secondary/50 transition-colors">
+              <div className="h-14 w-14 bg-secondary/10 rounded-xl flex items-center justify-center mb-6">
+                <Target className="h-7 w-7 text-secondary" />
               </div>
+              <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                To empower visionary companies with robust, scalable, and elegantly designed software. We transform complex business problems into seamless digital realities.
+              </p>
             </div>
 
-            <div className="space-y-12">
-              <div className="space-y-6">
-                <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-                  Engineering Excellence at Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Core</span>
-                </h2>
-                <p className="text-xl text-muted-foreground leading-relaxed">
-                  Founded by a group of passionate software architects, Prokodex was born out of a desire to bridge the gap between stunning design and flawless backend performance. We don't just write code; we build the infrastructure of tomorrow.
-                </p>
+            {/* Vision */}
+            <div className="bg-card border border-border rounded-2xl p-8 lg:p-10 hover:border-secondary/50 transition-colors">
+              <div className="h-14 w-14 bg-secondary/10 rounded-xl flex items-center justify-center mb-6">
+                <Compass className="h-7 w-7 text-secondary" />
               </div>
-
-              <div className="p-8 rounded-[2rem] bg-secondary/5 border border-secondary/10 relative overflow-hidden group">
-                <div className="absolute right-0 top-0 w-32 h-32 bg-secondary/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700" />
-                <Compass className="h-10 w-10 text-secondary mb-6 relative z-10" />
-                <h3 className="text-2xl font-bold mb-4 relative z-10">Our Vision</h3>
-                <p className="text-muted-foreground leading-relaxed relative z-10">
-                  To be the most trusted technology partner for global enterprises and the premier launching pad for the next generation of top-tier engineering talent through our elite internship programs.
-                </p>
-              </div>
+              <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                To be the most trusted technology partner for global enterprises and the premier launching pad for the next generation of top-tier engineering talent through our elite internship programs.
+              </p>
             </div>
           </div>
         </div>

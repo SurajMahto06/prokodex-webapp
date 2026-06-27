@@ -76,7 +76,7 @@ export default function ServicesPage() {
       description: "Automate workflows, integrate APIs, build micro SaaS. Your idea, our code.",
       features: ["Workflow Automation", "API Integration", "Micro SaaS", "Custom Logic"]
     },
-    {
+    /* {
       icon: TrendingUp,
       title: "Digital Marketing",
       description: "Comprehensive marketing including On-page & Off-page SEO, social media management, Google Ads, and lead generation.",
@@ -87,7 +87,7 @@ export default function ServicesPage() {
       title: "Video & Graphic Design",
       description: "Reel editing, YouTube videos, invitation cards, posters, logo design, and complete brand identity creation.",
       features: ["Video Editing", "Poster Design", "UI/UX Design", "Graphics"]
-    },
+    }, */
     {
       icon: CircleDollarSign,
       title: "Transparent Pricing",

@@ -170,8 +170,17 @@ export default function ContactPage() {
                     <p className="text-sm text-muted-foreground">Instant chat support</p>
                   </div>
                 </div>
-
-
+                <div className="flex gap-4 p-5 rounded-2xl bg-card/30 border border-border/50 backdrop-blur-sm group hover:border-secondary/50 transition-colors">
+                  <div className="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center flex-shrink-0 text-secondary group-hover:scale-110 group-hover:bg-secondary group-hover:text-secondary-foreground transition-all duration-300">
+                    <MapPin className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold mb-1">Address</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Pulhatu New Colony, Chaibasa,<br />Jharkhand - 833201
+                    </p>
+                  </div>
+                </div>
               </div>
             </motion.div>
 

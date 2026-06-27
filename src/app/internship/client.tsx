@@ -38,7 +38,7 @@ const stagger: Variants = {
 
 const programs = [
   {
-    title: "Frontend Development",
+    title: "Frontend Development Internship",
     icon: LayoutTemplate,
     duration: "3 Months",
     description: "Master modern web interfaces by building real-world enterprise applications with React and Next.js.",
@@ -52,7 +52,7 @@ const programs = [
     ]
   },
   {
-    title: "Node.js & Express Backend",
+    title: "Backend Development Internship",
     icon: Server,
     duration: "3 Months",
     description: "Learn to build high-performance, asynchronous server-side applications and RESTful APIs from scratch.",
@@ -66,7 +66,7 @@ const programs = [
     ]
   },
   {
-    title: "MERN Stack Development",
+    title: "Full Stack Development Internship",
     icon: Database,
     duration: "6 Months",
     description: "Master the most popular full-stack technology. Build scalable web apps using MongoDB, Express, React, and Node.js.",
@@ -80,95 +80,15 @@ const programs = [
     ]
   },
   {
-    title: "MEAN Stack Development",
-    icon: Code2,
-    duration: "6 Months",
-    description: "Learn enterprise-grade full-stack development using MongoDB, Express, Angular, and Node.js.",
-    syllabus: [
-      { period: "Month 1", topic: "TypeScript Fundamentals & Angular Basics" },
-      { period: "Month 2", topic: "Advanced Angular, RxJS & Directives" },
-      { period: "Month 3", topic: "Node.js & Express RESTful APIs" },
-      { period: "Month 4", topic: "MongoDB Integration & CRUD Operations" },
-      { period: "Month 5", topic: "Angular Routing, Auth Guards & Integration" },
-      { period: "Month 6", topic: "Application Optimization & Final Capstone" }
-    ]
-  },
-  {
-    title: "Laravel Backend",
-    icon: Cloud,
-    duration: "3 Months",
-    description: "Build secure, scalable backend architectures using PHP and the powerful Laravel framework.",
-    syllabus: [
-      { period: "Week 1-2", topic: "Advanced PHP & Object-Oriented Programming" },
-      { period: "Week 3-4", topic: "Laravel MVC, Routing & Blade Templates" },
-      { period: "Week 5-6", topic: "Database Design, MySQL & Eloquent ORM" },
-      { period: "Week 7-8", topic: "Authentication, Middleware & Security" },
-      { period: "Week 9-10", topic: "Building & Documenting RESTful APIs" },
-      { period: "Week 11-12", topic: "Task Scheduling, Queues & Deployment" }
-    ]
-  },
-  {
-    title: "React Native App Dev",
-    icon: MonitorSmartphone,
-    duration: "4 Months",
-    description: "Build cross-platform mobile apps for iOS and Android using React Native and Expo.",
-    syllabus: [
-      { period: "Month 1", topic: "React Native Fundamentals, Core Components & Styling" },
-      { period: "Month 2", topic: "React Navigation, Complex Routing & Global State" },
-      { period: "Month 3", topic: "Device APIs, Local Storage (SQLite) & Animations" },
-      { period: "Month 4", topic: "Push Notifications, OTA Updates & App Store Submission" }
-    ]
-  },
-  {
-    title: "Flutter App Development",
+    title: "Mobile Development Internship",
     icon: Smartphone,
     duration: "4 Months",
-    description: "Create beautiful, natively compiled, multi-platform applications from a single codebase using Flutter and Dart.",
+    description: "Build cross-platform mobile apps for iOS and Android using React Native and Flutter.",
     syllabus: [
-      { period: "Month 1", topic: "Dart Programming Basics & Flutter Widgets" },
-      { period: "Month 2", topic: "State Management (Provider/Riverpod) & Navigation" },
-      { period: "Month 3", topic: "Firebase Integration, Authentication & Cloud Firestore" },
-      { period: "Month 4", topic: "Advanced Animations, Testing & Play Store Deployment" }
-    ]
-  },
-  {
-    title: "UI/UX Design",
-    icon: Palette,
-    duration: "3 Months",
-    description: "Design intuitive digital products. Master user research, wireframing, and high-fidelity prototyping in Figma.",
-    syllabus: [
-      { period: "Week 1-2", topic: "Design Thinking, User Research & Personas" },
-      { period: "Week 3-4", topic: "Information Architecture & Low-Fidelity Wireframing" },
-      { period: "Week 5-6", topic: "Color Theory, Typography & Visual Hierarchy" },
-      { period: "Week 7-8", topic: "Mastering Figma: Components, Auto Layout & Variants" },
-      { period: "Week 9-10", topic: "Interactive Prototyping & Building Design Systems" },
-      { period: "Week 11-12", topic: "Usability Testing & Building a UX Portfolio" }
-    ]
-  },
-  {
-    title: "Gen AI & AI Web Dev",
-    icon: BrainCircuit,
-    duration: "4 Months",
-    description: "Integrate Artificial Intelligence into web applications. Build custom AI agents, chatbots, and generative AI tools.",
-    syllabus: [
-      { period: "Month 1", topic: "Introduction to Generative AI, LLMs & Prompt Engineering" },
-      { period: "Month 2", topic: "API Integration: OpenAI, Anthropic, & Function Calling" },
-      { period: "Month 3", topic: "Building Context-Aware Agents with LangChain & LlamaIndex" },
-      { period: "Month 4", topic: "Vector Databases (Pinecone), RAG Architecture & Deployment" }
-    ]
-  },
-  {
-    title: "Digital Marketing",
-    icon: TrendingUp,
-    duration: "3 Months",
-    description: "Master modern digital marketing, SEO, social media management, and paid advertising campaigns.",
-    syllabus: [
-      { period: "Week 1-2", topic: "Digital Marketing Fundamentals & Market Research" },
-      { period: "Week 3-4", topic: "On-page & Off-page SEO Mastery" },
-      { period: "Week 5-6", topic: "Social Media Strategy & Content Creation" },
-      { period: "Week 7-8", topic: "Google Ads, Facebook Ads & PPC Campaigns" },
-      { period: "Week 9-10", topic: "Email Marketing & Lead Generation Tactics" },
-      { period: "Week 11-12", topic: "Analytics, Reporting & Final Campaign Project" }
+      { period: "Month 1", topic: "Mobile Dev Fundamentals, Core Components & Styling" },
+      { period: "Month 2", topic: "Navigation, Complex Routing & Global State" },
+      { period: "Month 3", topic: "Device APIs, Local Storage (SQLite) & Animations" },
+      { period: "Month 4", topic: "Push Notifications, API Integration & Play Store Deployment" }
     ]
   }
 ]

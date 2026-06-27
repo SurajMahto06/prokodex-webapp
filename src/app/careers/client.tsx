@@ -33,91 +33,47 @@ const stagger: Variants = {
 
 const jobs = [
   {
-    id: "sr-fullstack",
-    title: "Senior Full Stack Engineer (Next.js & Node.js)",
-    department: "Engineering",
-    location: "Remote / Hybrid (India)",
+    id: "bda-role",
+    title: "Business Development Associate (BDA)",
+    department: "Sales & Marketing",
+    location: "Remote / Hybrid",
     type: "Full-Time",
-    experience: "4+ Years",
-    description: "We are looking for a Senior Full Stack Engineer to lead the design and development of scalable enterprise dashboards and interactive platforms. You will set architecture standards, mentor junior engineers, and push Next.js performance limits.",
+    experience: "1-3 Years",
+    description: "We are looking for a highly motivated Business Development Associate to drive our sales growth. You will be responsible for identifying new business opportunities, reaching out to potential clients, and pitching our software and digital marketing solutions.",
     requirements: [
-      "Expert understanding of React 19, Next.js App Router, and Server Components.",
-      "Proficient in building high-concurrency Node.js / Express microservices.",
-      "Solid database design experience using PostgreSQL, MongoDB, and Redis caching.",
-      "Familiarity with containerization (Docker) and AWS cloud deployments.",
-      "Strong communication and team leadership skills."
+      "Excellent communication and negotiation skills.",
+      "Proven track record in B2B IT sales or lead generation.",
+      "Ability to understand client requirements and propose suitable tech solutions.",
+      "Experience with CRM tools and LinkedIn outreach.",
+      "Self-driven, goal-oriented, and able to work independently."
     ],
     benefits: [
-      "Competitive Salary + Performance Bonuses",
-      "Flexible Remote Work Environment",
-      "Premium Hardware Allowance",
+      "Competitive Fixed Salary + High Incentives",
+      "Flexible Remote/Hybrid Work Environment",
+      "Rapid Career Progression",
       "Comprehensive Health Insurance"
     ]
   },
   {
-    id: "uiux-designer",
-    title: "UI/UX Designer",
-    department: "Design",
-    location: "Remote (Global)",
+    id: "frontend-dev",
+    title: "Frontend Developer",
+    department: "Engineering",
+    location: "Remote",
     type: "Full-Time",
-    experience: "2+ Years",
-    description: "Join us to shape the look, feel, and flow of our custom SaaS, ERP and mobile products. You will turn complex enterprise workflows into intuitive, beautiful, and interactive modern user experiences.",
+    experience: "1-3 Years",
+    description: "Join our engineering team to build stunning, high-performance web applications. You will work closely with designers to implement pixel-perfect UIs and interactive features using modern frontend frameworks.",
     requirements: [
-      "Strong portfolio showcasing complex web application and mobile UI/UX designs.",
-      "Mastery of Figma (advanced components, auto-layouts, and prototyping).",
-      "Deep understanding of typography, color theory, grid systems, and responsiveness.",
-      "Experience conducting user interviews and usability tests.",
-      "Basic understanding of Tailwind CSS and frontend capabilities is a plus."
+      "Strong proficiency in React.js and Next.js.",
+      "Solid understanding of HTML5, CSS3, and JavaScript (ES6+).",
+      "Experience with styling libraries like Tailwind CSS.",
+      "Familiarity with state management and RESTful API integration.",
+      "Detail-oriented with a focus on UI/UX and web performance."
     ],
     benefits: [
       "Competitive Compensation",
-      "Creative Freedom & High Impact on Products",
-      "Annual Design Resource/Book Allowance",
-      "Remote Work & Flexible Hours"
-    ]
-  },
-  {
-    id: "backend-laravel",
-    title: "Backend Engineer (Laravel & PostgreSQL)",
-    department: "Engineering",
-    location: "Remote (India)",
-    type: "Full-Time",
-    experience: "2+ Years",
-    description: "We are seeking a backend specialist to build secure database schemas, scale RESTful APIs, and configure cron queues using Laravel. You will work on robust billing portals and client ERP modules.",
-    requirements: [
-      "Strong command over Object-Oriented PHP and Laravel framework concepts.",
-      "Deep experience with relational database design and writing optimized SQL queries in PostgreSQL.",
-      "Proficiency in setting up task queues, cron jobs, and caching strategies (Redis).",
-      "Familiarity with writing automated unit and integration tests (PHPUnit).",
-      "Git version control and basic DevOps pipeline knowledge."
-    ],
-    benefits: [
-      "Competitive Salary",
-      "Regular Career Development & Tech Courses",
-      "Flexible Remote Work Setup",
-      "Annual Paid Time Off"
-    ]
-  },
-  {
-    id: "qa-automation",
-    title: "QA Automation Engineer",
-    department: "Quality Assurance",
-    location: "Remote",
-    type: "Full-Time",
-    experience: "2+ Years",
-    description: "Help us maintain our zero-downtime, bug-free standards. You will write automated end-to-end integration test suites for client projects and set up CI/CD pipeline test gates.",
-    requirements: [
-      "Experience writing test scripts using Playwright, Cypress, or Selenium.",
-      "Strong script coding skills (JavaScript, TypeScript, or Python).",
-      "Familiarity with API testing tools (Postman, Jest) and security audits.",
-      "Experience incorporating automated testing gates in GitHub Actions.",
-      "Detail-oriented with a strong focus on edge cases and product polish."
-    ],
-    benefits: [
-      "Competitive Salary",
+      "Opportunity to work on diverse projects",
       "Flexible Remote Setup",
-      "Wellness & Mental Health Benefits",
-      "Opportunities for Full-Stack training"
+      "Continuous Learning and Development"
     ]
   }
 ]
