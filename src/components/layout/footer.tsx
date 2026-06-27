@@ -92,6 +92,7 @@ export function Footer() {
             <Link href="/privacy" className="text-sm text-muted-foreground hover:text-secondary transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="text-sm text-muted-foreground hover:text-secondary transition-colors">Terms of Service</Link>
             <Link href="/refund-policy" className="text-sm text-muted-foreground hover:text-secondary transition-colors">Refund Policy</Link>
+            <Link href="/shipping-policy" className="text-sm text-muted-foreground hover:text-secondary transition-colors">Shipping Policy</Link>
           </div>
         </div>
       </div>
