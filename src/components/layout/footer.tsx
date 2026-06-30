@@ -17,30 +17,25 @@ export function Footer() {
             <p className="text-muted-foreground mb-6 max-w-sm">
               Building Modern Digital Products That Scale. We help startups and businesses build websites, ERP systems, mobile apps, and custom software solutions.
             </p>
-            {/* <div className="flex gap-4">
-              <a href="#" className="text-muted-foreground hover:text-secondary transition-colors">
+            <div className="flex gap-4">
+              <a href="https://www.instagram.com/prokodex__" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-secondary transition-colors">
                 <FaInstagram className="h-5 w-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-secondary transition-colors">
-                <FaLinkedin className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-secondary transition-colors">
+              <a href="https://www.facebook.com/people/Prokodex/61590700003321/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-secondary transition-colors">
                 <FaFacebook className="h-5 w-5" />
               </a>
-            </div> */}
+            </div>
           </div>
 
           <div>
             <h4 className="font-semibold mb-6">Services</h4>
             <ul className="space-y-4">
-              <li><Link href="/services" className="text-sm text-muted-foreground hover:text-secondary transition-colors">AI Chatbots</Link></li>
-              <li><Link href="/services" className="text-sm text-muted-foreground hover:text-secondary transition-colors">Admin Dashboards</Link></li>
-              <li><Link href="/services" className="text-sm text-muted-foreground hover:text-secondary transition-colors">Industry CRMs</Link></li>
-              <li><Link href="/services" className="text-sm text-muted-foreground hover:text-secondary transition-colors">App Development</Link></li>
-              <li><Link href="/services" className="text-sm text-muted-foreground hover:text-secondary transition-colors">Web Design & Deployment</Link></li>
-              <li><Link href="/services" className="text-sm text-muted-foreground hover:text-secondary transition-colors">Custom Software</Link></li>
-              {/* <li><Link href="/services" className="text-sm text-muted-foreground hover:text-secondary transition-colors">Digital Marketing</Link></li>
-              <li><Link href="/services" className="text-sm text-muted-foreground hover:text-secondary transition-colors">Video & Graphic Design</Link></li> */}
+              <li><Link href="/services/ai-chatbot-development" className="text-sm text-muted-foreground hover:text-secondary transition-colors">AI Chatbots</Link></li>
+              <li><Link href="/services/custom-admin-dashboards" className="text-sm text-muted-foreground hover:text-secondary transition-colors">Admin Dashboards</Link></li>
+              <li><Link href="/services/custom-crm-development" className="text-sm text-muted-foreground hover:text-secondary transition-colors">Industry CRMs</Link></li>
+              <li><Link href="/services/mobile-app-development" className="text-sm text-muted-foreground hover:text-secondary transition-colors">App Development</Link></li>
+              <li><Link href="/services/web-development-services" className="text-sm text-muted-foreground hover:text-secondary transition-colors">Web Design & Development</Link></li>
+              <li><Link href="/services/custom-software-development" className="text-sm text-muted-foreground hover:text-secondary transition-colors">Custom Software</Link></li>
             </ul>
           </div>
 

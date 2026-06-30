@@ -35,10 +35,10 @@ export default function AboutPage() {
               Our Story
             </motion.div>
             <motion.h1 variants={fadeIn} className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8">
-              Architecting the Future of <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Digital Experiences</span>
+              Building the Future of <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Digital Products</span>
             </motion.h1>
             <motion.p variants={fadeIn} className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
-              We are an elite team of engineers, designers, and strategists building scalable software solutions that drive exponential growth for startups and enterprises globally.
+              We are a passionate team of developers and designers helping startups and small businesses build fast, reliable, and affordable software solutions.
             </motion.p>
           </motion.div>
         </div>

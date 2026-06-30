@@ -80,14 +80,11 @@ export default function HomeClient() {
   }
 
   const testimonials = [
-    { quote: "Prokodex delivered a highly robust inventory and digital platform that has completely transformed how our business operates.", author: "Ramant Kumar", role: "Founder, Tatvam Electronics" },
-    { quote: "Prokodex transformed our legacy systems into a modern, lightning-fast ERP. The attention to detail is unmatched.", author: "Rajesh Sharma", role: "CTO" },
-    { quote: "The team's expertise in Next.js and React is phenomenal. They delivered our SaaS product 3 weeks ahead of schedule.", author: "Amit Verma", role: "Founder" },
-    { quote: "Our interns from Prokodex were incredibly well-trained. They contributed to our live codebase from week one.", author: "Vikas Choudhary", role: "VP Engineering" },
-    { quote: "The mobile app they built for us has a 4.9 rating on the App Store. The UX is flawless and the performance is buttery smooth.", author: "Priya Desai", role: "Product Manager" },
-    { quote: "We hired their enterprise consulting team for our microservices migration. It was the best technical decision we made this year.", author: "Sanjay Gupta", role: "Director of Engineering" },
-    { quote: "Their internship program is a game changer. We regularly hire graduates from Prokodex and they are always production-ready.", author: "Anita Patel", role: "HR Head" }
+    { quote: "We needed a website with a great UI and a lot of pages. The team did a fantastic job, and their attention to design completely transformed our online presence.", author: "Ramant Kumar", role: "Founder, Tatvam Electronics" },
+    { quote: "Prokodex delivered a very professional and clean website for our institute. They understood exactly what we needed and finished everything right on schedule.", author: "Asif Qamar", role: "Director, Welfare Institute & Education Consultancy" },
+    { quote: "Our social media and website SEO were handled brilliantly. We saw a noticeable increase in genuine leads very quickly. Highly recommended for lead generation.", author: "Shenki Sharma", role: "Founder, SimpleBusinessIdea Pvt Ltd" },
   ]
+
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
