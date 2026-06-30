@@ -65,7 +65,7 @@ export default function AboutPage() {
               </div>
               <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
               <p className="text-muted-foreground leading-relaxed">
-                To empower visionary companies with robust, scalable, and elegantly designed software. We transform complex business problems into seamless digital realities.
+                To empower businesses by building smart, fast, and reliable software that solves real problems. We focus on creating digital products that are easy to use and drive measurable growth.
               </p>
             </div>
 
@@ -76,7 +76,7 @@ export default function AboutPage() {
               </div>
               <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
               <p className="text-muted-foreground leading-relaxed">
-                To be the most trusted technology partner for global enterprises and the premier launching pad for the next generation of top-tier engineering talent through our elite internship programs.
+                To be the most trusted technology partner for growing businesses worldwide, recognized for our commitment to quality, transparency, and delivering software that truly makes an impact.
               </p>
             </div>
           </div>

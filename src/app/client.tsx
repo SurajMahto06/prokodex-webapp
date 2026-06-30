@@ -6,6 +6,7 @@ import { motion } from "framer-motion"
 import { useRef, useState, useEffect } from "react"
 import { OurProcess } from "@/components/sections/our-process"
 import { CtaSection } from "@/components/sections/cta-section"
+import { servicesData } from "@/app/services/data"
 import {
   ArrowRight,
   Code2,
@@ -230,20 +231,7 @@ export default function HomeClient() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-
-              { icon: Bot, title: "AI Chatbots", desc: "24/7 lead qualification & customer support. Works on WhatsApp, web, and social media." },
-              { icon: LayoutDashboard, title: "Admin Dashboards", desc: "Real-time analytics, KPIs, and reporting. See your business at a glance." },
-              { icon: Building2, title: "Industry CRMs", desc: "Tailored for finance, healthcare, real estate & more. Manage leads, loans, clients." },
-              { icon: Smartphone, title: "App Development", desc: "iOS & Android apps — cross-platform, fast, built for your business. From $499." },
-              { icon: Globe, title: "Web Design & Deployment", desc: "Responsive websites & e-commerce. SEO-optimized, mobile-first. From $50." },
-              { icon: Code2, title: "Custom Software", desc: "Automate workflows, integrate APIs, build micro SaaS. Your idea, our code." },
-              /* { icon: TrendingUp, title: "Digital Marketing", desc: "Comprehensive marketing including On-page & Off-page SEO, social media management, Google Ads, and lead generation." },
-              { icon: Video, title: "Video & Graphic Design", desc: "Reel editing, YouTube videos, invitation cards, posters, logo design, and complete brand identity creation." }, */
-              /* { icon: CircleDollarSign, title: "Transparent Pricing", desc: "No hidden fees. Starting at $50. You own your API keys." },
-              { icon: Unlock, title: "Full Source Code", desc: "You own everything. No vendor lock-in. We hand over code, docs, and deploy guides." }, */
-              // { icon: GraduationCap, title: "Internship Programs", desc: "Industry-aligned training programs for aspiring developers." },
-            ].map((service, i) => (
+            {servicesData.map((service, i) => (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -253,14 +241,15 @@ export default function HomeClient() {
                 key={i}
                 className="group relative p-6 rounded-2xl bg-card/40 backdrop-blur-sm border border-border/60 hover:border-secondary/50 hover:shadow-xl transition-[border-color,box-shadow] duration-300 overflow-hidden flex flex-col"
               >
+                <Link href={`/services/${service.slug}`} className="absolute inset-0 z-20" aria-label={`View details for ${service.title}`} />
                 <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="absolute -bottom-8 -right-8 w-24 h-24 bg-secondary/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
-                <service.icon className="h-8 w-8 text-secondary mb-4 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300" />
+                <service.icon className="h-8 w-8 text-secondary mb-4 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 relative z-10" />
 
                 <div className="relative z-10">
-                  <h3 className="text-lg font-bold mb-2 tracking-tight">{service.title}</h3>
-                  <p className="text-sm text-muted-foreground">{service.desc}</p>
+                  <h3 className="text-lg font-bold mb-2 tracking-tight group-hover:text-secondary transition-colors">{service.title}</h3>
+                  <p className="text-sm text-muted-foreground">{service.description}</p>
                 </div>
               </motion.div>
             ))}

@@ -121,7 +121,7 @@ export default function ContactPage() {
 
         <div className="grid lg:grid-cols-12 gap-12 max-w-6xl mx-auto">
           {/* Left Column - Contact Information */}
-          <div className="lg:col-span-5 flex flex-col justify-center space-y-8">
+          <div className="order-2 lg:order-1 lg:col-span-5 flex flex-col justify-center space-y-8">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -192,7 +192,7 @@ export default function ContactPage() {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="lg:col-span-7"
+            className="order-1 lg:order-2 lg:col-span-7"
           >
             <div className="bg-card/40 backdrop-blur-md border border-border/60 rounded-[2.5rem] p-8 md:p-12 shadow-2xl relative overflow-hidden">
               <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] pointer-events-none" />

@@ -1,0 +1,158 @@
+[
+  {
+    "slug": "ai-chatbot-development",
+    "icon": "Bot",
+    "title": "AI Chatbots",
+    "description": "Smart AI assistants for 24/7 lead capture and customer support.",
+    "features": ["WhatsApp Integration", "Lead Capture", "24/7 Support", "Works Everywhere"],
+    "heroTagline": "Turn Conversations Into Customers, 24/7.",
+    "overview": "Don't let valuable leads slip away after hours. We build smart AI chatbots that talk to your customers, answer their questions, and collect their details instantly. Whether it's on WhatsApp, your website, or Facebook, our AI solutions work day and night to grow your sales and reduce your customer support workload.",
+    "benefits": [
+      { "title": "Smart Lead Capture", "desc": "Our bots ask the right questions and instantly send the best leads directly to your sales team.", "icon": "CheckCircle2" },
+      { "title": "Save Money", "desc": "Automate up to 80% of routine customer questions, freeing up your team for more important work.", "icon": "TrendingUp" },
+      { "title": "Works Everywhere", "desc": "Use the same smart bot across WhatsApp, Instagram, Facebook, and your website.", "icon": "Globe" },
+      { "title": "Highly Personalized", "desc": "The bot remembers past chats and talks to your customers like a real human would.", "icon": "Users" },
+      { "title": "Easy CRM Sync", "desc": "Instantly saves all lead details and chats directly into your existing CRM system.", "icon": "Database" },
+      { "title": "Speaks Any Language", "desc": "Automatically detects the customer's language and replies in over 50+ languages.", "icon": "MessageSquare" },
+      { "title": "100% Secure", "desc": "Complete security ensures all customer chats and details remain strictly private.", "icon": "Lock" },
+      { "title": "Gets Smarter Daily", "desc": "The AI learns from every chat, automatically improving how it answers questions over time.", "icon": "BrainCircuit" }
+    ],
+    "techStack": ["OpenAI API", "Dialogflow", "Node.js", "WhatsApp API", "Python", "LangChain"],
+    "process": [
+      { "step": "01", "title": "Planning the Chat", "desc": "We design how the bot should talk and what questions it should ask your customers." },
+      { "step": "02", "title": "Training the AI", "desc": "We teach the AI everything about your business, products, and frequently asked questions." },
+      { "step": "03", "title": "Connecting Systems", "desc": "We link the bot to your website, WhatsApp, and your sales tracking tools." },
+      { "step": "04", "title": "Testing & Launch", "desc": "We thoroughly test the bot to make sure it works perfectly before making it live." }
+    ]
+  },
+  {
+    "slug": "custom-admin-dashboards",
+    "icon": "LayoutDashboard",
+    "title": "Admin Dashboards",
+    "description": "Custom dashboards to easily track your business growth and sales.",
+    "features": ["Live Tracking", "Custom Reports", "Easy to Read", "Secure Login"],
+    "heroTagline": "Control Your Business from One Simple Screen.",
+    "overview": "Spreadsheets are slow and hard to read. We build fast, custom dashboards that bring all your business data into one easy-to-use screen. Make smart decisions by looking at live sales numbers, tracking employee work, and getting automated reports—all kept perfectly secure and private for your eyes only.",
+    "benefits": [
+      { "title": "Everything in One Place", "desc": "We bring data from all your different tools into one simple, easy-to-read screen.", "icon": "Layers" },
+      { "title": "Secure Access", "desc": "Control exactly what each employee can see or change with custom login roles.", "icon": "ShieldCheck" },
+      { "title": "Clear Charts & Graphs", "desc": "Turn confusing numbers into beautiful, easy-to-understand charts.", "icon": "BarChart4" },
+      { "title": "Automated Reports", "desc": "Download complete PDF or Excel reports with just a single click, saving hours of work.", "icon": "Zap" },
+      { "title": "Super Fast Loading", "desc": "Built with modern technology so your dashboard opens instantly, even with lots of data.", "icon": "FastForward" },
+      { "title": "Mobile Friendly", "desc": "Check your business numbers from anywhere using your smartphone.", "icon": "Smartphone" },
+      { "title": "Track All Changes", "desc": "Keep a record of who changed what, and when, for complete safety.", "icon": "Eye" },
+      { "title": "Get Notified", "desc": "Receive an SMS or Email alert immediately if sales drop or targets are met.", "icon": "Target" }
+    ],
+    "techStack": ["React", "Next.js", "Tailwind CSS", "Recharts", "PostgreSQL", "Node.js"],
+    "process": [
+      { "step": "01", "title": "Understanding Data", "desc": "We look at what numbers are most important for your business growth." },
+      { "step": "02", "title": "Designing the Screen", "desc": "We draw a simple, clean layout so you can find everything quickly." },
+      { "step": "03", "title": "Building the Engine", "desc": "We write the code to securely pull your data from different places." },
+      { "step": "04", "title": "Final Launch", "desc": "We bring the dashboard to life with interactive charts and give you the keys." }
+    ]
+  },
+  {
+    "slug": "custom-crm-development",
+    "icon": "Building2",
+    "title": "Industry CRMs",
+    "description": "Custom CRMs built exactly how your business works. No useless features.",
+    "features": ["Lead Tracking", "Automated Emails", "Client Logins", "Simple Design"],
+    "heroTagline": "A CRM Built Exactly for Your Business.",
+    "overview": "Most standard CRMs force you to change how you work, and they come with dozens of confusing features you never use. We do the exact opposite. We build custom Customer Relationship Management (CRM) tools designed specifically for your daily routine. Whether you are in real estate, finance, or education, we create a simple tool that your team will actually enjoy using.",
+    "benefits": [
+      { "title": "No Useless Features", "desc": "No confusing menus. Just the exact, simple tools your team needs to do their job.", "icon": "CheckCircle2" },
+      { "title": "Automate Daily Tasks", "desc": "Automatically send emails, assign tasks to staff, and update project status.", "icon": "Zap" },
+      { "title": "Client Login Area", "desc": "Give your clients a safe place to log in and see their own progress or documents.", "icon": "Users" },
+      { "title": "Connects with Everything", "desc": "Easily links with the payment tools, email accounts, and software you already use.", "icon": "Database" },
+      { "title": "Visual Sales Tracking", "desc": "Easily track all your leads by dragging and dropping them across different stages.", "icon": "LineChart" },
+      { "title": "Safe File Storage", "desc": "Safely store and organize important client documents right inside the software.", "icon": "Layers" },
+      { "title": "Built-in Calling", "desc": "Make and record calls directly from your computer without needing a separate phone.", "icon": "Headphones" },
+      { "title": "Top-Level Security", "desc": "We use banking-level security to protect your highly sensitive business data.", "icon": "Shield" }
+    ],
+    "techStack": ["Next.js", "Node.js", "MongoDB", "AWS", "Stripe API", "SendGrid"],
+    "process": [
+      { "step": "01", "title": "Learning Your Routine", "desc": "We sit with your team to learn exactly how you handle sales and daily work." },
+      { "step": "02", "title": "Planning the System", "desc": "We structure the software to perfectly match the way you already do business." },
+      { "step": "03", "title": "Writing the Code", "desc": "We build the lead tracking, tasks, and automated features." },
+      { "step": "04", "title": "Training Your Team", "desc": "We move your old data into the new system and show your staff how to use it." }
+    ]
+  },
+  {
+    "slug": "mobile-app-development",
+    "icon": "Smartphone",
+    "title": "App Development",
+    "description": "Fast, beautiful mobile apps for both iPhone and Android users.",
+    "features": ["iPhone & Android", "Fast Speed", "Works Offline", "Play Store Upload"],
+    "heroTagline": "Get Your Business on Every Customer's Phone.",
+    "overview": "Today, everyone uses their phones for everything. We build fast and easy-to-use mobile apps for both iPhone and Android. Instead of charging you double to build two separate apps, we use modern technology to build once and launch everywhere. Whether it's a shopping app for customers or a tracking tool for your staff, we build it perfectly.",
+    "benefits": [
+      { "title": "Super Fast Speed", "desc": "Our apps are built to load instantly and run smoothly without any lag.", "icon": "Zap" },
+      { "title": "For All Phones", "desc": "We build one app that works perfectly on both Apple iPhones and Google Androids.", "icon": "Code2" },
+      { "title": "Works Without Internet", "desc": "Users can still use many parts of the app even if they lose internet connection.", "icon": "Cloud" },
+      { "title": "Complete Setup", "desc": "We handle the hard work of getting your app approved on the App Store and Play Store.", "icon": "Rocket" },
+      { "title": "Beautiful Design", "desc": "Clean and attractive designs that make your customers love using your app.", "icon": "Palette" },
+      { "title": "Instant Alerts", "desc": "Send direct notifications to your users' phones to bring them back to your app.", "icon": "MessageSquare" },
+      { "title": "Easy Payments", "desc": "Securely accept credit cards, UPI, Apple Pay, and Google Pay inside the app.", "icon": "CircleDollarSign" },
+      { "title": "Track App Usage", "desc": "See exactly how many people are using your app and what they click on.", "icon": "Activity" }
+    ],
+    "techStack": ["React Native", "Flutter", "Firebase", "Node.js", "GraphQL", "Redux"],
+    "process": [
+      { "step": "01", "title": "App Blueprint", "desc": "We draw out every screen of the app so you know exactly how it will work." },
+      { "step": "02", "title": "Adding Colors & Style", "desc": "We create a beautiful design that matches your company's brand." },
+      { "step": "03", "title": "Building the App", "desc": "We write the code to make the app fast, secure, and fully functional." },
+      { "step": "04", "title": "Store Launch", "desc": "We test the app on real phones and then publish it for the world to download." }
+    ]
+  },
+  {
+    "slug": "web-development-services",
+    "icon": "Globe",
+    "title": "Web Design & Development",
+    "description": "Beautiful, fast-loading websites that help you get more customers from Google.",
+    "features": ["Mobile Friendly", "Google Ranking", "Fast Loading", "Easy to Update"],
+    "heroTagline": "Websites Built to Grow Your Business.",
+    "overview": "Your website is your digital shop. We don't just make it look good; we build it to bring you more customers. Our websites are designed to look perfect on mobile phones, load incredibly fast, and rank high on Google search. Whether you need a simple company page or a full online store, we build websites that turn visitors into paying customers.",
+    "benefits": [
+      { "title": "Perfect on Mobiles", "desc": "Your website will look and work flawlessly on smartphones, tablets, and computers.", "icon": "MonitorSmartphone" },
+      { "title": "Ranks High on Google", "desc": "We set up your website properly so Google can easily find and rank your business.", "icon": "LineChart" },
+      { "title": "Built to Sell", "desc": "We place buttons and information exactly where they need to be to get more calls and sales.", "icon": "Palette" },
+      { "title": "Always Online", "desc": "We use world-class servers so your website never goes down and loads instantly everywhere.", "icon": "Server" },
+      { "title": "Lightning Fast", "desc": "We guarantee your website will load quickly, keeping visitors happy and engaged.", "icon": "FastForward" },
+      { "title": "Easy to Change", "desc": "We give you a simple admin panel so you can change text and photos yourself.", "icon": "Settings" },
+      { "title": "For Everyone", "desc": "We make sure your website is easy to read and use for all types of visitors.", "icon": "CheckCircle2" },
+      { "title": "Track Your Visitors", "desc": "See exactly how many people visit your site and where they came from.", "icon": "Target" }
+    ],
+    "techStack": ["Next.js", "React", "Tailwind CSS", "Vercel", "Shopify", "WordPress"],
+    "process": [
+      { "step": "01", "title": "Planning for Success", "desc": "We research your competitors and plan what pages your website needs to win." },
+      { "step": "02", "title": "Designing the Look", "desc": "We create a unique and highly professional design for your brand." },
+      { "step": "03", "title": "Coding the Site", "desc": "We turn the design into a real, fast-loading website using modern code." },
+      { "step": "04", "title": "Final Checks & Live", "desc": "We test the website on all devices and then make it live for the world." }
+    ]
+  },
+  {
+    "slug": "custom-software-development",
+    "icon": "Code2",
+    "title": "Custom Software",
+    "description": "Custom software programs built from scratch to solve your biggest business problems.",
+    "features": ["You Own the Code", "Saves Time", "Automates Work", "Highly Secure"],
+    "heroTagline": "Solving Your Biggest Business Problems with Custom Software.",
+    "overview": "When standard software doesn't do what you need, we build a custom solution from scratch. We create specific software programs that handle your most difficult daily challenges. Whether you need a special billing system or a tool to connect all your other software together, our team writes the code to make your business run smoother and faster.",
+    "benefits": [
+      { "title": "You Own Everything", "desc": "You completely own the final software and the code. No monthly rental fees.", "icon": "Unlock" },
+      { "title": "Grows with You", "desc": "Built strongly so it won't break or slow down even if your business doubles in size.", "icon": "Cloud" },
+      { "title": "Saves Huge Time", "desc": "Stop doing things manually. Our software automates boring tasks to save hours of work.", "icon": "Cpu" },
+      { "title": "Connects Old Systems", "desc": "We can make your new software talk to the older programs you already use.", "icon": "Layers" },
+      { "title": "Built in Parts", "desc": "We build it in small parts, so if one thing has an error, the rest of the system keeps working.", "icon": "Server" },
+      { "title": "See Quick Results", "desc": "We show you our progress every two weeks so you can give feedback early.", "icon": "Clock" },
+      { "title": "Clear Instructions", "desc": "We provide complete manuals and guides so you always know how your software works.", "icon": "Code2" },
+      { "title": "Always There to Help", "desc": "Our support team is always available to fix any critical issues instantly.", "icon": "Award" }
+    ],
+    "techStack": ["TypeScript", "Node.js", "Go", "Docker", "AWS", "Kubernetes"],
+    "process": [
+      { "step": "01", "title": "Understanding the Problem", "desc": "We talk in detail to understand exactly what business problem you want to solve." },
+      { "step": "02", "title": "Planning the Build", "desc": "We design how the software will work behind the scenes and where data will be stored." },
+      { "step": "03", "title": "Writing the Code", "desc": "We start building the software step-by-step, showing you progress regularly." },
+      { "step": "04", "title": "Support & Updates", "desc": "We help you maintain the software and add new features as your business grows." }
+    ]
+  }
+]

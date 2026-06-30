@@ -258,7 +258,7 @@ export default function InternshipPage() {
         "Portal Access: Access to curriculum and reading materials",
         "PDF Materials: Comprehensive guides and project briefs",
         "Assessments: Module-wise quizzes & interview questions",
-        "Certificate: Verified internship certificate"
+        "Certificate: Verified government certificate from MSME"
       ],
       buttonText: "Enroll Standard",
       popular: false,
@@ -275,7 +275,7 @@ export default function InternshipPage() {
         "Assessments: Module-wise quizzes & interview questions",
         "Doubt Sessions: Weekly group Q&A sessions",
         "Capstone Projects: Build advanced real-world projects",
-        "Certificate: Verified internship certificate"
+        "Certificate: Verified government certificate from MSME"
       ],
       buttonText: "Enroll Premium",
       popular: false,
@@ -293,7 +293,7 @@ export default function InternshipPage() {
         "PDF Materials: Comprehensive guides and project briefs",
         "Assessments: Module-wise quizzes & interview questions",
         "Capstone Projects: Build advanced real-world projects",
-        "Certificate: Verified internship certificate"
+        "Certificate: Verified government certificate from MSME"
       ],
       buttonText: "Enroll Elite",
       popular: false,
@@ -333,6 +333,35 @@ export default function InternshipPage() {
               </Link>
             </motion.div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Scholarship Program */}
+      <section className="py-12 bg-background border-b border-border">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-gradient-to-r from-secondary/10 via-card to-secondary/10 border border-secondary/20 rounded-3xl p-8 md:p-10 shadow-lg text-center relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/20 blur-[50px] rounded-full pointer-events-none" />
+              <div className="absolute bottom-0 left-0 w-32 h-32 bg-secondary/20 blur-[50px] rounded-full pointer-events-none" />
+
+              <div className="relative z-10">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 text-secondary mb-4 text-sm font-bold tracking-wide uppercase border border-secondary/20">
+                  <BrainCircuit className="h-4 w-4" /> Scholarship Program
+                </div>
+                <h3 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">Are you a gifted coder but facing financial constraints?</h3>
+                <p className="text-muted-foreground mb-8 text-lg max-w-2xl mx-auto leading-relaxed">
+                  We believe money shouldn't stop true talent. Take our rigorous coding assessment, and if you have what it takes, we'll provide you with a <span className="text-secondary font-bold">100% Free Internship</span> including all premium mentorship benefits.
+                </p>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                  <Link href="/internship/apply?plan=general">
+                    <Button className="w-full sm:w-auto h-12 px-8 rounded-xl bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all font-bold cursor-pointer shadow-[0_0_30px_-5px_rgba(6,182,212,0.4)]">
+                      Take the Scholarship Test
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -534,14 +563,7 @@ export default function InternshipPage() {
             ))}
           </div>
 
-          <div className="mt-16 text-center">
-            <p className="text-muted-foreground mb-4">Not sure which track is right for you, or looking for a scholarship?</p>
-            <Link href="/internship/apply?plan=general">
-              <Button variant="outline" className="h-12 px-8 rounded-xl border-border/60 hover:border-secondary/50 hover:text-secondary hover:bg-secondary/10 transition-all font-semibold cursor-pointer">
-                Submit Standard Application
-              </Button>
-            </Link>
-          </div>
+
         </div>
       </section>
 

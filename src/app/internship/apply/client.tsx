@@ -73,7 +73,7 @@ const pricingTiers = [
       { title: "Portal Access", desc: "Access to curriculum and reading materials." },
       { title: "PDF Materials", desc: "Comprehensive guides and project briefs." },
       { title: "Assessments", desc: "Module-wise quizzes & interview questions." },
-      { title: "Certificate", desc: "Verified internship certificate." }
+      { title: "Certificate", desc: "Verified government certificate from MSME." }
     ]
   },
   {
@@ -88,7 +88,7 @@ const pricingTiers = [
       { title: "Assessments", desc: "Module-wise quizzes & interview questions." },
       { title: "Doubt Sessions", desc: "Weekly group Q&A sessions." },
       { title: "Capstone Projects", desc: "Build advanced real-world projects." },
-      { title: "Certificate", desc: "Verified internship certificate." }
+      { title: "Certificate", desc: "Verified government certificate from MSME." }
     ],
     isComingSoon: true
   },
@@ -104,7 +104,7 @@ const pricingTiers = [
       { title: "PDF Materials", desc: "Comprehensive guides and project briefs." },
       { title: "Assessments", desc: "Module-wise quizzes & interview questions." },
       { title: "Capstone Projects", desc: "Build advanced real-world projects." },
-      { title: "Certificate", desc: "Verified internship certificate." }
+      { title: "Certificate", desc: "Verified government certificate from MSME." }
     ],
     isComingSoon: true
   }

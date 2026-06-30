@@ -37,77 +37,9 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.1 } }
 }
 
+import { servicesData } from "./data"
+
 export default function ServicesPage() {
-  const services = [
-
-    {
-      icon: Bot,
-      title: "AI Chatbots",
-      description: "24/7 lead qualification & customer support. Works on WhatsApp, web, and social media.",
-      features: ["WhatsApp Integration", "Lead Qualification", "24/7 Support", "Social Media Ready"]
-    },
-    {
-      icon: LayoutDashboard,
-      title: "Admin Dashboards",
-      description: "Real-time analytics, KPIs, and reporting. See your business at a glance.",
-      features: ["Real-time Analytics", "KPI Tracking", "Custom Reporting", "Data Visualization"]
-    },
-    {
-      icon: Building2,
-      title: "Industry CRMs",
-      description: "Tailored for finance, healthcare, real estate & more. Manage leads, loans, clients.",
-      features: ["Lead Management", "Finance & Real Estate", "Client Portals", "Loan Tracking"]
-    },
-    {
-      icon: Smartphone,
-      title: "App Development",
-      description: "iOS & Android apps — cross-platform, fast, built for your business. From $499.",
-      features: ["iOS & Android", "Cross-platform Apps", "Fast Performance", "From $499"]
-    },
-    {
-      icon: Globe,
-      title: "Web Design & Deployment",
-      description: "Responsive websites & e-commerce. SEO-optimized, mobile-first. From $50.",
-      features: ["Responsive Design", "SEO Optimized", "Mobile First", "From $50"]
-    },
-    {
-      icon: Code2,
-      title: "Custom Software",
-      description: "Automate workflows, integrate APIs, build micro SaaS. Your idea, our code.",
-      features: ["Workflow Automation", "API Integration", "Micro SaaS", "Custom Logic"]
-    },
-    /* {
-      icon: TrendingUp,
-      title: "Digital Marketing",
-      description: "Comprehensive marketing including On-page & Off-page SEO, social media management, Google Ads, and lead generation.",
-      features: ["On-page SEO", "Off-page SEO", "Social Media", "PPC Campaigns"]
-    },
-    {
-      icon: Video,
-      title: "Video & Graphic Design",
-      description: "Reel editing, YouTube videos, invitation cards, posters, logo design, and complete brand identity creation.",
-      features: ["Video Editing", "Poster Design", "UI/UX Design", "Graphics"]
-    }, */
-    /* {
-      icon: CircleDollarSign,
-      title: "Transparent Pricing",
-      description: "No hidden fees. Starting at $50. You own your API keys.",
-      features: ["No Hidden Fees", "Start at $50", "Own your API Keys", "Flexible Plans"]
-    },
-    {
-      icon: Unlock,
-      title: "Full Source Code",
-      description: "You own everything. No vendor lock-in. We hand over code, docs, and deploy guides.",
-      features: ["No Vendor Lock-in", "Full Documentation", "Deploy Guides", "100% Ownership"]
-    }, */
-    /* {
-      icon: GraduationCap,
-      title: "Internship Programs",
-      description: "Industry-aligned training programs for aspiring developers.",
-      features: ["Live Projects", "1-on-1 Mentorship", "Certifications", "Job Ready"]
-    } */
-  ]
-
 
 
 
@@ -150,7 +82,7 @@ export default function ServicesPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, i) => (
+            {servicesData.map((service, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
@@ -160,6 +92,7 @@ export default function ServicesPage() {
                 whileHover={{ y: -8, transition: { duration: 0.2, ease: "easeOut" } }}
                 className="group relative p-8 rounded-[2.5rem] bg-card/40 backdrop-blur-sm border border-border/60 hover:border-secondary/50 hover:shadow-2xl transition-[border-color,box-shadow] duration-500 overflow-hidden flex flex-col h-full cursor-pointer"
               >
+                <Link href={`/services/${service.slug}`} className="absolute inset-0 z-20" aria-label={`View details for ${service.title}`} />
                 <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 {/* Decorative glow */}
@@ -183,7 +116,7 @@ export default function ServicesPage() {
                   {/* Pills instead of bullet list */}
                   <div className="flex flex-wrap gap-2 mt-auto pt-6 border-t border-border/50">
                     {service.features.map((feature, j) => (
-                      <span key={j} className="px-3 py-1.5 text-xs font-semibold rounded-full bg-background border border-border/60 text-muted-foreground group-hover:border-secondary/30 group-hover:text-foreground transition-colors">
+                      <span key={j} className="px-3 py-1.5 text-xs font-semibold rounded-full bg-background border border-border/60 text-muted-foreground group-hover:border-secondary/30 group-hover:text-foreground transition-colors relative z-30">
                         {feature}
                       </span>
                     ))}
