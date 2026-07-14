@@ -38,7 +38,7 @@ const stagger: Variants = {
 
 const programs = [
   {
-    title: "Frontend Development Internship",
+    title: "Frontend Development",
     icon: LayoutTemplate,
     duration: "3 Months",
     description: "Master modern web interfaces by building real-world enterprise applications with React and Next.js.",
@@ -52,7 +52,7 @@ const programs = [
     ]
   },
   {
-    title: "Backend Development Internship",
+    title: "Backend Development",
     icon: Server,
     duration: "3 Months",
     description: "Learn to build high-performance, asynchronous server-side applications and RESTful APIs from scratch.",
@@ -66,7 +66,7 @@ const programs = [
     ]
   },
   {
-    title: "Full Stack Development Internship",
+    title: "Full Stack Development",
     icon: Database,
     duration: "6 Months",
     description: "Master the most popular full-stack technology. Build scalable web apps using MongoDB, Express, React, and Node.js.",
@@ -80,7 +80,7 @@ const programs = [
     ]
   },
   {
-    title: "Mobile Development Internship",
+    title: "Mobile Development",
     icon: Smartphone,
     duration: "4 Months",
     description: "Build cross-platform mobile apps for iOS and Android using React Native and Flutter.",
@@ -258,12 +258,16 @@ export default function InternshipPage() {
         "Portal Access: Access to curriculum and reading materials",
         "PDF Materials: Comprehensive guides and project briefs",
         "Assessments: Module-wise quizzes & interview questions",
+        "Real-world Projects: Build advanced real-world projects",
+        "Resume Building: Get help building a professional resume",
         "Certificate: Verified government certificate from MSME"
       ],
       buttonText: "Enroll Standard",
       popular: false,
-      id: "standard"
+      id: "standard",
+      isComingSoon: false
     },
+    /*
     {
       name: "Premium",
       price: "₹1,199",
@@ -300,6 +304,7 @@ export default function InternshipPage() {
       id: "elite",
       isComingSoon: true
     }
+    */
   ]
 
   return (

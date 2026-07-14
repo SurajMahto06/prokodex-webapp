@@ -45,10 +45,10 @@ type ApplyFormValues = z.infer<typeof applySchema>
 
 // Need to match the tracks from the main internship page
 const tracks = [
-  "Frontend Development Internship",
-  "Backend Development Internship",
-  "Full Stack Development Internship",
-  "Mobile Development Internship"
+  "Frontend Development",
+  "Backend Development",
+  "Full Stack Development",
+  "Mobile Development"
 ]
 
 const pricingTiers = [
@@ -61,7 +61,8 @@ const pricingTiers = [
       { title: "Expert Guidance", desc: "Get answers to all your queries directly from our team." },
       { title: "Plan Selection", desc: "We'll help you choose the best track for your career goals." },
       { title: "No Commitment", desc: "100% free consultation with no obligation to enroll." }
-    ]
+    ],
+    isComingSoon: false
   },
   {
     id: "standard",
@@ -73,9 +74,13 @@ const pricingTiers = [
       { title: "Portal Access", desc: "Access to curriculum and reading materials." },
       { title: "PDF Materials", desc: "Comprehensive guides and project briefs." },
       { title: "Assessments", desc: "Module-wise quizzes & interview questions." },
+      { title: "Real-world Projects", desc: "Build advanced real-world projects." },
+      { title: "Resume Building", desc: "Get help building a professional resume." },
       { title: "Certificate", desc: "Verified government certificate from MSME." }
-    ]
+    ],
+    isComingSoon: false
   },
+  /*
   {
     id: "premium",
     name: "Premium Plan",
@@ -108,6 +113,7 @@ const pricingTiers = [
     ],
     isComingSoon: true
   }
+  */
 ]
 
 function ApplicationForm() {

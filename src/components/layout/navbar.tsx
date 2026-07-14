@@ -61,10 +61,10 @@ export function Navbar() {
         >
           {[1, 2].map((set) => (
             <div key={set} className="flex gap-12 px-6 items-center">
-              <span className="flex items-center gap-2">🚀 <strong className="font-bold uppercase tracking-wider">Summer Internship 2026</strong> Applications are now open!</span>
-              <span className="flex items-center gap-2">⚡ Build real-world enterprise applications with industry experts.</span>
-              <span className="flex items-center gap-2">🔥 Spots are limited. Interviews starting next week.</span>
-              <span className="flex items-center gap-2">💡 Master Next.js, React, Node.js, and Cloud Architecture.</span>
+              <span className="flex items-center gap-2">🚀 <strong className="font-bold uppercase tracking-wider">Custom Software Development</strong> Let's build your next big idea!</span>
+              <span className="flex items-center gap-2">⚡ High-performance enterprise applications built by experts.</span>
+              <span className="flex items-center gap-2">🔥 Scalable architecture, premium design, and fast delivery.</span>
+              <span className="flex items-center gap-2">💡 Powered by modern tech: Next.js, React, Node.js & Cloud.</span>
             </div>
           ))}
         </motion.div>
