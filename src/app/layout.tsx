@@ -100,6 +100,7 @@ export const metadata: Metadata = {
 
 import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
+import { FloatingWhatsApp } from "@/components/layout/floating-whatsapp"
 import { ThemeProvider } from "@/components/theme-provider"
 import NextTopLoader from "nextjs-toploader"
 import { Toaster } from "react-hot-toast"
@@ -178,6 +179,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <FloatingWhatsApp />
           <Toaster position="top-right" />
         </ThemeProvider>
       </body>

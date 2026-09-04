@@ -2,29 +2,11 @@
 
 import { motion } from "framer-motion"
 import {
-  Code2,
-  Database,
-  MonitorSmartphone,
-  Palette,
-  Cloud,
-  BrainCircuit,
-  Lightbulb,
-  CheckCircle2,
   ArrowRight,
   ArrowUpRight,
-  Bot,
-  LayoutDashboard,
-  Building2,
-  Smartphone,
-  Globe,
-  CircleDollarSign,
-  Unlock,
-  GraduationCap,
-  TrendingUp,
-  Video
+
 } from "lucide-react"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
 import { OurProcess } from "@/components/sections/our-process"
 import { CtaSection } from "@/components/sections/cta-section"
 
