@@ -20,7 +20,11 @@ import {
   Cloud,
   LayoutTemplate,
   TrendingUp,
-  X
+  X,
+  Globe,
+  Layers,
+  Terminal,
+  Shield
 } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -36,65 +40,28 @@ const stagger: Variants = {
   visible: { transition: { staggerChildren: 0.15 } }
 }
 
-const programs = [
-  {
-    title: "Frontend Development",
-    icon: LayoutTemplate,
-    duration: "3 Months",
-    description: "Master modern web interfaces by building real-world enterprise applications with React and Next.js.",
-    syllabus: [
-      { period: "Week 1-2", topic: "Advanced HTML5, CSS3, Flexbox & Grid" },
-      { period: "Week 3-4", topic: "JavaScript ES6+ & Asynchronous Programming" },
-      { period: "Week 5-6", topic: "React.js Component Architecture & Hooks" },
-      { period: "Week 7-8", topic: "State Management (Redux/Zustand) & Tailwind CSS" },
-      { period: "Week 9-10", topic: "Next.js App Router, SSR & Server Components" },
-      { period: "Week 11-12", topic: "Performance Optimization & Enterprise Capstone" }
-    ]
-  },
-  {
-    title: "Backend Development",
-    icon: Server,
-    duration: "3 Months",
-    description: "Learn to build high-performance, asynchronous server-side applications and RESTful APIs from scratch.",
-    syllabus: [
-      { period: "Week 1-2", topic: "Node.js Fundamentals, V8 Engine & Event Loop" },
-      { period: "Week 3-4", topic: "Building Robust REST APIs with Express.js" },
-      { period: "Week 5-6", topic: "Relational Database Design & PostgreSQL Integration" },
-      { period: "Week 7-8", topic: "Authentication (JWT/OAuth) & Security Best Practices" },
-      { period: "Week 9-10", topic: "Caching with Redis & Real-time WebSockets" },
-      { period: "Week 11-12", topic: "CI/CD Pipelines, Docker Basics & Deployment" }
-    ]
-  },
-  {
-    title: "Full Stack Development",
-    icon: Database,
-    duration: "6 Months",
-    description: "Master the most popular full-stack technology. Build scalable web apps using MongoDB, Express, React, and Node.js.",
-    syllabus: [
-      { period: "Month 1", topic: "Frontend Foundations & Advanced JavaScript" },
-      { period: "Month 2", topic: "React.js Mastery & State Management" },
-      { period: "Month 3", topic: "Backend Architecture with Node.js & Express" },
-      { period: "Month 4", topic: "Database Modeling with MongoDB & Mongoose" },
-      { period: "Month 5", topic: "Full Stack Integration & JWT Authentication" },
-      { period: "Month 6", topic: "Production Deployment & Capstone Project" }
-    ]
-  },
-  {
-    title: "Mobile Development",
-    icon: Smartphone,
-    duration: "4 Months",
-    description: "Build cross-platform mobile apps for iOS and Android using React Native and Flutter.",
-    syllabus: [
-      { period: "Month 1", topic: "Mobile Dev Fundamentals, Core Components & Styling" },
-      { period: "Month 2", topic: "Navigation, Complex Routing & Global State" },
-      { period: "Month 3", topic: "Device APIs, Local Storage (SQLite) & Animations" },
-      { period: "Month 4", topic: "Push Notifications, API Integration & Play Store Deployment" }
-    ]
-  }
-]
+// Map icon name string -> Lucide component
+const ICON_MAP: Record<string, React.ElementType> = {
+  Code2, Database, MonitorSmartphone, Smartphone, Palette, BrainCircuit,
+  Server, Cloud, LayoutTemplate, TrendingUp, Globe, Layers, Terminal, Shield,
+}
 
-function ProgramCard({ program, index }: { program: typeof programs[0], index: number }) {
+interface SyllabusItem { period: string; topic: string; description?: string }
+interface Program {
+  id: string
+  title: string
+  description: string
+  duration: string
+  iconName: string
+  highlights: string[]
+  syllabus: SyllabusItem[]
+  isPublished: boolean
+  order: number
+}
+
+function ProgramCard({ program, index }: { program: Program, index: number }) {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const IconComponent = ICON_MAP[program.iconName] ?? Code2
 
   useEffect(() => {
     if (isModalOpen) {
@@ -122,13 +89,12 @@ function ProgramCard({ program, index }: { program: typeof programs[0], index: n
         className="group relative p-8 rounded-[2.5rem] bg-card/40 backdrop-blur-sm border border-border/60 hover:border-secondary/50 hover:shadow-2xl transition-[border-color,box-shadow] duration-500 overflow-hidden flex flex-col h-full cursor-pointer"
       >
         <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
         <div className="absolute -top-12 -right-12 w-32 h-32 bg-secondary/20 blur-[50px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
         <div className="relative z-10 flex flex-col flex-1">
           <div className="flex justify-between items-start mb-6">
             <div className="h-14 w-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary group-hover:scale-110 group-hover:bg-secondary group-hover:text-secondary-foreground group-hover:rotate-3 transition-all duration-500 shadow-sm">
-              <program.icon className="h-7 w-7" />
+              <IconComponent className="h-7 w-7" />
             </div>
             <div className="inline-flex items-center text-xs font-bold bg-secondary/10 text-secondary px-3 py-1.5 rounded-full border border-secondary/20">
               {program.duration}
@@ -136,11 +102,18 @@ function ProgramCard({ program, index }: { program: typeof programs[0], index: n
           </div>
 
           <h3 className="text-2xl font-bold mb-3 tracking-tight group-hover:text-secondary transition-colors">{program.title}</h3>
-          <p className="text-muted-foreground leading-relaxed mb-6">
-            {program.description}
-          </p>
+          <p className="text-muted-foreground leading-relaxed mb-6">{program.description}</p>
 
-
+          {/* Highlights / Tech Tags */}
+          {program.highlights && program.highlights.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-6">
+              {program.highlights.map((tag, idx) => (
+                <span key={idx} className="text-xs font-semibold bg-secondary/10 text-secondary px-2.5 py-1 rounded-lg border border-secondary/20">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
 
           {/* Action Buttons */}
           <div className="mt-auto pt-6 border-t border-border/50 flex flex-col gap-3">
@@ -188,7 +161,7 @@ function ProgramCard({ program, index }: { program: typeof programs[0], index: n
               <div className="flex items-center justify-between p-6 md:p-8 border-b border-border bg-muted/30">
                 <div className="flex items-center gap-4">
                   <div className="h-12 w-12 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary flex-shrink-0">
-                    <program.icon className="h-6 w-6" />
+                    <IconComponent className="h-6 w-6" />
                   </div>
                   <div>
                     <h3 className="text-xl md:text-2xl font-bold leading-tight">{program.title}</h3>
@@ -209,7 +182,7 @@ function ProgramCard({ program, index }: { program: typeof programs[0], index: n
                   {program.description}
                 </p>
                 <div className="space-y-6">
-                  {program.syllabus.map((item, idx) => (
+                  {(program.syllabus ?? []).map((item, idx) => (
                     <div key={idx} className="flex flex-col sm:flex-row gap-2 sm:gap-6">
                       <div className="w-auto sm:w-32 flex-shrink-0 pt-1">
                         <div className="inline-flex items-center text-xs font-bold bg-secondary/10 text-secondary px-3 py-1.5 rounded-full border border-secondary/20">
@@ -218,6 +191,9 @@ function ProgramCard({ program, index }: { program: typeof programs[0], index: n
                       </div>
                       <div className="flex-1 pb-6 border-b border-border/50 last:border-0 last:pb-0">
                         <div className="font-semibold text-foreground md:text-lg leading-snug">{item.topic}</div>
+                        {item.description && (
+                          <p className="text-sm text-muted-foreground mt-1.5 leading-relaxed">{item.description}</p>
+                        )}
                       </div>
                     </div>
                   ))}
@@ -240,7 +216,175 @@ function ProgramCard({ program, index }: { program: typeof programs[0], index: n
   )
 }
 
+
+
+const FALLBACK_PROGRAMS: Program[] = [
+  {
+    id: "default-1",
+    title: "Frontend Development",
+    description: "Master modern web interfaces by building real-world enterprise applications with React and Next.js.",
+    duration: "3 Months",
+    iconName: "Code2",
+    highlights: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+    syllabus: [
+      { period: "Month 1", topic: "Advanced JavaScript, ES6+, and React Fundamentals" },
+      { period: "Month 2", topic: "Next.js App Router, SSR, SSG, State Management, and Tailwind CSS" },
+      { period: "Month 3", topic: "Cap-stone Enterprise Project, Performance Optimization & Deployment" }
+    ],
+    isPublished: true,
+    order: 1
+  },
+  {
+    id: "default-2",
+    title: "Node.js & Express Backend",
+    description: "Learn to build high-performance, asynchronous server-side applications and RESTful APIs from scratch.",
+    duration: "3 Months",
+    iconName: "Server",
+    highlights: ["Node.js", "Express", "MongoDB", "Prisma ORM"],
+    syllabus: [
+      { period: "Month 1", topic: "Node.js Event Loop, Express Middleware, and REST Architecture" },
+      { period: "Month 2", topic: "Database Design with MongoDB & MySQL, Authentication & Security" },
+      { period: "Month 3", topic: "Microservices, Caching with Redis, and Production Deployment" }
+    ],
+    isPublished: true,
+    order: 2
+  },
+  {
+    id: "default-3",
+    title: "MERN Stack Development",
+    description: "Master full-stack technology. Build scalable web apps using MongoDB, Express, React, and Node.js.",
+    duration: "6 Months",
+    iconName: "Database",
+    highlights: ["React", "Node.js", "MongoDB", "Express"],
+    syllabus: [
+      { period: "Months 1-2", topic: "Frontend Mastery with React & Redux Toolkit" },
+      { period: "Months 3-4", topic: "Backend Development with Node.js, Express & MongoDB" },
+      { period: "Months 5-6", topic: "Full-Stack Integration, Payment Gateways & Real-Time Socket.io Apps" }
+    ],
+    isPublished: true,
+    order: 3
+  },
+  {
+    id: "default-4",
+    title: "MEAN Stack Development",
+    description: "Learn enterprise-grade full-stack development using MongoDB, Express, Angular, and Node.js.",
+    duration: "6 Months",
+    iconName: "LayoutTemplate",
+    highlights: ["Angular", "TypeScript", "Node.js", "MongoDB"],
+    syllabus: [
+      { period: "Months 1-2", topic: "Angular Components, RxJS, and Services" },
+      { period: "Months 3-4", topic: "Node.js REST API & JWT Authentication" },
+      { period: "Months 5-6", topic: "Full-Stack Enterprise Applications & Deployment" }
+    ],
+    isPublished: true,
+    order: 4
+  },
+  {
+    id: "default-5",
+    title: "Laravel Backend",
+    description: "Build secure, scalable backend architectures using PHP and the powerful Laravel framework.",
+    duration: "3 Months",
+    iconName: "Globe",
+    highlights: ["PHP", "Laravel", "MySQL", "REST APIs"],
+    syllabus: [
+      { period: "Month 1", topic: "PHP OOP Core & Laravel MVC Architecture" },
+      { period: "Month 2", topic: "Eloquent ORM, Authentication, and API Endpoints" },
+      { period: "Month 3", topic: "Payment Gateway Integration & Cloud Deployment" }
+    ],
+    isPublished: true,
+    order: 5
+  },
+  {
+    id: "default-6",
+    title: "React Native App Dev",
+    description: "Build cross-platform mobile apps for iOS and Android using React Native and Expo.",
+    duration: "3 Months",
+    iconName: "Smartphone",
+    highlights: ["React Native", "Expo", "Mobile UI", "APIs"],
+    syllabus: [
+      { period: "Month 1", topic: "React Native Basics, Components & Navigation" },
+      { period: "Month 2", topic: "State Management, Native Device APIs & Storage" },
+      { period: "Month 3", topic: "Publishing to App Store & Google Play" }
+    ],
+    isPublished: true,
+    order: 6
+  },
+  {
+    id: "default-7",
+    title: "Flutter App Development",
+    description: "Create beautiful, natively compiled, multi-platform applications from a single codebase using Flutter and Dart.",
+    duration: "3 Months",
+    iconName: "MonitorSmartphone",
+    highlights: ["Flutter", "Dart", "BLoC Pattern", "Firebase"],
+    syllabus: [
+      { period: "Month 1", topic: "Dart Programming & Flutter UI Widgets" },
+      { period: "Month 2", topic: "State Management (Provider/BLoC) & REST APIs" },
+      { period: "Month 3", topic: "Firebase Integration & Production Release" }
+    ],
+    isPublished: true,
+    order: 7
+  },
+  {
+    id: "default-8",
+    title: "UI/UX Design",
+    description: "Design intuitive digital products. Master user research, wireframing, and high-fidelity prototyping in Figma.",
+    duration: "3 Months",
+    iconName: "Palette",
+    highlights: ["Figma", "User Research", "Wireframing", "Prototyping"],
+    syllabus: [
+      { period: "Month 1", topic: "Design Principles, Color Theory & Typography" },
+      { period: "Month 2", topic: "Figma Mastery, Component Systems & Auto Layout" },
+      { period: "Month 3", topic: "User Research, Usability Testing & Portfolio Creation" }
+    ],
+    isPublished: true,
+    order: 8
+  },
+  {
+    id: "default-9",
+    title: "Gen AI & AI Web Dev",
+    description: "Integrate Artificial Intelligence into web applications. Build custom AI agents, chatbots, and generative AI tools.",
+    duration: "3 Months",
+    iconName: "BrainCircuit",
+    highlights: ["OpenAI API", "LangChain", "Vector DBs", "Python/Next.js"],
+    syllabus: [
+      { period: "Month 1", topic: "Prompt Engineering & OpenAI API Integration" },
+      { period: "Month 2", topic: "RAG Systems, Vector Databases (Pinecone/Chroma)" },
+      { period: "Month 3", topic: "Building Autonomous AI Agents & Full-Stack AI SaaS" }
+    ],
+    isPublished: true,
+    order: 9
+  }
+];
+
 export default function InternshipPage() {
+  const [programs, setPrograms] = useState<Program[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    async function fetchPrograms() {
+      try {
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api/v1";
+        const res = await fetch(`${apiUrl}/programs?publishedOnly=true`);
+        if (res.ok) {
+          const data = await res.json();
+          if (Array.isArray(data) && data.length > 0) {
+            setPrograms(data);
+          } else {
+            setPrograms(FALLBACK_PROGRAMS);
+          }
+        } else {
+          setPrograms(FALLBACK_PROGRAMS);
+        }
+      } catch (err) {
+        console.error("Failed to fetch programs:", err);
+        setPrograms(FALLBACK_PROGRAMS);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchPrograms();
+  }, []);
+
   const processSteps = [
     { icon: UserPlus, title: "Apply Online", desc: "Submit your resume and portfolio through our simple online application portal." },
     { icon: Code2, title: "Profile Review", desc: "Our team reviews your application to understand your background and current skill level." },
@@ -267,44 +411,6 @@ export default function InternshipPage() {
       id: "standard",
       isComingSoon: false
     },
-    /*
-    {
-      name: "Premium",
-      price: "₹1,199",
-      originalPrice: "₹2,499",
-      description: "The complete training experience with video lectures.",
-      features: [
-        "Video Portal: Access to our premium video lectures",
-        "PDF Materials: Comprehensive guides and project briefs",
-        "Assessments: Module-wise quizzes & interview questions",
-        "Doubt Sessions: Weekly group Q&A sessions",
-        "Capstone Projects: Build advanced real-world projects",
-        "Certificate: Verified government certificate from MSME"
-      ],
-      buttonText: "Enroll Premium",
-      popular: false,
-      id: "premium",
-      isComingSoon: true
-    },
-    {
-      name: "Elite Mentorship",
-      price: "₹2,999",
-      originalPrice: "₹4,999",
-      description: "Guaranteed 1-on-1 mentorship and full premium access.",
-      features: [
-        "1-on-1 Mentorship: Dedicated senior engineer mentor",
-        "Video Portal: Full access to premium video content",
-        "PDF Materials: Comprehensive guides and project briefs",
-        "Assessments: Module-wise quizzes & interview questions",
-        "Capstone Projects: Build advanced real-world projects",
-        "Certificate: Verified government certificate from MSME"
-      ],
-      buttonText: "Enroll Elite",
-      popular: false,
-      id: "elite",
-      isComingSoon: true
-    }
-    */
   ]
 
   return (
@@ -380,11 +486,19 @@ export default function InternshipPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {programs.map((program, i) => (
-              <ProgramCard key={i} program={program} index={i} />
-            ))}
-          </div>
+          {loading ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[1, 2, 3, 4, 5, 6].map((idx) => (
+                <div key={idx} className="p-8 rounded-[2.5rem] bg-card/40 border border-border/60 animate-pulse h-72" />
+              ))}
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {programs.map((program, i) => (
+                <ProgramCard key={program.id || i} program={program} index={i} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

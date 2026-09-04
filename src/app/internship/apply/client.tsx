@@ -43,12 +43,16 @@ const applySchema = z.object({
 
 type ApplyFormValues = z.infer<typeof applySchema>
 
-// Need to match the tracks from the main internship page
-const tracks = [
+const DEFAULT_TRACKS = [
   "Frontend Development",
-  "Backend Development",
-  "Full Stack Development",
-  "Mobile Development"
+  "Node.js & Express Backend",
+  "MERN Stack Development",
+  "MEAN Stack Development",
+  "Laravel Backend",
+  "React Native App Dev",
+  "Flutter App Development",
+  "UI/UX Design",
+  "Gen AI & AI Web Dev"
 ]
 
 const pricingTiers = [
@@ -127,7 +131,7 @@ function ApplicationForm() {
       fullName: "",
       email: "",
       phone: "",
-      track: defaultTrack && tracks.includes(defaultTrack) ? defaultTrack : "",
+      track: defaultTrack || "",
       plan: defaultPlan && pricingTiers.some(t => t.id === defaultPlan) ? defaultPlan : "standard",
       portfolio: "",
       resume: "",
@@ -200,9 +204,30 @@ function ApplicationForm() {
     }
   };
 
+  const [availableTracks, setAvailableTracks] = useState<string[]>(DEFAULT_TRACKS)
+
+  useEffect(() => {
+    async function fetchTracks() {
+      try {
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api/v1"
+        const res = await fetch(`${apiUrl}/programs?publishedOnly=true`)
+        if (res.ok) {
+          const data = await res.json()
+          if (Array.isArray(data) && data.length > 0) {
+            const titles = data.map((p: { title: string }) => p.title)
+            setAvailableTracks(titles)
+          }
+        }
+      } catch (err) {
+        console.error("Failed to fetch program tracks:", err)
+      }
+    }
+    fetchTracks()
+  }, [])
+
   // Update track if URL param changes after mount
   useEffect(() => {
-    if (defaultTrack && tracks.includes(defaultTrack)) {
+    if (defaultTrack) {
       setValue("track", defaultTrack)
     }
   }, [defaultTrack, setValue])
@@ -565,7 +590,7 @@ function ApplicationForm() {
                     className={`w-full h-12 bg-background border rounded-xl px-4 text-sm outline-none transition-all focus:ring-2 focus:ring-secondary/50 appearance-none cursor-pointer ${errors.track ? 'border-red-500/50 focus:border-red-500 text-foreground' : 'border-border/60 focus:border-secondary text-foreground'}`}
                   >
                     <option value="" disabled>Select a program</option>
-                    {tracks.map(track => (
+                    {availableTracks.map(track => (
                       <option key={track} value={track}>{track}</option>
                     ))}
                   </select>
