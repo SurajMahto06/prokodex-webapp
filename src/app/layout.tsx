@@ -102,6 +102,7 @@ import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { FloatingWhatsApp } from "@/components/layout/floating-whatsapp"
 import { ThemeProvider } from "@/components/theme-provider"
+import { SplashLoader } from "@/components/ui/splash-loader"
 import NextTopLoader from "nextjs-toploader"
 import { Toaster } from "react-hot-toast"
 
@@ -174,6 +175,7 @@ export default function RootLayout({
             speed={200}
             shadow="0 0 10px rgba(255,255,255,0.5), 0 0 5px rgba(255,255,255,0.3)"
           />
+          <SplashLoader />
           <Navbar />
           <main className="flex-1 pt-28">
             {children}
