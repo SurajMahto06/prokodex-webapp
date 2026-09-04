@@ -12,9 +12,9 @@ export default function RefundPolicyPage() {
         <h1 className="text-4xl md:text-5xl font-bold mb-8 text-left">Refund & Cancellation Policy</h1>
         <div className="text-muted-foreground space-y-6 text-left max-w-5xl">
           <p>Last updated: {new Date().toLocaleDateString()}</p>
-          
+
           <p>
-            At Prokodex, we strive to ensure that our clients and students are completely satisfied with our services and programs. 
+            At Prokodex, we strive to ensure that our clients and students are completely satisfied with our services and programs.
             Because we offer digital products, custom software development, and specialized training programs, our refund policies are tailored to the nature of the specific service.
           </p>
 

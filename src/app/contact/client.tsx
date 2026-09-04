@@ -152,7 +152,7 @@ export default function ContactPage() {
                     <p className="text-sm text-muted-foreground">
                       <a href="tel:+917250591448" className="hover:text-secondary transition-colors font-medium">+91 72505 91448</a>
                     </p>
-                    <p className="text-sm text-muted-foreground">Mon - Sat, 10am - 6pm</p>
+                    <p className="text-sm text-muted-foreground">Mon - Fri, 10am - 6pm</p>
                   </div>
                 </div>
 
