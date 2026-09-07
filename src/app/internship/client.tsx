@@ -397,7 +397,7 @@ export default function InternshipPage() {
       name: "Standard",
       price: "₹599",
       originalPrice: "₹999",
-      description: "Perfect for self-paced learners who just need materials.",
+      description: "Learn at your own pace with full access to premium course materials and resources.",
       features: [
         "Portal Access: Access to curriculum and reading materials",
         "PDF Materials: Comprehensive guides and project briefs",

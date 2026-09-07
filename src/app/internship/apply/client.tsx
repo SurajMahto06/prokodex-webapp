@@ -73,7 +73,7 @@ const pricingTiers = [
     name: "Standard Plan",
     price: "₹599",
     originalPrice: "₹999",
-    description: "Perfect for self-paced learners who just need materials.",
+    description: "Learn at your own pace with full access to premium course materials and resources.",
     features: [
       { title: "Portal Access", desc: "Access to curriculum and reading materials." },
       { title: "PDF Materials", desc: "Comprehensive guides and project briefs." },

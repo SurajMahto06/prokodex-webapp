@@ -100,7 +100,7 @@ export default function AboutPage() {
               { icon: Zap, title: "Velocity & Agility", desc: "We deploy fast and iterate faster. Our CI/CD pipelines and agile methodologies ensure rapid time-to-market." },
               { icon: Globe2, title: "Global Perspective", desc: "We build for a diverse, worldwide audience, ensuring accessibility, localization, and inclusive design from day one." },
               { icon: Award, title: "Radical Transparency", desc: "Honesty in timelines, budgets, and technical challenges. We operate as an extension of your own internal team." },
-              { icon: Users, title: "Continuous Mentorship", desc: "We constantly uplift each other. Through our academy and intern programs, we are actively shaping the future of tech." },
+              { icon: Users, title: "Continuous Mentorship", desc: "We constantly uplift each other. Through our internship and training programs, we are actively shaping the future of tech." },
             ].map((value, i) => (
               <motion.div
                 key={i}
