@@ -46,8 +46,8 @@ const ICON_MAP: Record<string, React.ElementType> = {
   Server, Cloud, LayoutTemplate, TrendingUp, Globe, Layers, Terminal, Shield,
 }
 
-interface SyllabusItem { period: string; topic: string; description?: string }
-interface Program {
+export interface SyllabusItem { period: string; topic: string; description?: string }
+export interface Program {
   id: string
   title: string
   description: string
@@ -218,7 +218,7 @@ function ProgramCard({ program, index }: { program: Program, index: number }) {
 
 
 
-const FALLBACK_PROGRAMS: Program[] = [
+export const FALLBACK_PROGRAMS: Program[] = [
   {
     id: "default-1",
     title: "Frontend Development",
@@ -356,12 +356,13 @@ const FALLBACK_PROGRAMS: Program[] = [
   }
 ];
 
-export default function InternshipPage() {
-  const [programs, setPrograms] = useState<Program[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+export default function InternshipPage({ initialPrograms = FALLBACK_PROGRAMS }: { initialPrograms?: Program[] }) {
+  const [programs, setPrograms] = useState<Program[]>(initialPrograms && initialPrograms.length > 0 ? initialPrograms : FALLBACK_PROGRAMS);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    async function fetchPrograms() {
+    // Keep client synced in background if new programs are published
+    async function syncPrograms() {
       try {
         const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api/v1";
         const res = await fetch(`${apiUrl}/programs?publishedOnly=true`);
@@ -369,20 +370,13 @@ export default function InternshipPage() {
           const data = await res.json();
           if (Array.isArray(data) && data.length > 0) {
             setPrograms(data);
-          } else {
-            setPrograms(FALLBACK_PROGRAMS);
           }
-        } else {
-          setPrograms(FALLBACK_PROGRAMS);
         }
       } catch (err) {
-        console.error("Failed to fetch programs:", err);
-        setPrograms(FALLBACK_PROGRAMS);
-      } finally {
-        setLoading(false);
+        console.error("Failed to sync programs in background:", err);
       }
     }
-    fetchPrograms();
+    syncPrograms();
   }, []);
 
   const processSteps = [
