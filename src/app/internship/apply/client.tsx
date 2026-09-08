@@ -30,6 +30,7 @@ import { z } from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import toast from "react-hot-toast"
+import { FALLBACK_PROGRAMS } from "../client"
 
 const applySchema = z.object({
   fullName: z.string().min(1, "Full name is required"),
@@ -47,17 +48,8 @@ const applySchema = z.object({
 
 type ApplyFormValues = z.infer<typeof applySchema>
 
-const DEFAULT_TRACKS = [
-  "Frontend Development",
-  "Node.js & Express Backend",
-  "MERN Stack Development",
-  "MEAN Stack Development",
-  "Laravel Backend",
-  "React Native App Dev",
-  "Flutter App Development",
-  "UI/UX Design",
-  "Gen AI & AI Web Dev"
-]
+const DEFAULT_TRACKS = FALLBACK_PROGRAMS.map(p => p.title)
+
 
 const pricingTiers = [
   {
@@ -125,10 +117,26 @@ const pricingTiers = [
   */
 ]
 
-function ApplicationForm() {
+function ApplicationForm({ initialTracks }: { initialTracks?: string[] }) {
   const searchParams = useSearchParams()
-  const defaultTrack = searchParams.get("track")
+  const defaultTrack = searchParams.get("track") || ""
   const defaultPlan = searchParams.get("plan")
+
+  const baseTracks = initialTracks && initialTracks.length > 0
+    ? initialTracks
+    : DEFAULT_TRACKS
+
+  // Resolve matching track from programs headings (exact or partial)
+  const resolvedTrack = (() => {
+    if (!defaultTrack) return ""
+    const exact = baseTracks.find(t => t.toLowerCase() === defaultTrack.toLowerCase())
+    if (exact) return exact
+    const partial = baseTracks.find(t =>
+      t.toLowerCase().includes(defaultTrack.toLowerCase()) ||
+      defaultTrack.toLowerCase().includes(t.toLowerCase())
+    )
+    return partial || defaultTrack
+  })()
 
   const { register, handleSubmit, formState: { errors, isSubmitting }, watch, setValue, reset } = useForm<ApplyFormValues>({
     resolver: zodResolver(applySchema),
@@ -136,7 +144,7 @@ function ApplicationForm() {
       fullName: "",
       email: "",
       phone: "",
-      track: defaultTrack || "",
+      track: resolvedTrack,
       plan: defaultPlan && pricingTiers.some(t => t.id === defaultPlan) ? defaultPlan : "standard",
       portfolio: "",
       resume: "",
@@ -209,7 +217,13 @@ function ApplicationForm() {
     }
   };
 
-  const [availableTracks, setAvailableTracks] = useState<string[]>(DEFAULT_TRACKS)
+  const [availableTracks, setAvailableTracks] = useState<string[]>(() => {
+    const list = [...baseTracks]
+    if (resolvedTrack && !list.includes(resolvedTrack)) {
+      list.unshift(resolvedTrack)
+    }
+    return list
+  })
 
   useEffect(() => {
     async function fetchTracks() {
@@ -219,7 +233,20 @@ function ApplicationForm() {
         if (res.ok) {
           const data = await res.json()
           if (Array.isArray(data) && data.length > 0) {
-            const titles = data.map((p: { title: string }) => p.title)
+            const titles: string[] = data.map((p: { title: string }) => p.title)
+
+            let targetTrack = resolvedTrack
+            if (resolvedTrack) {
+              const matched = titles.find(t => t.toLowerCase() === resolvedTrack.toLowerCase())
+                || titles.find(t => t.toLowerCase().includes(resolvedTrack.toLowerCase()) || resolvedTrack.toLowerCase().includes(t.toLowerCase()))
+              if (matched) {
+                targetTrack = matched
+              } else {
+                titles.unshift(resolvedTrack)
+              }
+              setValue("track", targetTrack, { shouldValidate: true })
+            }
+
             setAvailableTracks(titles)
           }
         }
@@ -228,14 +255,20 @@ function ApplicationForm() {
       }
     }
     fetchTracks()
-  }, [])
+  }, [resolvedTrack, setValue])
 
-  // Update track if URL param changes after mount
+  // Sync track whenever resolvedTrack changes or availableTracks load
   useEffect(() => {
-    if (defaultTrack) {
-      setValue("track", defaultTrack)
+    if (!resolvedTrack) return
+    const matched = availableTracks.find(t => t.toLowerCase() === resolvedTrack.toLowerCase())
+      || availableTracks.find(t => t.toLowerCase().includes(resolvedTrack.toLowerCase()) || resolvedTrack.toLowerCase().includes(t.toLowerCase()))
+      || resolvedTrack
+
+    if (!availableTracks.includes(matched)) {
+      setAvailableTracks(prev => [matched, ...prev])
     }
-  }, [defaultTrack, setValue])
+    setValue("track", matched, { shouldValidate: true })
+  }, [resolvedTrack, availableTracks, setValue])
 
   // Reset coupon when plan changes
   useEffect(() => {
@@ -601,6 +634,10 @@ function ApplicationForm() {
                   <select
                     id="track"
                     {...register("track")}
+                    value={watchedTrack}
+                    onChange={(e) => {
+                      setValue("track", e.target.value, { shouldValidate: true })
+                    }}
                     className={`w-full h-12 bg-background border rounded-xl px-4 text-sm outline-none transition-all focus:ring-2 focus:ring-secondary/50 appearance-none cursor-pointer ${errors.track ? 'border-red-500/50 focus:border-red-500 text-foreground' : 'border-border/60 focus:border-secondary text-foreground'}`}
                   >
                     <option value="" disabled>Select a program</option>
@@ -875,7 +912,7 @@ function ApplicationForm() {
   )
 }
 
-export default function ApplyPage() {
+export default function ApplyPage({ initialTracks }: { initialTracks?: string[] }) {
   return (
     <div className="min-h-screen bg-background pt-12 pb-16 px-4 relative overflow-hidden selection:bg-secondary/30">
       <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="lazyOnload" />
@@ -889,7 +926,7 @@ export default function ApplyPage() {
           <Loader2 className="w-10 h-10 animate-spin text-secondary" />
         </div>
       }>
-        <ApplicationForm />
+        <ApplicationForm initialTracks={initialTracks} />
       </Suspense>
     </div>
   )

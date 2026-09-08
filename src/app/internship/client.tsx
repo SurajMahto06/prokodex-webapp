@@ -284,7 +284,7 @@ export const FALLBACK_PROGRAMS: Program[] = [
   },
   {
     id: "default-3",
-    title: "MERN Stack Development",
+    title: "Full Stack MERN & GenAI",
     description: "Master full-stack technology. Build scalable web apps using MongoDB, Express, React, and Node.js.",
     duration: "6 Months",
     iconName: "Database",
