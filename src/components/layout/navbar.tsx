@@ -37,8 +37,7 @@ export function Navbar() {
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Services", href: "/services" },
-    // { name: "Demos", href: "/demos" },
-    // { name: "Internship", href: "/internship" },
+    { name: "Internship", href: "/internship" },
     { name: "Careers", href: "/careers" },
     { name: "Blog", href: "/blog" },
   ]
@@ -79,23 +78,35 @@ export function Navbar() {
           </div>
 
           <nav className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                onClick={(e) => { if (pathname === link.href) scrollToTop(); }}
-                className={`text-base font-medium transition-colors ${pathname === link.href
-                  ? "text-secondary"
-                  : "text-foreground/80 hover:text-secondary"
-                  }`}
-              >
-                {link.name}
-              </Link>
-            ))}
-            <div className="flex items-center gap-4 ml-4 border-l pl-4 border-border">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href || (link.href !== "/" && pathname?.startsWith(link.href));
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => { if (pathname === link.href) scrollToTop(); }}
+                  className={`text-base font-medium transition-colors ${isActive
+                    ? "text-secondary"
+                    : "text-foreground/80 hover:text-secondary"
+                    }`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
+            <div className="flex items-center gap-3 ml-4 border-l pl-4 border-border">
               <ThemeToggle />
+              <a
+                href={process.env.NEXT_PUBLIC_PORTAL_URL || "https://portal.prokodex.in"}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="outline" className="cursor-pointer border-secondary/30 hover:border-secondary/60 hover:bg-secondary/10 hover:text-secondary text-foreground">
+                  Portal Login
+                </Button>
+              </a>
               <Link href="/contact">
-                <Button>Let's Talk</Button>
+                <Button className="cursor-pointer">Let's Talk</Button>
               </Link>
             </div>
           </nav>
@@ -116,23 +127,37 @@ export function Navbar() {
       {isMobileMenuOpen && (
         <div className="lg:hidden bg-background flex-1 overflow-y-auto border-t border-border">
           <div className="px-4 py-6 flex flex-col h-full">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                onClick={(e) => {
-                  setIsMobileMenuOpen(false)
-                  if (pathname === link.href) scrollToTop();
-                }}
-                className={`block px-4 py-3 text-lg font-medium rounded-xl transition-colors ${pathname === link.href
-                  ? "bg-secondary/10 text-secondary"
-                  : "hover:bg-accent text-foreground/80"
-                  }`}
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href || (link.href !== "/" && pathname?.startsWith(link.href));
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => {
+                    setIsMobileMenuOpen(false)
+                    if (pathname === link.href) scrollToTop();
+                  }}
+                  className={`block px-4 py-3 text-lg font-medium rounded-xl transition-colors ${isActive
+                    ? "bg-secondary/10 text-secondary"
+                    : "hover:bg-accent text-foreground/80"
+                    }`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
+            <div className="pt-2 flex flex-col gap-3">
+              <a
+                href={process.env.NEXT_PUBLIC_PORTAL_URL || "https://portal.prokodex.in"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full"
+                onClick={() => setIsMobileMenuOpen(false)}
               >
-                {link.name}
-              </Link>
-            ))}
-            <div className="pt-2 flex flex-col gap-4">
+                <Button variant="outline" size="lg" className="w-full justify-center text-lg border-secondary/30 hover:border-secondary/60 hover:bg-secondary/10 hover:text-secondary text-foreground">
+                  Portal Login
+                </Button>
+              </a>
               <Link href="/contact" className="w-full" onClick={(e) => {
                 setIsMobileMenuOpen(false)
                 if (pathname === "/contact") scrollToTop();

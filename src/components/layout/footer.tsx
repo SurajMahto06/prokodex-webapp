@@ -70,10 +70,10 @@ export function Footer() {
                 </svg>
                 <a href="https://wa.me/917250591448" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">+91 72505 91448</a>
               </li>
-              <li className="flex items-start gap-3 text-sm text-muted-foreground pt-2">
+              {/* <li className="flex items-start gap-3 text-sm text-muted-foreground pt-2">
                 <MapPin className="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" />
                 <span className="leading-relaxed">Pulhatu New Colony, Chaibasa,<br />Jharkhand - 833201, India</span>
-              </li>
+              </li> */}
 
             </ul>
           </div>

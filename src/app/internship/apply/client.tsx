@@ -17,7 +17,11 @@ import {
   FileText,
   Link2,
   Building2,
-  Users
+  Users,
+  Award,
+  Terminal,
+  BrainCircuit,
+  Globe
 } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -71,8 +75,8 @@ const pricingTiers = [
   {
     id: "standard",
     name: "Standard Plan",
-    price: "₹599",
-    originalPrice: "₹999",
+    price: "₹799",
+    originalPrice: "₹1,299",
     description: "Learn at your own pace with full access to premium course materials and resources.",
     features: [
       { title: "Portal Access", desc: "Access to curriculum and reading materials." },
@@ -80,6 +84,7 @@ const pricingTiers = [
       { title: "Assessments", desc: "Module-wise quizzes & interview questions." },
       { title: "Real-world Projects", desc: "Build advanced real-world projects." },
       { title: "Resume Building", desc: "Get help building a professional resume." },
+      { title: "Mock Interview", desc: "1-on-1 mock interview & project defense." },
       { title: "Certificate", desc: "Verified government certificate from MSME." }
     ],
     isComingSoon: false
@@ -436,25 +441,34 @@ function ApplicationForm() {
           Join our elite internship program and work on real-world enterprise projects under the guidance of industry experts.
         </p>
 
-        <div className="flex flex-wrap justify-center gap-3 w-full">
-          <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/30 border border-border/50 backdrop-blur-sm">
-            <Briefcase className="w-4 h-4 text-secondary" />
-            <span className="text-sm font-medium">Real-world Experience</span>
+        <div className="flex flex-wrap justify-center gap-2.5 sm:gap-3 w-full max-w-3xl">
+          <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-card/40 border border-border/60 backdrop-blur-sm text-xs sm:text-sm font-medium hover:border-secondary/40 transition-colors">
+            <Briefcase className="w-3.5 h-3.5 text-secondary flex-shrink-0" />
+            <span>Real-world Experience</span>
           </div>
 
-          <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/30 border border-border/50 backdrop-blur-sm">
-            <CheckCircle2 className="w-4 h-4 text-secondary" />
-            <span className="text-sm font-medium">Verified Internship</span>
+          <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-card/40 border border-border/60 backdrop-blur-sm text-xs sm:text-sm font-medium hover:border-secondary/40 transition-colors">
+            <CheckCircle2 className="w-3.5 h-3.5 text-secondary flex-shrink-0" />
+            <span>Verified Internship</span>
           </div>
 
-          <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/30 border border-border/50 backdrop-blur-sm">
-            <Building2 className="w-4 h-4 text-secondary" />
-            <span className="text-sm font-medium">MSME Registered</span>
+          <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-card/40 border border-border/60 backdrop-blur-sm text-xs sm:text-sm font-medium hover:border-secondary/40 transition-colors">
+            <Building2 className="w-3.5 h-3.5 text-secondary flex-shrink-0" />
+            <span>MSME Registered</span>
+          </div>
+          <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-card/40 border border-border/60 backdrop-blur-sm text-xs sm:text-sm font-medium hover:border-secondary/40 transition-colors">
+            <Terminal className="w-3.5 h-3.5 text-secondary flex-shrink-0" />
+            <span>Dedicated Student Portal</span>
           </div>
 
-          <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/30 border border-border/50 backdrop-blur-sm">
-            <Users className="w-4 h-4 text-secondary" />
-            <span className="text-sm font-medium">1-on-1 Mentorship</span>
+          <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-card/40 border border-border/60 backdrop-blur-sm text-xs sm:text-sm font-medium hover:border-secondary/40 transition-colors">
+            <BrainCircuit className="w-3.5 h-3.5 text-secondary flex-shrink-0" />
+            <span>1-on-1 Mock Interview</span>
+          </div>
+
+          <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-card/40 border border-border/60 backdrop-blur-sm text-xs sm:text-sm font-medium hover:border-secondary/40 transition-colors">
+            <Globe className="w-3.5 h-3.5 text-secondary flex-shrink-0" />
+            <span>Live Project Deployment</span>
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@ import Razorpay from 'razorpay';
 
 // Pricing configuration
 const PLAN_PRICES: Record<string, number> = {
-  "standard": 599,
+  "standard": 799,
   "premium": 1199,
   "elite": 2999,
 };

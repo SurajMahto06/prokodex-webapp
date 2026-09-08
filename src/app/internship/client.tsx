@@ -24,7 +24,18 @@ import {
   Globe,
   Layers,
   Terminal,
-  Shield
+  Shield,
+  BookOpen,
+  Clock,
+  Sparkles,
+  Award,
+  FileText,
+  GitPullRequest,
+  GitBranch,
+  Users,
+  ExternalLink,
+  GraduationCap,
+  HelpCircle
 } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -59,160 +70,182 @@ export interface Program {
   order: number
 }
 
-function ProgramCard({ program, index }: { program: Program, index: number }) {
-  const [isModalOpen, setIsModalOpen] = useState(false)
+function ProgramAccordionItem({
+  program,
+  index,
+  isOpen,
+  onToggle,
+}: {
+  program: Program
+  index: number
+  isOpen: boolean
+  onToggle: () => void
+}) {
   const IconComponent = ICON_MAP[program.iconName] ?? Code2
 
-  useEffect(() => {
-    if (isModalOpen) {
-      document.body.style.overflow = 'hidden'
-      document.documentElement.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-      document.documentElement.style.overflow = ''
-    }
-    return () => {
-      document.body.style.overflow = ''
-      document.documentElement.style.overflow = ''
-    }
-  }, [isModalOpen])
-
   return (
-    <>
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-50px" }}
-        transition={{ delay: index * 0.1, duration: 0.6, ease: "easeOut" }}
-        whileHover={{ y: -5, transition: { duration: 0.2, ease: "easeOut" } }}
-        onClick={() => setIsModalOpen(true)}
-        className="group relative p-8 rounded-[2.5rem] bg-card/40 backdrop-blur-sm border border-border/60 hover:border-secondary/50 hover:shadow-2xl transition-[border-color,box-shadow] duration-500 overflow-hidden flex flex-col h-full cursor-pointer"
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-30px" }}
+      transition={{ delay: index * 0.05, duration: 0.4, ease: "easeOut" }}
+      className={`border rounded-xl md:rounded-2xl overflow-hidden transition-all duration-300 ${isOpen
+        ? "bg-card/95 border-secondary/50 border-l-4 border-l-secondary shadow-xl shadow-secondary/5 ring-1 ring-secondary/20"
+        : "bg-card/40 hover:bg-card/70 border-border/60 hover:border-secondary/30"
+        }`}
+    >
+      <button
+        onClick={onToggle}
+        type="button"
+        aria-expanded={isOpen}
+        className="w-full text-left px-4 py-3 sm:px-5 sm:py-3.5 flex items-center justify-between gap-3 sm:gap-4 cursor-pointer focus:outline-none transition-colors group"
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-        <div className="absolute -top-12 -right-12 w-32 h-32 bg-secondary/20 blur-[50px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-        <div className="relative z-10 flex flex-col flex-1">
-          <div className="flex justify-between items-start mb-6">
-            <div className="h-14 w-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary group-hover:scale-110 group-hover:bg-secondary group-hover:text-secondary-foreground group-hover:rotate-3 transition-all duration-500 shadow-sm">
-              <IconComponent className="h-7 w-7" />
-            </div>
-            <div className="inline-flex items-center text-xs font-bold bg-secondary/10 text-secondary px-3 py-1.5 rounded-full border border-secondary/20">
-              {program.duration}
-            </div>
+        <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0">
+          <div
+            className={`h-10 w-10 sm:h-11 sm:w-11 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300 ${isOpen
+              ? "bg-secondary text-secondary-foreground scale-105 shadow-md shadow-secondary/25 rotate-1"
+              : "bg-secondary/10 text-secondary group-hover:bg-secondary/20 group-hover:scale-105"
+              }`}
+          >
+            <IconComponent className="h-5 w-5 sm:h-5 sm:w-5" />
           </div>
 
-          <h3 className="text-2xl font-bold mb-3 tracking-tight group-hover:text-secondary transition-colors">{program.title}</h3>
-          <p className="text-muted-foreground leading-relaxed mb-6">{program.description}</p>
-
-          {/* Highlights / Tech Tags */}
-          {program.highlights && program.highlights.length > 0 && (
-            <div className="flex flex-wrap gap-2 mb-6">
-              {program.highlights.map((tag, idx) => (
-                <span key={idx} className="text-xs font-semibold bg-secondary/10 text-secondary px-2.5 py-1 rounded-lg border border-secondary/20">
-                  {tag}
-                </span>
-              ))}
+          <div className="flex-1 min-w-0">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
+              <h3
+                className={`text-base sm:text-lg font-bold tracking-tight transition-colors ${isOpen ? "text-secondary" : "text-foreground group-hover:text-secondary"
+                  }`}
+              >
+                {program.title}
+              </h3>
+              <span className="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 rounded-full bg-secondary/10 text-secondary border border-secondary/20 w-fit">
+                <Clock className="h-3 w-3" />
+                {program.duration}
+              </span>
             </div>
-          )}
-
-          {/* Action Buttons */}
-          <div className="mt-auto pt-6 border-t border-border/50 flex flex-col gap-3">
-            <Link
-              href={`/internship/apply?track=${encodeURIComponent(program.title)}`}
-              className="w-full cursor-pointer"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Button className="w-full cursor-pointer bg-secondary hover:bg-secondary/90 text-secondary-foreground font-semibold h-11 rounded-xl shadow-lg shadow-secondary/20 transition-all hover:shadow-secondary/40 hover:-translate-y-0.5">
-                Apply Now
-              </Button>
-            </Link>
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsModalOpen(true);
-              }}
-              className="flex items-center justify-center gap-2 w-full text-sm font-semibold text-foreground/70 hover:text-foreground transition-colors outline-none cursor-pointer py-2 group/btn"
-            >
-              <span>See What You'll Learn</span>
-              <ArrowRight className="h-4 w-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
-            </button>
           </div>
         </div>
-      </motion.div>
 
-      {/* Modal */}
-      <AnimatePresence>
-        {isModalOpen && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsModalOpen(false)}
-              className="absolute inset-0 bg-background/80 backdrop-blur-sm cursor-pointer"
-            />
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-2xl bg-card border border-border shadow-2xl rounded-3xl overflow-hidden flex flex-col max-h-[85vh] z-10"
-            >
-              {/* Header */}
-              <div className="flex items-center justify-between p-6 md:p-8 border-b border-border bg-muted/30">
-                <div className="flex items-center gap-4">
-                  <div className="h-12 w-12 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary flex-shrink-0">
-                    <IconComponent className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl md:text-2xl font-bold leading-tight">{program.title}</h3>
-                    <div className="text-sm font-medium text-secondary mt-1">Curriculum Overview</div>
+        <div className="flex items-center gap-2 flex-shrink-0">
+          <div
+            className={`p-1.5 sm:p-2 rounded-xl transition-all duration-300 flex-shrink-0 ${isOpen
+              ? "bg-secondary text-secondary-foreground rotate-180 shadow-md shadow-secondary/20"
+              : "bg-muted/60 text-muted-foreground group-hover:bg-muted group-hover:text-foreground"
+              }`}
+          >
+            <ChevronDown className="h-4 w-4" />
+          </div>
+        </div>
+      </button>
+
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            key="content"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="overflow-hidden"
+          >
+            <div className="px-4 sm:px-5 pb-5 pt-0">
+              <div className="h-px w-full bg-border/50 mb-4" />
+
+              <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                {program.description}
+              </p>
+
+              {/* Technologies / Highlights */}
+              {program.highlights && program.highlights.length > 0 && (
+                <div className="mb-4">
+                  <span className="text-xs text-foreground uppercase block mb-2">
+                    Technologies & Skills Covered
+                  </span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {program.highlights.map((tag, idx) => (
+                      <span
+                        key={idx}
+                        className="text-xs font-semibold bg-secondary/10 text-secondary px-2.5 py-0.5 rounded-md border border-secondary/20"
+                      >
+                        {tag}
+                      </span>
+                    ))}
                   </div>
                 </div>
-                <button
-                  onClick={() => setIsModalOpen(false)}
-                  className="h-10 w-10 rounded-full flex flex-shrink-0 items-center justify-center bg-background border border-border hover:bg-muted hover:text-secondary transition-colors"
-                >
-                  <X className="h-5 w-5" />
-                </button>
-              </div>
+              )}
 
-              {/* Content */}
-              <div className="p-6 md:p-8 overflow-y-auto">
-                <p className="text-muted-foreground mb-8 text-sm md:text-base leading-relaxed">
-                  {program.description}
-                </p>
-                <div className="space-y-6">
-                  {(program.syllabus ?? []).map((item, idx) => (
-                    <div key={idx} className="flex flex-col sm:flex-row gap-2 sm:gap-6">
-                      <div className="w-auto sm:w-32 flex-shrink-0 pt-1">
-                        <div className="inline-flex items-center text-xs font-bold bg-secondary/10 text-secondary px-3 py-1.5 rounded-full border border-secondary/20">
-                          {item.period}
-                        </div>
-                      </div>
-                      <div className="flex-1 pb-6 border-b border-border/50 last:border-0 last:pb-0">
-                        <div className="font-semibold text-foreground md:text-lg leading-snug">{item.topic}</div>
-                        {item.description && (
-                          <p className="text-sm text-muted-foreground mt-1.5 leading-relaxed">{item.description}</p>
-                        )}
-                      </div>
+              {/* Interactive Curriculum Roadmap Timeline */}
+              {program.syllabus && program.syllabus.length > 0 && (
+                <div className="mb-4 bg-muted/15 border border-border/60 rounded-xl p-3.5 sm:p-4.5">
+                  <div className="flex items-center justify-between gap-2 mb-3.5 pb-2 border-b border-border/40">
+                    <div className="flex items-center gap-2">
+                      <BookOpen className="h-4 w-4 text-secondary" />
+                      <span className="text-xs text-foreground uppercase tracking-wide">
+                        Curriculum & Project Roadmap
+                      </span>
                     </div>
-                  ))}
-                </div>
-              </div>
+                    <span className="text-[11px] text-muted-foreground font-medium hidden sm:inline-block">
+                      {program.syllabus.length} Modules • Weekly Doubt Sessions
+                    </span>
+                  </div>
 
-              {/* Modal Footer */}
-              <div className="p-6 md:p-8 border-t border-border bg-muted/10 flex justify-end">
-                <Link href={`/internship/apply?track=${encodeURIComponent(program.title)}`}>
-                  <Button className="cursor-pointer bg-secondary hover:bg-secondary/90 text-secondary-foreground font-semibold px-8 h-12 rounded-xl shadow-lg shadow-secondary/20 transition-all hover:shadow-secondary/40">
-                    Apply Now
+                  <div className="space-y-1">
+                    {program.syllabus.map((item, sIdx) => {
+                      const isLast = sIdx === (program.syllabus.length - 1);
+                      return (
+                        <div key={sIdx} className="flex items-start gap-3">
+                          {/* Left Track: Perfectly centered Dot + Connecting Line */}
+                          <div className="flex flex-col items-center flex-shrink-0 self-stretch">
+                            <div className="h-3.5 w-3.5 rounded-full bg-background border-2 border-secondary flex items-center justify-center mt-1 z-10 shadow-sm">
+                              <div className="h-1.5 w-1.5 rounded-full bg-secondary" />
+                            </div>
+                            {!isLast && (
+                              <div className="w-0.5 bg-secondary/30 flex-1 my-1" />
+                            )}
+                          </div>
+
+                          {/* Right Content */}
+                          <div className={`flex-1 min-w-0 ${!isLast ? "pb-3" : "pb-0.5"}`}>
+                            <div className="flex flex-wrap items-center gap-2 mb-0.5">
+                              <span className="text-[11px] font-bold text-secondary tracking-wide uppercase px-2 py-0.5 rounded bg-secondary/10 border border-secondary/20">
+                                {item.period}
+                              </span>
+                              <span className="text-foreground text-sm leading-snug">
+                                {item.topic}
+                              </span>
+                            </div>
+                            {item.description && (
+                              <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
+                                {item.description}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {/* Footer with Apply CTA */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-1">
+                <span className="text-xs text-muted-foreground text-center sm:text-left">
+                  Real-world project experience • Weekly doubt sessions • Government Certificate included
+                </span>
+                <Link
+                  href={`/internship/apply?track=${encodeURIComponent(program.title)}`}
+                  className="w-full sm:w-auto"
+                >
+                  <Button className="w-full sm:w-auto cursor-pointer bg-secondary hover:bg-secondary/90 text-secondary-foreground font-semibold px-5 h-10 rounded-xl shadow-lg shadow-secondary/20 transition-all hover:shadow-secondary/40">
+                    Apply for {program.title} <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
               </div>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </motion.div>
   )
 }
 
@@ -359,6 +392,8 @@ export const FALLBACK_PROGRAMS: Program[] = [
 export default function InternshipPage({ initialPrograms = FALLBACK_PROGRAMS }: { initialPrograms?: Program[] }) {
   const [programs, setPrograms] = useState<Program[]>(initialPrograms && initialPrograms.length > 0 ? initialPrograms : FALLBACK_PROGRAMS);
   const [loading, setLoading] = useState<boolean>(false);
+  const [openProgramId, setOpenProgramId] = useState<string | null>(null);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
   useEffect(() => {
     // Keep client synced in background if new programs are published
@@ -380,37 +415,277 @@ export default function InternshipPage({ initialPrograms = FALLBACK_PROGRAMS }: 
   }, []);
 
   const processSteps = [
-    { icon: UserPlus, title: "Apply Online", desc: "Submit your resume and portfolio through our simple online application portal." },
-    { icon: Code2, title: "Profile Review", desc: "Our team reviews your application to understand your background and current skill level." },
-    { icon: Calendar, title: "Program Discussion", desc: "A 1-on-1 discussion to evaluate your skills and choose the best program for your career goals." },
-    { icon: Trophy, title: "Selection & Onboarding", desc: "Receive your offer letter and begin your immersive learning journey with us." }
-  ]
-
-  const pricingTiers = [
     {
-      name: "Standard",
-      price: "₹599",
-      originalPrice: "₹999",
-      description: "Learn at your own pace with full access to premium course materials and resources.",
-      features: [
-        "Portal Access: Access to curriculum and reading materials",
-        "PDF Materials: Comprehensive guides and project briefs",
-        "Assessments: Module-wise quizzes & interview questions",
-        "Real-world Projects: Build advanced real-world projects",
-        "Resume Building: Get help building a professional resume",
-        "Certificate: Verified government certificate from MSME"
+      stepNumber: "01",
+      phase: "Phase 1",
+      stage: "Application",
+      icon: UserPlus,
+      title: "Apply Online",
+      desc: "Submit your basic details and select your preferred internship track through our simple application form.",
+      bullets: [
+        "Choose Frontend, Backend, MERN with GenAI etc.",
+        "Quick 2-minute online application form",
+        "Instant confirmation & track guidance",
       ],
-      buttonText: "Enroll Standard",
-      popular: false,
-      id: "standard",
-      isComingSoon: false
     },
-  ]
+    {
+      stepNumber: "02",
+      phase: "Phase 2",
+      stage: "Onboarding",
+      icon: Terminal,
+      title: "Offer & Portal Onboarding",
+      desc: "Receive your official offer letter and immediate login credentials to your dedicated student portal.",
+      bullets: [
+        "Official college-acceptable offer letter",
+        "Dedicated student portal access",
+        "Project syllabus & roadmap overview",
+      ],
+    },
+    {
+      stepNumber: "03",
+      phase: "Phase 3",
+      stage: "Learning & Prep",
+      icon: BookOpen,
+      title: "Months 1–2: Study, Prep & Mini Projects",
+      desc: "Master key concepts with structured notes, solve topic quizzes, attend doubt sessions, and build practical mini projects.",
+      bullets: [
+        "Topic-wise study notes & cheat sheets",
+        "Interactive quizzes after every module",
+        "Guided hands-on mini assignments",
+      ],
+    },
+    {
+      stepNumber: "04",
+      phase: "Phase 4",
+      stage: "Capstone & Career",
+      icon: Code2,
+      title: "Month 3: Project, Deployment, Mock Interview & Certification",
+      desc: "Build & deploy a live enterprise project, clear 1-on-1 mock technical interviews, and earn your verified certificate.",
+      bullets: [
+        "Live deployed project with GitHub repo",
+        "1-on-1 mock technical interview defense",
+        "Govt. recognized certificate (custom tenure)",
+      ],
+    },
+  ];
+
+  const internshipOverview = [
+    {
+      duration: "1 Month",
+      level: "Beginner Level",
+      desc: "For students starting from scratch to build strong coding fundamentals.",
+      tag: "Beginner",
+      icon: Clock,
+      popular: false,
+    },
+    {
+      duration: "2 Months",
+      level: "Intermediate Level",
+      desc: "Project-based skill development with hands-on practical assignments.",
+      tag: "Intermediate",
+      icon: Layers,
+      popular: false,
+    },
+    {
+      duration: "3 Months",
+      level: "Advanced Level",
+      desc: "Career-ready training with real-world projects and mentor reviews.",
+      tag: "Most Popular",
+      icon: TrendingUp,
+      popular: true,
+    },
+    {
+      duration: "Custom Duration",
+      level: "As Per Student Requirement",
+      desc: "Flexible timeline based on learning pace, college schedule, or goals.",
+      tag: "Flexible",
+      icon: Calendar,
+      popular: false,
+    },
+  ];
+
+  const internshipAdvantages = [
+    {
+      icon: Terminal,
+      title: "Dedicated Internship Portal",
+      desc: "Your personal dashboard to access project tasks, Q&A, and study materials, and track your daily progress in one place.",
+    },
+    {
+      icon: BookOpen,
+      title: "Complete Study Material & Notes",
+      desc: "Easy-to-understand study notes, practical guides, and cheat sheets so you can learn clearly without any confusion.",
+    },
+    {
+      icon: FileText,
+      title: "Topic Quizzes & Interview Prep",
+      desc: "Short quizzes and common interview questions after every topic to test what you learned and get interview-ready.",
+    },
+    {
+      icon: Users,
+      title: "Weekly Live Doubt Sessions",
+      desc: "Interact with senior developers in weekly live sessions to solve code blockers, fix errors, and keep your progress on track.",
+    },
+    {
+      icon: Code2,
+      title: "Real-World Projects",
+      desc: "Work on practical, live project deliverables with real requirements rather than dummy exercises or basic classroom tutorials.",
+    },
+    {
+      icon: GitPullRequest,
+      title: "Senior Code Reviews",
+      desc: "Get your project code reviewed regularly by senior developers with helpful feedback to write clean, bug-free code.",
+    },
+    {
+      icon: Layers,
+      title: "Industry Standards & Clean Code",
+      desc: "Learn professional development standards, modular file organization, and best coding practices used in actual software companies.",
+    },
+    {
+      icon: BrainCircuit,
+      title: "1-on-1 Mock Technical Interviews",
+      desc: "Practice technical questions and project defense 1-on-1 with experienced mentors to build confidence for real interviews.",
+    },
+    {
+      icon: Award,
+      title: "Government Recognized Certificate",
+      desc: "Earn an official government-recognized certificate with a verifiable QR code to showcase your achievement on LinkedIn and your resume.",
+    },
+  ];
+
+  const completionDeliverables = [
+    {
+      icon: Award,
+      badge: "Govt. Recognized",
+      title: "Government Recognized Certificate",
+      description: "Official certificate with unique QR code verification for LinkedIn & recruiters.",
+    },
+    {
+      icon: Globe,
+      badge: "Production Ready",
+      title: "Live Deployed Project",
+      description: "Enterprise web/mobile app deployed live with public GitHub source code.",
+    },
+    {
+      icon: Trophy,
+      badge: "Merit Based",
+      title: "Letter of Recommendation (LOR)",
+      description: "Signed Letter of Recommendation (LOR) for top performers highlighting excellence.",
+    },
+    {
+      icon: FileText,
+      badge: "Placement Asset",
+      title: "Interview-Ready Resume Points",
+      description: "ATS-optimized bullet points & project architecture summary for tech interviews.",
+    },
+    {
+      icon: Terminal,
+      badge: "Interview Ready",
+      title: "1-on-1 Mock Technical Interview",
+      description: "Live project defense & mock technical interview with senior engineers to prepare for company rounds.",
+    },
+    {
+      icon: TrendingUp,
+      badge: "Industry Standard",
+      title: "Student-to-Professional Transition",
+      description: "Transform from a college beginner into a job-ready developer equipped for real company environments.",
+    },
+  ];
+
+  const heroHighlights = [
+    { icon: Award, label: "Govt. Recognized Certificate" },
+    { icon: Terminal, label: "Dedicated Internship Portal" },
+    { icon: BrainCircuit, label: "1-on-1 Mock Interviews" },
+    { icon: BookOpen, label: "Complete Study Material & Notes" },
+    { icon: FileText, label: "Topic Quizzes & Interview Prep" },
+    { icon: CheckCircle2, label: "Live Projects & Weekly Doubts" },
+  ];
+
+  const eligibilityAudience = [
+    {
+      icon: GraduationCap,
+      badge: "College Students",
+      title: "B.Tech, BCA, MCA & BSc Students",
+      desc: "Ideal for mandatory semester internships, minor/major projects, or summer training with official college verification support.",
+      criteria: [
+        "Eligible from 1st year to final semester",
+        "Official college NOC & offer letter support",
+        "Flexible timeline matching college classes",
+      ],
+    },
+    {
+      icon: Users,
+      badge: "Career Switchers",
+      title: "Non-IT & Career Changers",
+      desc: "Transition into tech with beginner-friendly notes, guided coding exercises, and patient 1-on-1 mentor support.",
+      criteria: [
+        "Zero prior coding degree required",
+        "Structured zero-to-hero curriculum",
+        "Practical hands-on doubt solving",
+      ],
+    },
+    {
+      icon: Code2,
+      badge: "Self-Learners",
+      title: "Self-Taught Developers",
+      desc: "Break out of tutorial fatigue by working with Git branches, PRs, senior code reviews, and shipping live products.",
+      criteria: [
+        "Collaborative Git team workflows",
+        "Live deployment on production cloud",
+        "Clean architecture & senior code reviews",
+      ],
+    },
+    {
+      icon: Briefcase,
+      badge: "Placement Seekers",
+      title: "Job-Ready Freshers & Graduates",
+      desc: "Build tangible proof-of-work for recruiters with live projects, ATS-optimized resume points, and 1-on-1 mock interviews.",
+      criteria: [
+        "Resume-ready live project GitHub links",
+        "1-on-1 mock technical defense sessions",
+        "Verified QR certificate & LOR on merit",
+      ],
+    },
+  ];
+
+  const faqList = [
+    {
+      q: "Is this internship program online or offline?",
+      a: "We offer both 100% Online (Flexible) and Offline options. Online interns get 24/7 access to our dedicated student portal, structured study notes, weekly mentor doubt sessions, and sprint reviews. You can easily manage your internship alongside college classes or jobs.",
+    },
+    {
+      q: "What is the duration of the internship?",
+      a: "We offer flexible durations of 1 Month (Beginner), 2 Months (Intermediate), and 3 Months (Advanced & Career-Ready). We also support Custom Durations tailored to your college semester credits, summer training requirements, or personal learning pace.",
+    },
+    {
+      q: "Will my college/university accept this certificate and offer letter?",
+      a: "Yes, 100%. Our offer letters and completion certificates include official corporate credentials, registration details, and unique QR code verification.",
+    },
+    {
+      q: "Will I receive certificates or recommendations?",
+      a: "Yes! Every candidate who completes their project deliverables receives an official, government-recognized Certificate of Completion with a verifiable QR code. Top-performing interns also receive a signed Letter of Recommendation (LOR) for their job and placement applications.",
+    },
+    {
+      q: "I am a complete beginner with no coding experience. Can I apply?",
+      a: "Absolutely. Our 1-Month and 2-Month tracks begin with core programming fundamentals from scratch. You will receive chapter-wise notes, cheat sheets, interactive topic quizzes, and mentor support to guide you every step of the way.",
+    },
+    {
+      q: "How do I access study materials, quizzes, and project tasks?",
+      a: "Upon onboarding, you receive immediate credentials to your dedicated Student Portal. Everything—from your track syllabus, downloadable study notes, and module quizzes to assignment submissions and certificates—is seamlessly available in your portal dashboard.",
+    },
+    {
+      q: "Will I work on a live project that I can showcase to recruiters?",
+      a: "Yes. Every intern builds a production-grade capstone application that is deployed live to the cloud with a public GitHub repository. You will also participate in a 1-on-1 mock technical interview to prepare you to defend your code in real company interviews.",
+    },
+    {
+      q: "How does the Merit-Based 100% Free Scholarship test work?",
+      a: "We believe finances should never stop genuine talent. Any student facing financial constraints can take our online coding and aptitude assessment test. Clearing the benchmark unlocks a 100% Free Internship with full mentor support, live projects, and certificate issuance.",
+    },
+  ];
 
   return (
     <div className="flex flex-col min-h-screen overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative pt-16 pb-16 bg-background flex items-center justify-center overflow-hidden border-b border-border">
+      {/* 1. Hero Section */}
+      <section className="relative pt-12 pb-12 sm:pt-14 sm:pb-14 bg-background flex items-center justify-center overflow-hidden border-b border-border">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-secondary/10 rounded-full blur-[150px] pointer-events-none" />
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
 
@@ -421,41 +696,468 @@ export default function InternshipPage({ initialPrograms = FALLBACK_PROGRAMS }: 
             variants={stagger}
             className="max-w-4xl mx-auto"
           >
-            <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 text-secondary mb-6 text-sm font-semibold tracking-wide uppercase border border-secondary/20">
+            <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-secondary/10 text-secondary mb-6 text-xs sm:text-sm font-semibold tracking-wide uppercase border border-secondary/20">
               Applications Open for 2026 Batch
             </motion.div>
-            <motion.h1 variants={fadeIn} className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8">
+            <motion.h1 variants={fadeIn} className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-6">
               Launch Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Tech Career</span>
             </motion.h1>
-            <motion.p variants={fadeIn} className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-3xl mx-auto mb-10">
-              Join our industry-leading internship programs. Work on live projects, get mentored by senior engineers, and transition from student to professional.
+            <motion.p variants={fadeIn} className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto mb-7">
+              Build real-world projects with our all-in-one dedicated portal, access complete study notes, practice topic quizzes &amp; mock interviews, and earn an official government-recognized certificate.
             </motion.p>
-            <motion.div variants={fadeIn}>
+
+            {/* Feature Highlight Pills */}
+            <motion.div variants={fadeIn} className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 max-w-3xl mx-auto mb-9">
+              {heroHighlights.map((item, idx) => {
+                const Icon = item.icon;
+                return (
+                  <div
+                    key={idx}
+                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-card/70 border border-border/70 text-xs sm:text-sm font-medium text-foreground/90 shadow-sm backdrop-blur-sm hover:border-secondary/40 transition-colors"
+                  >
+                    <Icon className="h-3.5 w-3.5 text-secondary flex-shrink-0" />
+                    <span>{item.label}</span>
+                  </div>
+                );
+              })}
+            </motion.div>
+
+            <motion.div variants={fadeIn} className="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4">
               <Link href="/internship/apply">
-                <Button size="lg" className="cursor-pointer h-14 px-8 text-lg bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-[0_0_40px_-10px_rgba(6,182,212,0.4)]">
-                  Apply Now <ArrowRight className="ml-2 h-5 w-5" />
+                <Button size="lg" className="w-full sm:w-auto cursor-pointer h-13 px-8 text-base font-semibold bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-[0_0_40px_-10px_rgba(6,182,212,0.4)]">
+                  Apply Now <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
+              <a href="#programs">
+                <Button size="lg" variant="outline" className="w-full sm:w-auto cursor-pointer h-13 px-7 text-base font-semibold border-secondary/30 hover:border-secondary/60 hover:bg-secondary/10 hover:text-secondary text-foreground transition-all">
+                  View Programs
+                </Button>
+              </a>
+              <a
+                href={process.env.NEXT_PUBLIC_PORTAL_URL || "https://portal.prokodex.in"}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button size="lg" variant="outline" className="w-full sm:w-auto cursor-pointer h-13 px-6 text-base font-semibold border-border/80 hover:border-secondary/60 hover:bg-secondary/10 hover:text-secondary text-foreground transition-all">
+                  <ExternalLink className="mr-2 h-4 w-4 text-secondary" /> Student Portal
+                </Button>
+              </a>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Scholarship Program */}
-      <section className="py-12 bg-background border-b border-border">
+      {/* 2. Available Programs Accordion */}
+      <section id="programs" className="py-10 sm:py-14 bg-muted/30 relative">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-8">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/10 text-secondary mb-3 text-xs font-semibold tracking-wide uppercase border border-secondary/20">
+              <Sparkles className="h-3.5 w-3.5" /> Internship Tracks
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-2">Available <span className="text-secondary">Programs</span></h2>
+            <p className="text-base sm:text-lg text-muted-foreground">
+              Hands-on practical tracks designed for real project exposure. Select any program to explore its practical project milestones.
+            </p>
+          </div>
+
+          {loading ? (
+            <div className="max-w-5xl mx-auto space-y-2.5">
+              {[1, 2, 3, 4, 5].map((idx) => (
+                <div key={idx} className="p-4 rounded-xl bg-card/40 border border-border/60 animate-pulse h-14" />
+              ))}
+            </div>
+          ) : (
+            <div className="max-w-5xl mx-auto space-y-2.5">
+              {programs.map((program, i) => {
+                const programId = program.id || String(i);
+                return (
+                  <ProgramAccordionItem
+                    key={programId}
+                    program={program}
+                    index={i}
+                    isOpen={openProgramId === programId}
+                    onToggle={() => setOpenProgramId(prev => prev === programId ? null : programId)}
+                  />
+                );
+              })}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* 3. Why Intern With Us? / The Prokodex Advantage */}
+      <section className="py-10 sm:py-14 relative overflow-hidden bg-background border-t border-border">
+        <div className="container mx-auto px-4">
+          <div className="bg-card/30 backdrop-blur-sm border border-border/60 rounded-2xl md:rounded-3xl p-6 sm:p-10 md:p-12 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[120px] pointer-events-none" />
+
+            <div className="relative z-10 w-full">
+              <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 text-secondary mb-3 text-xs sm:text-sm font-semibold tracking-wide uppercase border border-secondary/20">
+                  <Briefcase className="h-3.5 w-3.5" /> Hands-On Internship Experience
+                </div>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-3 tracking-tight">
+                  Why <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Intern With Us?</span>
+                </h2>
+                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+                  Gain real practical project exposure. Work on live deliverables, receive constructive code feedback from senior developers, and build real development confidence.
+                </p>
+              </div>
+
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 w-full">
+                {internshipAdvantages.map((adv, i) => {
+                  const Icon = adv.icon;
+                  return (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, y: 15 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-30px" }}
+                      transition={{ delay: i * 0.08, duration: 0.4, ease: "easeOut" }}
+                      className="flex flex-col items-start p-5 sm:p-6 rounded-xl sm:rounded-2xl bg-card/50 hover:bg-card/80 border border-border/60 hover:border-secondary/40 transition-all hover:shadow-md"
+                    >
+                      <div className="h-10 w-10 rounded-xl bg-secondary/15 text-secondary flex items-center justify-center mb-3.5 border border-secondary/25 shadow-sm">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <h4 className="text-base sm:text-lg font-bold text-foreground mb-1.5">{adv.title}</h4>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{adv.desc}</p>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Internship Overview */}
+      <section className="py-10 sm:py-14 bg-muted/20 relative overflow-hidden border-t border-border">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/10 text-secondary mb-3 text-xs sm:text-sm font-semibold tracking-wide uppercase border border-secondary/20">
+              <Calendar className="h-3.5 w-3.5" /> Program Duration Models
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-3 tracking-tight">
+              Internship <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Overview</span>
+            </h2>
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+              Flexible online &amp; offline internship programs designed for students, freshers, and working professionals to build career-ready skills with industry experts.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 max-w-6xl mx-auto">
+            {internshipOverview.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-30px" }}
+                  transition={{ delay: i * 0.08, duration: 0.4, ease: "easeOut" }}
+                  className={`relative p-5 sm:p-6 rounded-2xl border transition-all duration-300 flex flex-col justify-between group ${item.popular
+                    ? "bg-card/70 border-secondary/50 shadow-lg shadow-secondary/10 hover:border-secondary"
+                    : "bg-card/40 hover:bg-card/70 border-border/60 hover:border-secondary/40 hover:shadow-md"
+                    }`}
+                >
+                  {item.popular && (
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                      <span className="bg-secondary text-secondary-foreground text-[11px] font-bold px-3 py-0.5 rounded-full shadow-md uppercase tracking-wider">
+                        Most Popular
+                      </span>
+                    </div>
+                  )}
+
+                  <div>
+                    <div className="flex items-center justify-between gap-3 mb-4">
+                      <div className="h-10 w-10 rounded-xl bg-secondary/10 text-secondary border border-secondary/25 flex items-center justify-center group-hover:scale-105 group-hover:bg-secondary group-hover:text-secondary-foreground transition-all duration-300 shadow-sm">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <span className="text-xs font-semibold text-muted-foreground">
+                        {item.tag}
+                      </span>
+                    </div>
+
+                    <h3 className="text-xl sm:text-2xl font-extrabold text-foreground mb-1 tracking-tight">
+                      {item.duration}
+                    </h3>
+                    <div className="text-xs sm:text-sm font-bold text-secondary mb-2.5 sm:mb-3">
+                      {item.level}
+                    </div>
+
+                    <div className="border-t border-border/60 my-3" />
+
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. What You Get After Completing */}
+      <section className="py-10 sm:py-14 relative overflow-hidden border-t border-border bg-background">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-secondary/5 rounded-full blur-[140px] pointer-events-none" />
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-secondary/10 text-secondary mb-3 text-xs font-bold tracking-wide uppercase border border-secondary/20">
+              <Award className="h-3.5 w-3.5" /> Career Proof &amp; Deliverables
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
+              What You Get <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">After Completing</span>
+            </h2>
+            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              Everything you need to showcase your practical project skills, strengthen your resume, and crack job interviews.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 max-w-6xl mx-auto">
+            {completionDeliverables.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-30px" }}
+                  transition={{ delay: i * 0.06, duration: 0.4, ease: "easeOut" }}
+                  className="group relative p-3.5 sm:p-4.5 rounded-xl sm:rounded-2xl bg-card/40 hover:bg-card/70 border border-border/60 hover:border-secondary/40 shadow-sm transition-all duration-300 flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-2.5 mb-2 sm:mb-2.5">
+                      <div className="h-8 w-8 sm:h-9 sm:w-9 rounded-lg bg-secondary/10 text-secondary flex items-center justify-center flex-shrink-0 group-hover:scale-105 group-hover:bg-secondary group-hover:text-secondary-foreground transition-all duration-300 shadow-sm">
+                        <Icon className="h-4 w-4 sm:h-4.5 sm:w-4.5" />
+                      </div>
+                      <span className="text-[10px] sm:text-[11px] font-semibold text-secondary bg-secondary/10 px-2 py-0.5 rounded-full border border-secondary/20">
+                        {item.badge}
+                      </span>
+                    </div>
+
+                    <h3 className="text-sm sm:text-base font-bold mb-1 group-hover:text-secondary transition-colors leading-snug">
+                      {item.title}
+                    </h3>
+                  </div>
+
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                    {item.description}
+                  </p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Demo Certificate Section */}
+      <CertificateDemo />
+
+      {/* 7. Who Can Apply? / Eligibility */}
+      <section className="py-10 sm:py-14 bg-background relative overflow-hidden border-t border-border">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/10 text-secondary mb-3 text-xs sm:text-sm font-semibold tracking-wide uppercase border border-secondary/20">
+              <GraduationCap className="h-3.5 w-3.5" /> Eligibility Criteria
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-3 tracking-tight">
+              Who Can <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Apply?</span>
+            </h2>
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+              Designed for ambitious learners at every stage — whether you need college credits or are building proof of work for job interviews.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 max-w-7xl mx-auto">
+            {eligibilityAudience.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-30px" }}
+                  transition={{ delay: i * 0.08, duration: 0.4, ease: "easeOut" }}
+                  className="p-5 sm:p-6 rounded-2xl bg-card/40 hover:bg-card/70 border border-border/60 hover:border-secondary/40 transition-all duration-300 flex flex-col justify-between group h-full hover:shadow-lg hover:shadow-secondary/5"
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-3 mb-4">
+                      <div className="h-10 w-10 rounded-xl bg-secondary/10 text-secondary border border-secondary/25 flex items-center justify-center group-hover:scale-105 group-hover:bg-secondary group-hover:text-secondary-foreground transition-all duration-300 shadow-sm">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <span className="text-[11px] font-semibold text-secondary bg-secondary/10 px-2.5 py-0.5 rounded-full border border-secondary/20">
+                        {item.badge}
+                      </span>
+                    </div>
+
+                    <h3 className="text-base sm:text-lg font-bold text-foreground mb-2 group-hover:text-secondary transition-colors leading-snug min-h-[48px] flex items-center">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-4 min-h-[56px]">
+                      {item.desc}
+                    </p>
+                  </div>
+
+                  <div className="pt-3 border-t border-border/60 mt-auto">
+                    <ul className="space-y-1.5">
+                      {item.criteria.map((crit, cIdx) => (
+                        <li key={cIdx} className="flex items-start gap-2 text-xs text-foreground/80">
+                          <CheckCircle2 className="h-3.5 w-3.5 text-secondary flex-shrink-0 mt-0.5" />
+                          <span className="leading-snug">{crit}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* 8. How It Works / Internship Roadmap */}
+      <section className="py-10 sm:py-14 bg-muted/20 relative overflow-hidden border-t border-border">
+        {/* Subtle ambient background glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[350px] bg-secondary/5 blur-[120px] rounded-full pointer-events-none" />
+
+        <div className="container mx-auto px-4 relative z-10 max-w-7xl">
+          {/* Section Header */}
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-secondary/10 text-secondary mb-3 text-xs sm:text-sm font-semibold tracking-wide uppercase border border-secondary/20 shadow-sm">
+              <Sparkles className="h-3.5 w-3.5" /> Complete 4-Step Roadmap
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-3 tracking-tight">
+              How It <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/50 via-secondary to-secondary">Works</span>
+            </h2>
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+              A structured, transparent step-by-step pathway — from day one registration to your verified, industry-ready credential.
+            </p>
+          </div>
+
+          {/* Stepper Progress Bar (Desktop / Large screen) */}
+          <div className="hidden lg:block mb-7 relative">
+            {/* Connecting Track Line */}
+            <div className="absolute top-6 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-secondary/20 via-secondary/60 to-secondary/20 z-0" />
+
+            <div className="grid grid-cols-4 relative z-10">
+              {processSteps.map((step, idx) => (
+                <div key={idx} className="flex flex-col items-center text-center">
+                  <div className="h-12 w-12 rounded-full bg-card border-2 border-secondary/80 flex items-center justify-center text-secondary font-black font-mono text-sm shadow-md shadow-secondary/15 ring-4 ring-background">
+                    {step.stepNumber}
+                  </div>
+                  <span className="mt-2.5 text-xs font-semibold text-secondary uppercase tracking-wider">
+                    {step.stage}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* 4 Connected Step Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+            {processSteps.map((step, i) => {
+              const Icon = step.icon;
+              const isLast = i === processSteps.length - 1;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ delay: i * 0.1, duration: 0.5, ease: "easeOut" }}
+                  className="relative p-6 sm:p-7 rounded-2xl bg-card/70 hover:bg-card border border-border/80 hover:border-secondary/50 transition-all duration-300 hover:shadow-xl hover:shadow-secondary/10 flex flex-col justify-between group h-full"
+                >
+                  {/* Ghost Step Number in Background */}
+                  <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none">
+                    <span className="absolute -top-2 -right-2 text-6xl sm:text-7xl font-black font-mono leading-none text-foreground/[0.06] group-hover:text-secondary/15 select-none transition-all duration-300">
+                      {step.stepNumber}
+                    </span>
+                  </div>
+
+                  {/* Desktop Step-to-Step Arrow Connector */}
+                  {!isLast && (
+                    <div className="hidden lg:flex absolute -right-[15px] top-1/2 -translate-y-1/2 z-30 w-7 h-7 rounded-full bg-secondary text-secondary-foreground items-center justify-center shadow-lg shadow-secondary/30 border-2 border-background">
+                      <ArrowRight className="h-3.5 w-3.5 stroke-[2.5]" />
+                    </div>
+                  )}
+
+                  <div className="relative z-10">
+                    {/* Top Meta: Step badge + Phase + Icon */}
+                    <div className="flex items-center justify-between gap-2 mb-4">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-black font-mono text-secondary bg-secondary/15 px-2.5 py-1 rounded-md border border-secondary/30 tracking-wider">
+                          STEP {step.stepNumber}
+                        </span>
+                        <span className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wide">
+                          {step.phase}
+                        </span>
+                      </div>
+                      <div className="h-10 w-10 rounded-xl bg-secondary/10 text-secondary border border-secondary/20 flex items-center justify-center group-hover:scale-110 group-hover:bg-secondary group-hover:text-secondary-foreground transition-all duration-300 shadow-sm flex-shrink-0">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                    </div>
+
+                    {/* Step Title */}
+                    <h3 className="text-base sm:text-lg font-bold text-foreground mb-2 group-hover:text-secondary transition-colors leading-snug min-h-[48px] flex items-center">
+                      {step.title}
+                    </h3>
+
+                    {/* Step Description */}
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-5 min-h-[60px]">
+                      {step.desc}
+                    </p>
+                  </div>
+
+                  {/* Structured Deliverables Checklist */}
+                  <div className="pt-3.5 border-t border-border/60 mt-auto relative z-10">
+                    <p className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground/90 mb-2.5 flex items-center gap-1.5">
+                      <Sparkles className="h-3 w-3 text-secondary" /> What you achieve:
+                    </p>
+                    <ul className="space-y-2">
+                      {step.bullets.map((bullet, bIdx) => (
+                        <li key={bIdx} className="flex items-start gap-2 text-xs text-foreground/85">
+                          <CheckCircle2 className="h-3.5 w-3.5 text-secondary flex-shrink-0 mt-0.5" />
+                          <span className="leading-snug">{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* Bottom Timeline Assurance Pill */}
+          <div className="mt-8 sm:mt-10 text-center">
+            <div className="inline-flex flex-col sm:flex-row items-center justify-center gap-3 px-6 py-3 rounded-2xl bg-card border border-border text-xs sm:text-sm text-muted-foreground shadow-sm">
+              <div className="flex items-center gap-2 text-foreground font-medium">
+                <Shield className="h-4 w-4 text-secondary" />
+                <span>Standardized 4-Stage Pathway</span>
+              </div>
+              <span className="hidden sm:inline text-border">•</span>
+              <span>Need custom duration or college credit hours? We adjust syllabus according to your semester schedule.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 9. Scholarship Program */}
+      <section className="py-10 sm:py-14 bg-background border-t border-b border-border relative overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-gradient-to-r from-secondary/10 via-card to-secondary/10 border border-secondary/20 rounded-3xl p-8 md:p-10 shadow-lg text-center relative overflow-hidden">
+            <div className="bg-gradient-to-r from-secondary/10 via-card to-secondary/10 border border-secondary/20 rounded-3xl p-6 sm:p-8 md:p-10 shadow-lg text-center relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/20 blur-[50px] rounded-full pointer-events-none" />
               <div className="absolute bottom-0 left-0 w-32 h-32 bg-secondary/20 blur-[50px] rounded-full pointer-events-none" />
 
               <div className="relative z-10">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 text-secondary mb-4 text-sm font-bold tracking-wide uppercase border border-secondary/20">
-                  <BrainCircuit className="h-4 w-4" /> Scholarship Program
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 text-secondary mb-4 text-xs sm:text-sm font-bold tracking-wide uppercase border border-secondary/20">
+                  <BrainCircuit className="h-4 w-4" /> Merit-Based Opportunity
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">Are you a gifted coder but facing financial constraints?</h3>
-                <p className="text-muted-foreground mb-8 text-lg max-w-2xl mx-auto leading-relaxed">
-                  We believe money shouldn't stop true talent. Take our rigorous coding assessment, and if you have what it takes, we'll provide you with a <span className="text-secondary font-bold">100% Free Internship</span> including all premium mentorship benefits.
+                <h3 className="text-2xl md:text-3xl font-bold mb-3 text-foreground">Are you a gifted coder facing financial constraints?</h3>
+                <p className="text-muted-foreground mb-6 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+                  We believe finances should never stop genuine talent. Take our rigorous coding assessment, and if you clear the benchmark, we will provide you with a <span className="text-secondary font-bold">100% Free Internship</span> including live projects, code reviews, and certification.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                   <Link href="/internship/apply?plan=general">
@@ -470,262 +1172,90 @@ export default function InternshipPage({ initialPrograms = FALLBACK_PROGRAMS }: 
         </div>
       </section>
 
-      {/* Available Programs Grid */}
-      <section className="py-16 bg-muted/30 relative">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-4xl font-bold mb-6">Available <span className="text-secondary">Programs</span></h2>
-            <p className="text-lg text-muted-foreground">
-              Intensive, hands-on learning experiences designed to make you industry-ready.
+      {/* 10. Frequently Asked Questions (FAQ) */}
+      <section className="py-10 sm:py-14 bg-muted/20 relative overflow-hidden border-t border-border">
+        <div className="container mx-auto px-4 max-w-4xl relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/10 text-secondary mb-3 text-xs sm:text-sm font-semibold tracking-wide uppercase border border-secondary/20">
+              <HelpCircle className="h-3.5 w-3.5" /> Got Questions?
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-3 tracking-tight">
+              Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Questions</span>
+            </h2>
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+              Find instant answers to common questions about eligibility, portal onboarding, certificates, and college credit compliance.
             </p>
           </div>
 
-          {loading ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[1, 2, 3, 4, 5, 6].map((idx) => (
-                <div key={idx} className="p-8 rounded-[2.5rem] bg-card/40 border border-border/60 animate-pulse h-72" />
-              ))}
-            </div>
-          ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {programs.map((program, i) => (
-                <ProgramCard key={program.id || i} program={program} index={i} />
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* Why Choose Us Section */}
-      <section className="py-16 relative overflow-hidden bg-background">
-        <div className="container mx-auto px-4">
-          <div className="bg-card/30 backdrop-blur-sm border border-border/60 rounded-[3rem] p-8 md:p-16 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[120px] pointer-events-none" />
-
-            <div className="grid lg:grid-cols-2 gap-16 items-center relative z-10">
-              <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 text-secondary mb-6 text-sm font-semibold tracking-wide uppercase border border-secondary/20">
-                  The Prokodex Advantage
-                </div>
-                <h2 className="text-4xl md:text-5xl font-bold mb-8 tracking-tight">Why <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Intern With Us?</span></h2>
-                <ul className="space-y-6">
-                  {[
-                    "Work on real-world, live enterprise projects",
-                    "1-on-1 mentorship with senior developers",
-                    "Industry-recognized certificate upon completion",
-                    "Resume building and interview preparation",
-                    "Modern tech stack and agile best practices"
-                  ].map((benefit, i) => (
-                    <motion.li
-                      key={i}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true, margin: "-50px" }}
-                      transition={{ delay: i * 0.1, duration: 0.5, ease: "easeOut" }}
-                      className="flex items-start gap-4"
-                    >
-                      <div className="mt-1 h-6 w-6 rounded-full bg-secondary/20 flex items-center justify-center flex-shrink-0">
-                        <CheckCircle2 className="h-4 w-4 text-secondary" />
-                      </div>
-                      <span className="text-lg font-medium text-foreground/90">{benefit}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Stylized Floating UI Elements instead of a boring image */}
-              <div className="relative h-[500px] hidden lg:block">
-                <div className="absolute inset-0 bg-gradient-to-tr from-secondary/5 to-transparent rounded-[2rem] border border-border/50" />
-
-                {/* Floating Card 1 */}
-                <motion.div
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute top-10 right-10 w-64 bg-background border border-border/80 rounded-2xl p-5 shadow-2xl backdrop-blur-md"
-                >
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="h-10 w-10 rounded-full bg-secondary/20 flex items-center justify-center">
-                      <Briefcase className="h-5 w-5 text-secondary" />
-                    </div>
-                    <div>
-                      <div className="text-sm font-bold">Certificate</div>
-                      <div className="text-xs text-muted-foreground">Industry Recognized</div>
-                    </div>
-                  </div>
-                  <div className="h-2 w-full bg-muted rounded-full mb-2 overflow-hidden">
-                    <div className="h-full w-full bg-secondary rounded-full" />
-                  </div>
-                  <div className="text-xs text-right text-muted-foreground">100% Verified</div>
-                </motion.div>
-
-                {/* Floating Card 2 */}
-                <motion.div
-                  animate={{ y: [0, 15, 0] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                  className="absolute bottom-20 left-10 w-72 bg-background border border-border/80 rounded-2xl p-5 shadow-2xl backdrop-blur-md"
-                >
-                  <div className="flex justify-between items-center mb-4">
-                    <div className="text-sm font-bold">Code Review</div>
-                    <div className="text-xs font-semibold text-emerald-500 bg-emerald-500/10 px-2 py-1 rounded-md">Approved</div>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="h-2 w-full bg-muted rounded-full" />
-                    <div className="h-2 w-4/5 bg-muted rounded-full" />
-                    <div className="h-2 w-5/6 bg-muted rounded-full" />
-                  </div>
-                  <div className="mt-4 pt-4 border-t border-border/50 flex items-center gap-3">
-                    <div className="h-6 w-6 rounded-full bg-secondary/20 flex items-center justify-center text-xs text-secondary font-bold">Sr</div>
-                    <div className="text-xs text-muted-foreground">"Great architecture, merged!"</div>
-                  </div>
-                </motion.div>
-
-                {/* Central Decorative Circle */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 border-4 border-secondary/20 rounded-full flex items-center justify-center">
-                  <div className="w-32 h-32 bg-secondary/10 rounded-full animate-pulse flex items-center justify-center">
-                    <Code2 className="h-10 w-10 text-secondary" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Demo Certificate Section */}
-      <CertificateDemo />
-
-      {/* Pricing Section */}
-      <section className="py-16 relative overflow-hidden border-t border-border">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-secondary/5 rounded-full blur-[150px] pointer-events-none" />
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Choose Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Plan</span></h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-              Fast-track your career with our guaranteed training and mentorship options.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {pricingTiers.map((tier, i) => (
-              <motion.div
-                key={tier.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ delay: i * 0.15, duration: 0.6, ease: "easeOut" }}
-                className={`relative p-8 rounded-[2rem] border transition-[border-color,box-shadow] duration-300 flex flex-col ${tier.popular
-                  ? "bg-card/60 backdrop-blur-md border-secondary shadow-[0_0_40px_-10px_rgba(6,182,212,0.3)] lg:scale-105 z-10"
-                  : "bg-card/30 backdrop-blur-sm border-border/60 hover:border-secondary/50"
+          <div className="space-y-3">
+            {faqList.map((faq, idx) => {
+              const isOpen = openFaqIndex === idx;
+              return (
+                <div
+                  key={idx}
+                  className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
+                    isOpen
+                      ? "bg-card/90 border-secondary/40 shadow-md shadow-secondary/5"
+                      : "bg-card/40 hover:bg-card/70 border-border/60 hover:border-secondary/20"
                   }`}
-              >
-                {tier.popular && !tier.isComingSoon && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-secondary text-secondary-foreground text-sm font-bold uppercase tracking-wider rounded-full shadow-lg">
-                    Most Popular
-                  </div>
-                )}
-
-                {tier.isComingSoon && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-muted/80 text-muted-foreground text-sm font-bold uppercase tracking-wider rounded-full shadow-md border border-border">
-                    Coming Soon
-                  </div>
-                )}
-
-                <div className={`mb-8 ${tier.isComingSoon ? "opacity-60" : ""}`}>
-                  <h3 className="text-2xl font-bold mb-2">{tier.name}</h3>
-                  <p className="text-muted-foreground text-sm h-10">{tier.description}</p>
-                </div>
-
-                <div className={`mb-8 pb-8 border-b border-border/50 ${tier.isComingSoon ? "opacity-60" : ""}`}>
-                  <div className="flex items-center gap-3 flex-wrap">
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-5xl font-black">{tier.price}</span>
-                      {tier.originalPrice && (
-                        <span className="text-xl font-bold text-muted-foreground/60 line-through decoration-muted-foreground/40">{tier.originalPrice}</span>
-                      )}
-                    </div>
-                    {tier.originalPrice && parseInt(tier.originalPrice.replace(/\D/g, "")) > parseInt(tier.price.replace(/\D/g, "")) && (
-                      <span className="text-sm font-bold text-emerald-500 bg-emerald-500/10 px-2.5 py-1 rounded-full whitespace-nowrap ml-1 border border-emerald-500/20">
-                        Save ₹{(parseInt(tier.originalPrice.replace(/\D/g, "")) - parseInt(tier.price.replace(/\D/g, ""))).toLocaleString('en-IN')}
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                <ul className={`space-y-4 mb-8 flex-1 ${tier.isComingSoon ? "opacity-60" : ""}`}>
-                  {tier.features.map((feature, j) => (
-                    <li key={j} className="flex items-start gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-secondary shrink-0 mt-0.5" />
-                      <span className="text-muted-foreground">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <Link href={`/internship/apply?plan=${tier.id}`} className={`w-full ${tier.isComingSoon ? "pointer-events-none" : ""}`}>
-                  <Button
-                    variant={tier.popular ? "default" : "outline"}
-                    disabled={tier.isComingSoon}
-                    className={`w-full h-12 rounded-xl font-bold text-lg transition-all ${tier.isComingSoon ? "cursor-not-allowed opacity-50 bg-secondary/10 text-secondary border-secondary/20 hover:bg-secondary/10" : "cursor-pointer"} ${tier.popular && !tier.isComingSoon
-                      ? "bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-[0_0_20px_-5px_rgba(6,182,212,0.4)] hover:shadow-[0_0_30px_-5px_rgba(6,182,212,0.5)]"
-                      : !tier.isComingSoon ? "bg-background/50 border-border/60 hover:bg-secondary hover:text-secondary-foreground hover:border-secondary" : ""
-                      }`}
+                >
+                  <button
+                    onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
+                    className="w-full text-left p-4 sm:p-5 flex items-center justify-between gap-4 cursor-pointer focus:outline-none"
+                    aria-expanded={isOpen}
                   >
-                    {tier.isComingSoon ? "Coming Soon" : tier.buttonText}
-                  </Button>
-                </Link>
-              </motion.div>
-            ))}
+                    <span className="text-sm sm:text-base font-bold text-foreground leading-snug">
+                      {faq.q}
+                    </span>
+                    <div
+                      className={`h-7 w-7 rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-300 ${
+                        isOpen
+                          ? "rotate-180 bg-secondary/15 text-secondary"
+                          : "bg-muted text-muted-foreground"
+                      }`}
+                    >
+                      <ChevronDown className="h-4 w-4" />
+                    </div>
+                  </button>
+
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-4 sm:px-5 pb-5 pt-1 text-xs sm:text-sm text-muted-foreground leading-relaxed border-t border-border/40">
+                          {faq.a}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
           </div>
 
-
-        </div>
-      </section>
-
-      {/* How to Apply / Timeline */}
-      <section className="py-16 bg-muted/30 relative overflow-hidden">
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">How to <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Apply</span></h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              A streamlined, 4-step process to kickstart your journey.
+          {/* Still have questions hint */}
+          <div className="mt-8 text-center">
+            <p className="text-xs sm:text-sm text-muted-foreground">
+              Have a specific question not covered here?{" "}
+              <Link href="/contact" className="text-secondary font-semibold hover:underline">
+                Contact our student support team
+              </Link>
             </p>
           </div>
-
-          <div className="relative max-w-5xl mx-auto">
-            {/* Connecting Line */}
-            <div className="absolute top-10 left-0 w-full h-1 bg-gradient-to-r from-border via-secondary/50 to-border -translate-y-1/2 hidden lg:block" />
-
-            <div className="grid lg:grid-cols-4 gap-12 lg:gap-6 relative z-10">
-              {processSteps.map((step, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ delay: i * 0.15, duration: 0.6, ease: "easeOut" }}
-                  className="flex flex-col items-center text-center group"
-                >
-                  <div className="w-20 h-20 rounded-full bg-card border-2 border-border group-hover:border-secondary flex items-center justify-center mb-6 relative z-10 shadow-lg group-hover:scale-110 transition-all duration-300 group-hover:shadow-[0_0_30px_-5px_rgba(6,182,212,0.5)]">
-                    <step.icon className="h-8 w-8 text-muted-foreground group-hover:text-secondary transition-colors" />
-                    <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-secondary text-secondary-foreground flex items-center justify-center font-bold text-sm shadow-md">
-                      {i + 1}
-                    </div>
-                  </div>
-                  <h3 className="text-lg font-bold mb-3">{step.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed px-2">
-                    {step.desc}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* Dual CTA Section */}
+      {/* 11. Dual CTA Section */}
       <CtaSection
+        className="py-10 sm:py-14"
         title="Ready to Kickstart Your"
         highlight="Career?"
-        description="Don't miss the opportunity to learn from industry experts and build products that matter."
+        description="Don't miss the opportunity to build real-world projects, receive senior code reviews, and earn verified certificates."
         primaryBtnText="Apply Now"
         primaryBtnLink="/internship/apply"
         primaryBtnIcon={<ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />}

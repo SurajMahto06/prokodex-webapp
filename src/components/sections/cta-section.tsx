@@ -13,6 +13,7 @@ interface CtaSectionProps {
   secondaryBtnText: string;
   secondaryBtnLink: string;
   secondaryBtnIcon?: ReactNode;
+  className?: string;
 }
 
 export function CtaSection({
@@ -24,10 +25,11 @@ export function CtaSection({
   primaryBtnIcon,
   secondaryBtnText,
   secondaryBtnLink,
-  secondaryBtnIcon
+  secondaryBtnIcon,
+  className
 }: CtaSectionProps) {
   return (
-    <section className="py-16 relative overflow-hidden border-t border-border">
+    <section className={`relative overflow-hidden border-t border-border ${className || "py-16"}`}>
       <div className="absolute inset-0 bg-gradient-to-br from-primary to-secondary opacity-10 pointer-events-none" />
       <div className="container mx-auto px-4 relative z-10 text-center">
         <h2 className="text-4xl md:text-5xl font-bold mb-6">

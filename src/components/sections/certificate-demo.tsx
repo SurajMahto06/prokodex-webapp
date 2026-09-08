@@ -26,26 +26,26 @@ export function CertificateDemo() {
   ]
 
   return (
-    <section className="py-24 relative overflow-hidden bg-background border-t border-border/50">
+    <section className="py-10 sm:py-14 relative overflow-hidden bg-background border-t border-border/50">
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16 max-w-3xl mx-auto">
+        <div className="text-center mb-8 sm:mb-10 max-w-3xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary/10 border border-secondary/20 text-sm font-semibold text-secondary mb-6"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 border border-secondary/20 text-xs sm:text-sm font-semibold text-secondary mb-3"
           >
-            <Award className="w-4 h-4" /> Validated Excellence
+            <Award className="w-3.5 h-3.5" /> Validated Excellence
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold mb-6 tracking-tight"
+            className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-3 tracking-tight"
           >
             Your Proof of <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/50 via-secondary/80 to-secondary">Expertise</span>
           </motion.h2>
@@ -54,7 +54,7 @@ export function CertificateDemo() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-xl text-muted-foreground leading-relaxed"
+            className="text-base sm:text-lg text-muted-foreground leading-relaxed"
           >
             Complete your internship and earn an official, verifiable certificate to showcase your skills to top tech companies.
           </motion.p>
