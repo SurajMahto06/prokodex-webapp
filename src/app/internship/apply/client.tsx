@@ -302,7 +302,7 @@ function ApplicationForm() {
 
         // 2. Open Razorpay Checkout
         const options = {
-          key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || "rzp_test_T1rNmBt4fXxCR8", // Default to test key for safety
+          key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
           amount: orderData.order.amount,
           currency: "INR",
           name: "Prokodex Internship",
