@@ -101,6 +101,7 @@ export const metadata: Metadata = {
 import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { FloatingWhatsApp } from "@/components/layout/floating-whatsapp"
+import { ScrollToTop } from "@/components/layout/scroll-to-top"
 import { ThemeProvider } from "@/components/theme-provider"
 import { SplashLoader } from "@/components/ui/splash-loader"
 import NextTopLoader from "nextjs-toploader"
@@ -181,6 +182,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <ScrollToTop />
           <FloatingWhatsApp />
           <Toaster position="top-right" />
         </ThemeProvider>
