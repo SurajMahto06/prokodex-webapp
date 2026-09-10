@@ -161,7 +161,7 @@ export default function RootLayout({
       <body className={`${spaceGrotesk.className} min-h-screen bg-background antialiased flex flex-col overflow-x-hidden`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
