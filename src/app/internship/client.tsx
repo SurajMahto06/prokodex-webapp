@@ -697,6 +697,7 @@ export default function InternshipPage({ initialPrograms = FALLBACK_PROGRAMS }: 
             className="max-w-4xl mx-auto"
           >
             <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-secondary/10 text-secondary mb-6 text-xs sm:text-sm font-semibold tracking-wide uppercase border border-secondary/20">
+              <span className="flex h-2 w-2 rounded-full bg-secondary animate-pulse" />
               Applications Open for 2026 Batch
             </motion.div>
             <motion.h1 variants={fadeIn} className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-6">
@@ -742,6 +743,42 @@ export default function InternshipPage({ initialPrograms = FALLBACK_PROGRAMS }: 
                   <ExternalLink className="mr-2 h-4 w-4 text-secondary" /> Student Portal
                 </Button>
               </a>
+            </motion.div>
+
+            {/* Hero Stats Strip */}
+            <motion.div
+              variants={fadeIn}
+              className="mt-12 pt-8 border-t border-border/50 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-6 max-w-3xl mx-auto"
+            >
+              <div className="flex items-center sm:flex-col justify-center gap-3 sm:gap-1.5 p-4 rounded-xl bg-card/40 sm:bg-card/25 border border-border/50 backdrop-blur-sm hover:border-secondary/40 transition-colors">
+                <div className="flex items-center gap-2 text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight">
+                  <Users className="h-5 w-5 sm:h-6 sm:w-6 text-secondary flex-shrink-0" />
+                  <span>100<span className="text-secondary">+</span></span>
+                </div>
+                <p className="text-xs sm:text-sm text-muted-foreground font-medium text-left sm:text-center">
+                  Interns Trained &amp; Mentored
+                </p>
+              </div>
+
+              <div className="flex items-center sm:flex-col justify-center gap-3 sm:gap-1.5 p-4 rounded-xl bg-card/40 sm:bg-card/25 border border-border/50 backdrop-blur-sm hover:border-secondary/40 transition-colors">
+                <div className="flex items-center gap-2 text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight">
+                  <Code2 className="h-5 w-5 sm:h-6 sm:w-6 text-secondary flex-shrink-0" />
+                  <span>10<span className="text-secondary">+</span></span>
+                </div>
+                <p className="text-xs sm:text-sm text-muted-foreground font-medium text-left sm:text-center">
+                  Live Real-World Projects
+                </p>
+              </div>
+
+              <div className="flex items-center sm:flex-col justify-center gap-3 sm:gap-1.5 p-4 rounded-xl bg-card/40 sm:bg-card/25 border border-border/50 backdrop-blur-sm hover:border-secondary/40 transition-colors">
+                <div className="flex items-center gap-2 text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight">
+                  <Award className="h-5 w-5 sm:h-6 sm:w-6 text-secondary flex-shrink-0" />
+                  <span>100<span className="text-secondary">%</span></span>
+                </div>
+                <p className="text-xs sm:text-sm text-muted-foreground font-medium text-left sm:text-center">
+                  Verified QR Certificates
+                </p>
+              </div>
             </motion.div>
           </motion.div>
         </div>
