@@ -447,7 +447,7 @@ export default function InternshipPage({ initialPrograms = FALLBACK_PROGRAMS }: 
       stage: "Learning & Prep",
       icon: BookOpen,
       title: "Months 1–2: Study, Prep & Mini Projects",
-      desc: "Master key concepts with structured notes, solve topic quizzes, attend doubt sessions, and build practical mini projects.",
+      desc: "Master key concepts with structured notes, solve topic-wise quizzes, attend doubt sessions, and build practical mini projects.",
       bullets: [
         "Topic-wise study notes & cheat sheets",
         "Interactive quizzes after every module",
@@ -517,7 +517,7 @@ export default function InternshipPage({ initialPrograms = FALLBACK_PROGRAMS }: 
     },
     {
       icon: FileText,
-      title: "Topic Quizzes & Interview Prep",
+      title: "Topic-wise Quizzes & Interview Prep",
       desc: "Short quizzes and common interview questions after every topic to test what you learned and get interview-ready.",
     },
     {
@@ -596,7 +596,7 @@ export default function InternshipPage({ initialPrograms = FALLBACK_PROGRAMS }: 
     { icon: Terminal, label: "Dedicated Internship Portal" },
     { icon: BrainCircuit, label: "1-on-1 Mock Interviews" },
     { icon: BookOpen, label: "Complete Study Material & Notes" },
-    { icon: FileText, label: "Topic Quizzes & Interview Prep" },
+    { icon: FileText, label: "Topic-wise Quizzes & Interview Prep" },
     { icon: CheckCircle2, label: "Live Projects & Weekly Doubts" },
   ];
 
@@ -666,7 +666,7 @@ export default function InternshipPage({ initialPrograms = FALLBACK_PROGRAMS }: 
     },
     {
       q: "I am a complete beginner with no coding experience. Can I apply?",
-      a: "Absolutely. Our 1-Month and 2-Month tracks begin with core programming fundamentals from scratch. You will receive chapter-wise notes, cheat sheets, interactive topic quizzes, and mentor support to guide you every step of the way.",
+      a: "Absolutely. Our 1-Month and 2-Month tracks begin with core programming fundamentals from scratch. You will receive chapter-wise notes, cheat sheets, interactive topic-wise quizzes, and mentor support to guide you every step of the way.",
     },
     {
       q: "How do I access study materials, quizzes, and project tasks?",
@@ -704,7 +704,7 @@ export default function InternshipPage({ initialPrograms = FALLBACK_PROGRAMS }: 
               Launch Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Tech Career</span>
             </motion.h1>
             <motion.p variants={fadeIn} className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto mb-7">
-              Build real-world projects with our all-in-one dedicated portal, access complete study notes, practice topic quizzes &amp; mock interviews, and earn an official government-recognized certificate.
+              Build real-world projects with our all-in-one dedicated portal, access complete study notes, practice topic-wise quizzes &amp; mock interviews, and earn an official government-recognized certificate.
             </motion.p>
 
             {/* Feature Highlight Pills */}
