@@ -74,11 +74,22 @@ export default async function BlogDetailPage({ params }: Props) {
         <article className="bg-card border border-border/60 rounded-[2.5rem] p-5 md:p-8 shadow-2xl relative break-words overflow-hidden">
           {blog.coverImage && (
             <div className="relative aspect-[21/9] w-full rounded-xl overflow-hidden mb-6 shadow-xl ring-1 ring-border/50 bg-secondary/5">
+              {/* Blurred Background Image */}
+              <div className="absolute inset-0">
+                <Image
+                  src={blog.coverImage}
+                  alt={`${blog.title} background`}
+                  fill
+                  className="object-cover opacity-50 blur-3xl scale-110"
+                  priority
+                />
+              </div>
+              {/* Foreground Contained Image */}
               <Image
                 src={blog.coverImage}
                 alt={blog.title}
                 fill
-                className="object-cover"
+                className="object-contain relative z-10"
                 priority
               />
             </div>

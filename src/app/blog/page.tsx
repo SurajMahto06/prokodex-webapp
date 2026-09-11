@@ -55,18 +55,30 @@ export default async function BlogPage() {
               >
                 <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl mb-5 bg-secondary/5">
                   {blog.coverImage ? (
-                    <Image
-                      src={blog.coverImage}
-                      alt={blog.title}
-                      fill
-                      className="object-cover group-hover/card:scale-105 transition-transform duration-700"
-                    />
+                    <>
+                      {/* Blurred Background Image */}
+                      <div className="absolute inset-0">
+                        <Image
+                          src={blog.coverImage}
+                          alt={`${blog.title} background`}
+                          fill
+                          className="object-cover opacity-50 blur-2xl scale-110"
+                        />
+                      </div>
+                      {/* Foreground Contained Image */}
+                      <Image
+                        src={blog.coverImage}
+                        alt={blog.title}
+                        fill
+                        className="object-contain group-hover/card:scale-105 transition-transform duration-700 relative z-10"
+                      />
+                    </>
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center text-muted-foreground/50 bg-secondary/5">
                       <BookOpen className="w-10 h-10 opacity-20" />
                     </div>
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-20 pointer-events-none" />
                 </div>
 
                 <div className="flex flex-col flex-grow relative z-10">
