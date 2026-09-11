@@ -1,10 +1,11 @@
 "use client"
 
-import { motion } from "framer-motion"
+import React, { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import {
   ArrowRight,
   ArrowUpRight,
-
+  ChevronDown,
 } from "lucide-react"
 import Link from "next/link"
 import { OurProcess } from "@/components/sections/our-process"
@@ -22,9 +23,7 @@ const stagger = {
 import { servicesData } from "./data"
 
 export default function ServicesPage() {
-
-
-
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
   return (
     <div className="flex flex-col min-h-screen overflow-hidden">
       {/* Hero Section */}
@@ -63,49 +62,125 @@ export default function ServicesPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {servicesData.map((service, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-                whileHover={{ y: -8, transition: { duration: 0.2, ease: "easeOut" } }}
-                className="group relative p-8 rounded-[2.5rem] bg-card/40 backdrop-blur-sm border border-border/60 hover:border-secondary/50 hover:shadow-2xl transition-[border-color,box-shadow] duration-500 overflow-hidden flex flex-col h-full cursor-pointer"
-              >
-                <Link href={`/services/${service.slug}`} className="absolute inset-0 z-20" aria-label={`View details for ${service.title}`} />
-                <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+            <div className="flex flex-col gap-4">
+              {servicesData.slice(0, 4).map((service, i) => {
+                const isOpen = expandedIndex === i;
+                return (
+                  <motion.div 
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1, duration: 0.5 }}
+                    className={`border ${isOpen ? 'border-secondary/50' : 'border-border/60'} rounded-3xl overflow-hidden bg-card/40 backdrop-blur-sm transition-all duration-300 hover:border-secondary/50`}
+                  >
+                    <button
+                      onClick={() => setExpandedIndex(isOpen ? null : i)}
+                      className="w-full flex items-center justify-between p-4 px-5 text-left"
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className={`h-12 w-12 rounded-xl flex items-center justify-center transition-colors duration-300 ${isOpen ? 'bg-secondary text-secondary-foreground shadow-[0_0_20px_rgba(6,182,212,0.4)]' : 'bg-secondary/10 text-secondary'}`}>
+                          <service.icon className="h-6 w-6" />
+                        </div>
+                        <h3 className="text-lg md:text-xl font-bold tracking-tight">{service.title}</h3>
+                      </div>
+                      <div className={`h-8 w-8 shrink-0 rounded-full border border-border/60 flex items-center justify-center text-muted-foreground transition-all duration-300 ${isOpen ? 'rotate-180 bg-secondary/10 text-secondary border-secondary' : ''}`}>
+                        <ChevronDown className="h-4 w-4" />
+                      </div>
+                    </button>
 
-                {/* Decorative glow */}
-                <div className="absolute -top-12 -right-12 w-32 h-32 bg-secondary/20 blur-[50px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                    <AnimatePresence>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="px-6 pb-6 pt-0 border-t border-border/20 mt-2">
+                            <p className="text-base text-muted-foreground leading-relaxed mb-6 pt-5">
+                              {service.description}
+                            </p>
+                            <div className="flex flex-wrap gap-2 mb-8">
+                              {service.features.map((feature: string, j: number) => (
+                                <span key={j} className="px-3 py-1.5 text-xs font-semibold rounded-full bg-background border border-border/60 text-muted-foreground">
+                                  {feature}
+                                </span>
+                              ))}
+                            </div>
+                            <Link href={`/services/${service.slug}`} className="inline-flex items-center text-sm font-bold text-secondary uppercase tracking-wider hover:text-secondary/80 transition-colors">
+                              View Full Details
+                              <ArrowRight className="w-4 h-4 ml-2" />
+                            </Link>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                )
+              })}
+            </div>
 
-                <div className="relative z-10 flex flex-col flex-1">
-                  <div className="flex justify-between items-start mb-8">
-                    <div className="h-16 w-16 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary group-hover:scale-110 group-hover:bg-secondary group-hover:text-secondary-foreground group-hover:rotate-3 transition-all duration-500 shadow-sm">
-                      <service.icon className="h-8 w-8" />
-                    </div>
-                    <div className="h-10 w-10 rounded-full border border-border/60 flex items-center justify-center text-muted-foreground group-hover:border-secondary group-hover:text-secondary group-hover:bg-secondary/10 transition-colors">
-                      <ArrowUpRight className="h-5 w-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                    </div>
-                  </div>
+            <div className="flex flex-col gap-4">
+              {servicesData.slice(4, 8).map((service, i) => {
+                const index = i + 4;
+                const isOpen = expandedIndex === index;
+                return (
+                  <motion.div 
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1, duration: 0.5 }}
+                    className={`border ${isOpen ? 'border-secondary/50' : 'border-border/60'} rounded-3xl overflow-hidden bg-card/40 backdrop-blur-sm transition-all duration-300 hover:border-secondary/50`}
+                  >
+                    <button
+                      onClick={() => setExpandedIndex(isOpen ? null : index)}
+                      className="w-full flex items-center justify-between p-4 px-5 text-left"
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className={`h-12 w-12 rounded-xl flex items-center justify-center transition-colors duration-300 ${isOpen ? 'bg-secondary text-secondary-foreground shadow-[0_0_20px_rgba(6,182,212,0.4)]' : 'bg-secondary/10 text-secondary'}`}>
+                          <service.icon className="h-6 w-6" />
+                        </div>
+                        <h3 className="text-lg md:text-xl font-bold tracking-tight">{service.title}</h3>
+                      </div>
+                      <div className={`h-8 w-8 shrink-0 rounded-full border border-border/60 flex items-center justify-center text-muted-foreground transition-all duration-300 ${isOpen ? 'rotate-180 bg-secondary/10 text-secondary border-secondary' : ''}`}>
+                        <ChevronDown className="h-4 w-4" />
+                      </div>
+                    </button>
 
-                  <h3 className="text-2xl font-bold mb-3 tracking-tight group-hover:text-secondary transition-colors">{service.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed mb-8">
-                    {service.description}
-                  </p>
-
-                  {/* Pills instead of bullet list */}
-                  <div className="flex flex-wrap gap-2 mt-auto pt-6 border-t border-border/50">
-                    {service.features.map((feature, j) => (
-                      <span key={j} className="px-3 py-1.5 text-xs font-semibold rounded-full bg-background border border-border/60 text-muted-foreground group-hover:border-secondary/30 group-hover:text-foreground transition-colors relative z-30">
-                        {feature}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+                    <AnimatePresence>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="px-6 pb-6 pt-0 border-t border-border/20 mt-2">
+                            <p className="text-base text-muted-foreground leading-relaxed mb-6 pt-5">
+                              {service.description}
+                            </p>
+                            <div className="flex flex-wrap gap-2 mb-8">
+                              {service.features.map((feature: string, j: number) => (
+                                <span key={j} className="px-3 py-1.5 text-xs font-semibold rounded-full bg-background border border-border/60 text-muted-foreground">
+                                  {feature}
+                                </span>
+                              ))}
+                            </div>
+                            <Link href={`/services/${service.slug}`} className="inline-flex items-center text-sm font-bold text-secondary uppercase tracking-wider hover:text-secondary/80 transition-colors">
+                              View Full Details
+                              <ArrowRight className="w-4 h-4 ml-2" />
+                            </Link>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                )
+              })}
+            </div>
           </div>
         </div>
       </section>

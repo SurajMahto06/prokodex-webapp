@@ -154,5 +154,57 @@
       { "step": "03", "title": "Writing the Code", "desc": "We start building the software step-by-step, showing you progress regularly." },
       { "step": "04", "title": "Support & Updates", "desc": "We help you maintain the software and add new features as your business grows." }
     ]
+  },
+  {
+    "slug": "video-editing-services",
+    "icon": "Video",
+    "title": "Video Editing & Motion Graphics",
+    "description": "Professional video editing and motion graphics to make your content engaging and highly shareable.",
+    "features": ["Reels & Shorts", "YouTube Videos", "Color Grading", "Engaging Transitions"],
+    "heroTagline": "Turn Raw Footage into Engaging Stories.",
+    "overview": "In today's fast-paced digital world, video is king. We take your raw footage and transform it into highly engaging content that grabs attention. Whether you need snappy Instagram Reels, professional YouTube videos, or corporate presentations, our editors use advanced techniques, crisp audio, and seamless transitions to tell your brand's story perfectly.",
+    "benefits": [
+      { "title": "High Engagement", "desc": "We edit videos specifically designed to keep viewers watching until the very end.", "icon": "TrendingUp" },
+      { "title": "Platform Optimized", "desc": "Videos formatted perfectly for YouTube, Instagram, TikTok, or your website.", "icon": "Smartphone" },
+      { "title": "Professional Quality", "desc": "Crystal clear audio, smooth color grading, and broadcast-quality finishes.", "icon": "MonitorPlay" },
+      { "title": "Fast Turnaround", "desc": "Get your finished videos quickly without sacrificing any quality.", "icon": "FastForward" },
+      { "title": "Story-Driven", "desc": "We don't just cut clips; we build a narrative that connects with your audience.", "icon": "BookOpen" },
+      { "title": "Custom Graphics", "desc": "Includes animated titles, lower thirds, and motion graphics to boost production value.", "icon": "Palette" },
+      { "title": "Sound Design", "desc": "Professional sound effects and background music carefully selected for mood.", "icon": "Headphones" },
+      { "title": "Revision Friendly", "desc": "We work with you to make sure the final cut is exactly what you envisioned.", "icon": "CheckCircle2" }
+    ],
+    "techStack": ["Premiere Pro", "After Effects", "DaVinci Resolve", "Final Cut Pro"],
+    "process": [
+      { "step": "01", "title": "Reviewing Footage", "desc": "We watch your raw clips and discuss the goal and style of the final video." },
+      { "step": "02", "title": "The Rough Cut", "desc": "We assemble the best moments to build the core story and pacing." },
+      { "step": "03", "title": "Adding Polish", "desc": "We add music, sound effects, color correction, and smooth transitions." },
+      { "step": "04", "title": "Final Review", "desc": "You review the video, we make any tweaks, and deliver the final high-quality file." }
+    ]
+  },
+  {
+    "slug": "graphic-design-services",
+    "icon": "PenTool",
+    "title": "Graphic Design",
+    "description": "Stunning visuals and branding that make your business stand out from the crowd.",
+    "features": ["Logo Design", "Social Media Posts", "Brand Identity", "Marketing Materials"],
+    "heroTagline": "Designs That Speak Louder Than Words.",
+    "overview": "First impressions matter. We create striking visual designs that instantly communicate your brand's value to your customers. From memorable logos and complete brand identities to eye-catching social media posts and professional marketing materials, our designers ensure your business looks premium, trustworthy, and unique across all platforms.",
+    "benefits": [
+      { "title": "Unique Brand Identity", "desc": "Stand out with a unique logo and visual style that customers will remember.", "icon": "Award" },
+      { "title": "Social Media Growth", "desc": "Engaging, high-quality posts designed to get more likes, shares, and followers.", "icon": "ThumbsUp" },
+      { "title": "Professional Look", "desc": "Build trust instantly with high-quality, pixel-perfect design across all touchpoints.", "icon": "ShieldCheck" },
+      { "title": "Print & Digital", "desc": "Designs ready for both digital screens and high-quality physical printing.", "icon": "Printer" },
+      { "title": "Consistent Branding", "desc": "Maintain the same colors, fonts, and feel across all your business materials.", "icon": "Layers" },
+      { "title": "Fast Delivery", "desc": "Quick turnarounds on design requests so your marketing never slows down.", "icon": "Zap" },
+      { "title": "Unlimited Formats", "desc": "Get your designs in all necessary file formats (AI, PNG, PDF, SVG, etc.).", "icon": "FileCode" },
+      { "title": "Creative Excellence", "desc": "Our designers bring fresh, modern ideas to make your vision a reality.", "icon": "Lightbulb" }
+    ],
+    "techStack": ["Adobe Illustrator", "Photoshop", "Figma", "InDesign", "Canva Pro"],
+    "process": [
+      { "step": "01", "title": "Discovery", "desc": "We learn about your brand, your audience, and what style you are looking for." },
+      { "step": "02", "title": "Concept Creation", "desc": "We sketch out initial ideas and present you with different design directions." },
+      { "step": "03", "title": "Refinement", "desc": "We take your chosen concept and perfect the details, colors, and typography." },
+      { "step": "04", "title": "Final Delivery", "desc": "We hand over all the polished design files in every format you might need." }
+    ]
   }
 ]
