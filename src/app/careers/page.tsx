@@ -2,7 +2,13 @@ import type { Metadata } from "next"
 import CareersClient from "./client"
 
 export const metadata: Metadata = {
-  title: "Careers & Job Openings",
+  openGraph: {
+    url: "/careers",
+  },
+  alternates: {
+    canonical: "/careers",
+  },
+  title: "Careers - Job Openings",
   description: "Join the Prokodex team! We are hiring talented developers, UI/UX designers, digital marketers, and software engineers to build next-generation AI and web applications.",
 }
 

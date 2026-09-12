@@ -4,7 +4,13 @@ import { Metadata } from "next";
 import { ArrowRight, BookOpen } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Blog",
+  openGraph: {
+    url: "/blog",
+  },
+  alternates: {
+    canonical: "/blog",
+  },
+  title: "Our Blog - Latest Articles on Tech & Marketing",
   description: "Read the latest articles on AI, Web Development, and Digital Marketing by Prokodex.",
 };
 

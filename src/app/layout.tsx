@@ -6,7 +6,10 @@ import "./globals.css"
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://prokodex.in"),
+  metadataBase: new URL("https://www.prokodex.in"),
+  alternates: {
+    canonical: "/",
+  },
   title: {
     default: "Prokodex - AI, Web & APP Development, Digital Marketing & Graphics Design Services",
     template: "%s | Prokodex"
@@ -65,7 +68,6 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Prokodex - AI, Web & APP Development, Digital Marketing & Graphics Design Services",
     description: "Prokodex provides AI automation, web development, mobile app development, digital marketing, graphic design, video editing, internships, and custom software solutions for startups and businesses.",
-    url: "https://prokodex.in",
     siteName: "Prokodex",
     images: [
       {

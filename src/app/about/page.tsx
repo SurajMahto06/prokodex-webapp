@@ -2,6 +2,12 @@ import type { Metadata } from "next"
 import AboutClient from "./client"
 
 export const metadata: Metadata = {
+  openGraph: {
+    url: "/about",
+  },
+  alternates: {
+    canonical: "/about",
+  },
   title: "About Us - Innovative Software & Digital Agency",
   description: "Discover Prokodex, a forward-thinking software and digital marketing agency. We specialize in AI automation, custom web development, mobile apps, and scalable IT solutions.",
 }

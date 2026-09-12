@@ -2,6 +2,12 @@ import type { Metadata } from "next"
 import DemoClient from "./client"
 
 export const metadata: Metadata = {
+  openGraph: {
+    url: "/demos",
+  },
+  alternates: {
+    canonical: "/demos",
+  },
   title: "Live Software Demos & Templates",
   description: "Explore live working demos of Prokodex projects including custom ERPs, AI chatbots, SaaS platforms, and modern web templates built for scalable businesses.",
 }

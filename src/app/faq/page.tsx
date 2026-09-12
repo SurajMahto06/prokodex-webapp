@@ -2,6 +2,12 @@ import type { Metadata } from "next"
 import FaqClient from "./client"
 
 export const metadata: Metadata = {
+  openGraph: {
+    url: "/faq",
+  },
+  alternates: {
+    canonical: "/faq",
+  },
   title: "Frequently Asked Questions (FAQ)",
   description: "Find answers about Prokodex's custom software development, digital marketing packages, pricing, project timelines, and developer internship programs.",
 }

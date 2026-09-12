@@ -1,6 +1,12 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
+  openGraph: {
+    url: "/privacy",
+  },
+  alternates: {
+    canonical: "/privacy",
+  },
   title: "Privacy Policy",
   description: "Read the Prokodex Privacy Policy. Learn how we handle client data, secure user information, and ensure privacy across our software and digital marketing services.",
 }

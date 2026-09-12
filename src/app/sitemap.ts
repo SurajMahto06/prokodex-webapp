@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://prokodex.in" // Canonical base URL
+  const baseUrl = "https://www.prokodex.in" // Canonical base URL
 
   const routes = [
     "",

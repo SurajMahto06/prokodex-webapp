@@ -2,8 +2,14 @@ import type { Metadata } from "next"
 import InternshipClient, { FALLBACK_PROGRAMS, Program } from "./client"
 
 export const metadata: Metadata = {
-  title: "Software Engineering Internship Programs",
+  openGraph: {
+    url: "/internship",
+  },
+  title: "Internship Programs - Web Development & Tech Internships",
   description: "Kickstart your IT career with Prokodex. Join our live project-based internships for Web Development, React, Node.js, AI, and Digital Marketing training.",
+  alternates: {
+    canonical: "/internship",
+  },
 }
 
 async function getPrograms(): Promise<Program[]> {

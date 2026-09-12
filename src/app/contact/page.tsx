@@ -2,7 +2,13 @@ import type { Metadata } from "next"
 import ContactClient from "./client"
 
 export const metadata: Metadata = {
-  title: "Contact Prokodex for IT & Marketing Services",
+  openGraph: {
+    url: "/contact",
+  },
+  alternates: {
+    canonical: "/contact",
+  },
+  title: "Contact Us - Prokodex IT & Marketing Services",
   description: "Get in touch with Prokodex. Reach out to discuss web development, mobile apps, digital marketing, AI solutions, consulting, and project partnerships.",
 }
 

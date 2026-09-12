@@ -1,6 +1,12 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
+  openGraph: {
+    url: "/refund-policy",
+  },
+  alternates: {
+    canonical: "/refund-policy",
+  },
   title: "Refund & Cancellation Policy",
   description: "Read the Prokodex Refund and Cancellation Policy for our software development, digital marketing, and internship services.",
 }

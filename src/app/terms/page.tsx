@@ -2,6 +2,12 @@ import { Metadata } from "next"
 import Link from "next/link"
 
 export const metadata: Metadata = {
+  openGraph: {
+    url: "/terms",
+  },
+  alternates: {
+    canonical: "/terms",
+  },
   title: "Terms & Conditions",
   description: "Review the Terms & Conditions for using Prokodex. Detailed terms regarding our software development, digital marketing, and internship programs.",
 }

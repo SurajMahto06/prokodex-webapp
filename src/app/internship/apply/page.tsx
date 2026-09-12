@@ -3,6 +3,12 @@ import ApplyClient from "./client"
 import { FALLBACK_PROGRAMS, Program } from "../client"
 
 export const metadata: Metadata = {
+  openGraph: {
+    url: "/internship/apply",
+  },
+  alternates: {
+    canonical: "/internship/apply",
+  },
   title: "Apply for Internship",
   description: "Enroll in a Prokodex internship program. Select your path, choose your mentorship tier, and submit your application to start coding live systems.",
 }

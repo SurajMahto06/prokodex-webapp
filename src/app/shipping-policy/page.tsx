@@ -1,6 +1,12 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
+  openGraph: {
+    url: "/shipping-policy",
+  },
+  alternates: {
+    canonical: "/shipping-policy",
+  },
   title: "Shipping & Delivery Policy",
   description: "Read the Prokodex Shipping & Delivery Policy regarding our digital products and services.",
 }
