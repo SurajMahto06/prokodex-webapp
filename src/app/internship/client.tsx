@@ -1417,11 +1417,11 @@ export default function InternshipPage({ initialPrograms = FALLBACK_PROGRAMS }: 
                 </div>
 
                 {/* Price Display */}
-                <div className="flex items-baseline gap-1.5 sm:gap-2">
-                  <span className="text-xs sm:text-base line-through text-muted-foreground font-semibold">
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <span className="text-sm sm:text-base line-through text-muted-foreground/80 font-medium">
                     ₹1,299
                   </span>
-                  <span className="text-2xl sm:text-3xl md:text-4xl font-black text-foreground tracking-tight leading-none">
+                  <span className="text-xl sm:text-2xl md:text-3xl font-black text-foreground tracking-tight">
                     ₹799
                   </span>
                 </div>
