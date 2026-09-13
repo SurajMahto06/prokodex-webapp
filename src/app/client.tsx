@@ -104,7 +104,7 @@ export default function HomeClient() {
       <div className="relative bg-background">
         {/* Unified Background Glow */}
         <div className="absolute top-[-50px] left-1/2 -translate-x-1/2 w-[800px] md:w-[1000px] h-[800px] md:h-[1000px] bg-secondary/20 dark:bg-secondary/10 rounded-full blur-[120px] md:blur-[150px] pointer-events-none" />
-        <div className="absolute top-0 right-0 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-primary/20 dark:bg-primary/10 rounded-full blur-[100px] md:blur-[120px] pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-primary/8 dark:bg-primary/10 rounded-full blur-[100px] md:blur-[120px] pointer-events-none" />
 
         {/* Hero Section */}
         <section className="relative pt-16 pb-16 ">

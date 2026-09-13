@@ -395,6 +395,7 @@ export default function InternshipPage({ initialPrograms = FALLBACK_PROGRAMS }: 
   const [loading, setLoading] = useState<boolean>(false);
   const [openProgramId, setOpenProgramId] = useState<string | null>(null);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+  const [showFloatingOffer, setShowFloatingOffer] = useState<boolean>(true);
 
   useEffect(() => {
     // Keep client synced in background if new programs are published
@@ -687,9 +688,10 @@ export default function InternshipPage({ initialPrograms = FALLBACK_PROGRAMS }: 
   return (
     <div className="flex flex-col min-h-screen overflow-hidden">
       {/* 1. Hero Section */}
-      <section className="relative pt-12 pb-12 sm:pt-14 sm:pb-14 bg-background flex items-center justify-center overflow-hidden border-b border-border">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-secondary/10 rounded-full blur-[150px] pointer-events-none" />
-        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
+      <section className="relative pt-14 pb-14 sm:pt-16 sm:pb-16 bg-background flex items-center justify-center overflow-hidden border-b border-border">
+        <div className="absolute top-[-50px] left-1/2 -translate-x-1/2 w-[800px] md:w-[1000px] h-[800px] md:h-[1000px] bg-secondary/20 dark:bg-secondary/10 rounded-full blur-[120px] md:blur-[150px] pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-primary/8 dark:bg-primary/10 rounded-full blur-[100px] md:blur-[120px] pointer-events-none" />
+        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px] pointer-events-none" />
 
         <div className="container mx-auto px-4 relative z-10 text-center">
           <motion.div
@@ -698,15 +700,15 @@ export default function InternshipPage({ initialPrograms = FALLBACK_PROGRAMS }: 
             variants={stagger}
             className="max-w-4xl mx-auto"
           >
-            <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-secondary/10 text-secondary mb-6 text-xs sm:text-sm font-semibold tracking-wide uppercase border border-secondary/20">
-              <span className="flex h-2 w-2 rounded-full bg-secondary animate-pulse" />
+            <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 text-emerald-500 mb-6 text-xs sm:text-sm font-bold tracking-wide uppercase border border-emerald-500/30 shadow-[0_0_16px_-2px_rgba(16,185,129,0.4)]">
+              <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_6px_2px_rgba(16,185,129,0.6)]" />
               Applications Open for 2026 Batch
             </motion.div>
             <motion.h1 variants={fadeIn} className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-6">
-              Launch Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(189,94%,38%)] via-[hsl(189,94%,33%)] to-[hsl(189,94%,25%)] dark:from-secondary/40 dark:via-secondary/80 dark:to-secondary">Tech Career</span>
+              Tutorials End Here. <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(189,94%,38%)] via-[hsl(189,94%,33%)] to-[hsl(189,94%,25%)] dark:from-secondary/40 dark:via-secondary/80 dark:to-secondary">Real Engineering</span> Starts Now.
             </motion.h1>
             <motion.p variants={fadeIn} className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto mb-7">
-              Build real-world projects with our all-in-one dedicated portal, access complete study notes, practice topic-wise quizzes &amp; mock interviews, and earn an official government-recognized certificate.
+              No more watching videos and forgetting everything. Work on live projects, get real code reviews from senior engineers, and walk away with a deployed product and a certificate that actually means something.
             </motion.p>
 
             {/* Feature Highlight Pills */}
@@ -1394,6 +1396,66 @@ export default function InternshipPage({ initialPrograms = FALLBACK_PROGRAMS }: 
         secondaryBtnText="Have Questions?"
         secondaryBtnLink="/contact"
       />
+
+      {/* Floating Bottom Offer Bar (Big Company / EdTech Style) */}
+      <AnimatePresence>
+        {showFloatingOffer && (
+          <motion.div
+            initial={{ y: 80, opacity: 0, scale: 0.95 }}
+            animate={{ y: 0, opacity: 1, scale: 1 }}
+            exit={{ y: 80, opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-1.5rem)] max-w-lg sm:w-auto"
+          >
+            <div className="rounded-full bg-background/90 dark:bg-card/90 backdrop-blur-xl border border-secondary/40 dark:border-secondary/35 p-2 sm:py-2.5 sm:px-5 shadow-xl shadow-black/10 dark:shadow-black/40 flex items-center justify-between gap-3 sm:gap-6 transition-colors hover:border-secondary/70">
+              {/* Left Content: Offer Info */}
+              <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+                {/* 38% OFF Badge */}
+                <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/25 text-[10px] sm:text-xs font-bold whitespace-nowrap">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span>38% OFF</span>
+                </div>
+
+                {/* Price Display */}
+                <div className="flex items-baseline gap-1.5 sm:gap-2">
+                  <span className="text-xs sm:text-base line-through text-muted-foreground font-semibold">
+                    ₹1,299
+                  </span>
+                  <span className="text-2xl sm:text-3xl md:text-4xl font-black text-foreground tracking-tight leading-none">
+                    ₹799
+                  </span>
+                </div>
+
+                {/* Save Pill (Desktop only) */}
+                <span className="hidden sm:inline-flex items-center text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full whitespace-nowrap">
+                  Save ₹500
+                </span>
+              </div>
+
+              {/* Right Content: Apply Now & Close */}
+              <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
+                <Link href="/internship/apply">
+                  <Button
+                    size="sm"
+                    className="cursor-pointer h-8 sm:h-9 px-3.5 sm:px-5 text-xs sm:text-sm font-bold rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-md shadow-secondary/25 hover:shadow-secondary/40 transition-all group/btn"
+                  >
+                    <span>Apply Now</span>
+                    <ArrowRight className="ml-1 sm:ml-1.5 h-3.5 w-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
+                  </Button>
+                </Link>
+
+                <button
+                  onClick={() => setShowFloatingOffer(false)}
+                  aria-label="Dismiss offer banner"
+                  className="h-7 w-7 rounded-full flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted/80 transition-colors cursor-pointer"
+                >
+                  <X className="h-3.5 w-3.5" />
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }

@@ -36,11 +36,11 @@ export function ScrollToTop() {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.92 }}
           transition={{ duration: 0.25, ease: "easeOut" }}
-          className="fixed bottom-[6.5rem] right-6 z-40 flex items-center justify-center w-14 h-14 rounded-full bg-card/90 hover:bg-card text-foreground hover:text-secondary border border-border/80 hover:border-secondary/50 shadow-lg hover:shadow-secondary/25 backdrop-blur-md transition-all duration-300 group cursor-pointer"
+          className="fixed bottom-[8.5rem] sm:bottom-[6.5rem] right-4 sm:right-6 z-40 flex items-center justify-center w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-card/90 hover:bg-card text-foreground hover:text-secondary border border-border/80 hover:border-secondary/50 shadow-lg hover:shadow-secondary/25 backdrop-blur-md transition-all duration-300 group cursor-pointer"
           aria-label="Scroll to top"
           title="Go to top"
         >
-          <ArrowUp className="w-6 h-6 transition-transform duration-300 group-hover:-translate-y-1" />
+          <ArrowUp className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300 group-hover:-translate-y-1" />
         </motion.button>
       )}
     </AnimatePresence>
