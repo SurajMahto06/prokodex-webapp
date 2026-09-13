@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState } from "react"
 import { motion } from "framer-motion"
@@ -112,7 +112,7 @@ export default function ContactPage() {
             <MessageSquare className="w-4 h-4" /> Let's Connect
           </motion.div>
           <motion.h1 variants={fadeIn} className="text-4xl md:text-6xl font-extrabold leading-tight mb-6 tracking-tight">
-            Get in <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Touch</span>
+            Get in <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(189,94%,38%)] via-[hsl(189,94%,33%)] to-[hsl(189,94%,25%)] dark:from-secondary/40 dark:via-secondary/80 dark:to-secondary">Touch</span>
           </motion.h1>
           <motion.p variants={fadeIn} className="text-lg md:text-xl text-muted-foreground leading-relaxed">
             Have a groundbreaking project in mind or want to learn more about our services? We'd love to collaborate with you.

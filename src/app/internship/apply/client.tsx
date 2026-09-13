@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState, useEffect, Suspense, useRef } from "react"
 import { motion } from "framer-motion"
@@ -467,7 +467,7 @@ function ApplicationForm({ initialTracks }: { initialTracks?: string[] }) {
         </Link>
 
         <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-6 tracking-tight">
-          Launch Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Tech Career</span>
+          Launch Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(189,94%,38%)] via-[hsl(189,94%,33%)] to-[hsl(189,94%,25%)] dark:from-secondary/40 dark:via-secondary/80 dark:to-secondary">Tech Career</span>
         </h1>
 
         <p className="text-lg text-muted-foreground mb-10 leading-relaxed max-w-2xl">

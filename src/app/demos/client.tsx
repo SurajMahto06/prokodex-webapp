@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { motion } from "framer-motion"
 import Link from "next/link"
@@ -79,7 +79,7 @@ export default function DemoPage() {
               Interactive Demos
             </motion.div>
             <motion.h1 variants={fadeIn} className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
-              Live <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Demos</span>
+              Live <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(189,94%,38%)] via-[hsl(189,94%,33%)] to-[hsl(189,94%,25%)] dark:from-secondary/40 dark:via-secondary/80 dark:to-secondary">Demos</span>
             </motion.h1>
             <motion.p variants={fadeIn} className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
               Try before you buy. Click any demo to see it in action.

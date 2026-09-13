@@ -13,8 +13,10 @@ export const metadata: Metadata = {
 }
 
 async function getPrograms(): Promise<Program[]> {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL
+  if (!apiUrl) return FALLBACK_PROGRAMS
+
   try {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api/v1"
     const res = await fetch(`${apiUrl}/programs?publishedOnly=true`, {
       next: { revalidate: 60 }
     })
@@ -24,14 +26,15 @@ async function getPrograms(): Promise<Program[]> {
         return data
       }
     }
-  } catch (err) {
-    console.error("Error fetching programs on server:", err)
+  } catch {
+    // Silently fallback to FALLBACK_PROGRAMS if backend is offline.
   }
   return FALLBACK_PROGRAMS
 }
 
 export default async function InternshipPage() {
-  const programs = await getPrograms()
+  const rawPrograms = await getPrograms()
+  const programs = Array.isArray(rawPrograms) && rawPrograms.length > 0 ? rawPrograms : FALLBACK_PROGRAMS
 
   const jsonLd = {
     "@context": "https://schema.org",

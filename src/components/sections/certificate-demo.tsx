@@ -47,7 +47,7 @@ export function CertificateDemo() {
             transition={{ delay: 0.1 }}
             className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-3 tracking-tight"
           >
-            Your Proof of <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/50 via-secondary/80 to-secondary">Expertise</span>
+            Your Proof of <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(189,94%,38%)] via-[hsl(189,94%,33%)] to-[hsl(189,94%,25%)] dark:from-secondary/40 dark:via-secondary/80 dark:to-secondary">Expertise</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

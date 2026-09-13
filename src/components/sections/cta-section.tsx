@@ -1,4 +1,4 @@
-import Link from "next/link"
+﻿import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import { ReactNode } from "react"
@@ -33,7 +33,7 @@ export function CtaSection({
       <div className="absolute inset-0 bg-gradient-to-br from-primary to-secondary opacity-10 pointer-events-none" />
       <div className="container mx-auto px-4 relative z-10 text-center">
         <h2 className="text-4xl md:text-5xl font-bold mb-6">
-          {title} <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">{highlight}</span>
+          {title} <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(189,94%,38%)] via-[hsl(189,94%,33%)] to-[hsl(189,94%,25%)] dark:from-secondary/40 dark:via-secondary/80 dark:to-secondary">{highlight}</span>
         </h2>
         <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
           {description}

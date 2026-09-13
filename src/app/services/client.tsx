@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import React, { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
@@ -43,7 +43,7 @@ export default function ServicesPage() {
               Our Expertise
             </motion.div>
             <motion.h1 variants={fadeIn} className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8">
-              Architecting Digital <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Excellence</span>
+              Architecting Digital <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(189,94%,38%)] via-[hsl(189,94%,33%)] to-[hsl(189,94%,25%)] dark:from-secondary/40 dark:via-secondary/80 dark:to-secondary">Excellence</span>
             </motion.h1>
             <motion.p variants={fadeIn} className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
               End-to-end software engineering and design services tailored for visionary companies. We don't just build apps; we build scalable digital businesses.
@@ -56,7 +56,7 @@ export default function ServicesPage() {
       <section className="py-20 bg-muted/30 relative">
         <div className="container mx-auto px-4">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">What We <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Do</span></h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">What We <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(189,94%,38%)] via-[hsl(189,94%,33%)] to-[hsl(189,94%,25%)] dark:from-secondary/40 dark:via-secondary/80 dark:to-secondary">Do</span></h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Everything you need to build, launch, and grow your digital business.
             </p>

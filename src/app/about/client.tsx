@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { motion } from "framer-motion"
 import { Code2, Users, Target, Globe2, Cpu, Zap, Heart, Award, ArrowRight, Compass, CheckCircle2 } from "lucide-react"
@@ -35,7 +35,7 @@ export default function AboutPage() {
               Our Story
             </motion.div>
             <motion.h1 variants={fadeIn} className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8">
-              Building the Future of <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Digital Products</span>
+              Building the Future of <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(189,94%,38%)] via-[hsl(189,94%,33%)] to-[hsl(189,94%,25%)] dark:from-secondary/40 dark:via-secondary/80 dark:to-secondary">Digital Products</span>
             </motion.h1>
             <motion.p variants={fadeIn} className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
               We are a passionate team of developers and designers helping startups and small businesses build fast, reliable, and affordable software solutions.
@@ -87,7 +87,7 @@ export default function AboutPage() {
       <section className="py-20 bg-card/40 border-y border-border relative">
         <div className="container mx-auto px-4">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Core <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Values</span></h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Core <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(189,94%,38%)] via-[hsl(189,94%,33%)] to-[hsl(189,94%,25%)] dark:from-secondary/40 dark:via-secondary/80 dark:to-secondary">Values</span></h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               The fundamental principles that guide our code, our culture, and our relationship with clients.
             </p>

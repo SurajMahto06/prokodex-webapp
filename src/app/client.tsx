@@ -134,11 +134,11 @@ export default function HomeClient() {
               </Link>
 
               <motion.h1 variants={fadeIn} className="text-5xl md:text-7xl font-bold tracking-tight mb-8">
-                Build Smarter with <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">AI-Powered</span> Software
+                Build Smarter with <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(189,94%,38%)] via-[hsl(189,94%,33%)] to-[hsl(189,94%,25%)] dark:from-secondary/40 dark:via-secondary/80 dark:to-secondary">AI-Powered</span> Software
               </motion.h1>
 
-              <motion.p variants={fadeIn} className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
-                AI chatbots, custom dashboards, industry CRMs, mobile apps, and modern websites — built for your business, delivered in weeks.
+              <motion.p variants={fadeIn} className="text-base sm:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
+                From AI-powered chatbots and ERP systems to custom CRMs, enterprise dashboards, mobile apps, and scalable web platforms — paired with expert digital marketing, graphic design, and video editing — we deliver end-to-end digital solutions engineered for your business growth.
               </motion.p>
 
               <motion.div variants={fadeIn} className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
@@ -220,7 +220,7 @@ export default function HomeClient() {
               Our Expertise
             </div>
             <h2 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">
-              What We <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Build</span>
+              What We <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(189,94%,38%)] via-[hsl(189,94%,33%)] to-[hsl(189,94%,25%)] dark:from-secondary/40 dark:via-secondary/80 dark:to-secondary">Build</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               End-to-end solutions for modern businesses.
@@ -263,7 +263,7 @@ export default function HomeClient() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div className="space-y-8">
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Why Choose <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Prokodex?</span></h2>
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Why Choose <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(189,94%,38%)] via-[hsl(189,94%,33%)] to-[hsl(189,94%,25%)] dark:from-secondary/40 dark:via-secondary/80 dark:to-secondary">Prokodex?</span></h2>
               <p className="text-xl text-muted-foreground leading-relaxed">
                 We don't just write code; we build scalable digital products that solve real business problems. Our engineering culture is built on quality, velocity, and extreme performance.
               </p>
@@ -340,7 +340,7 @@ export default function HomeClient() {
               Tech Stack
             </div>
             <h2 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">
-              Built with <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Modern Tech</span>
+              Built with <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(189,94%,38%)] via-[hsl(189,94%,33%)] to-[hsl(189,94%,25%)] dark:from-secondary/40 dark:via-secondary/80 dark:to-secondary">Modern Tech</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               We leverage enterprise-grade technologies to build fast, secure, and infinitely scalable digital products that stand the test of time.
@@ -427,7 +427,7 @@ export default function HomeClient() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <div className="max-w-2xl">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Client <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Success Stories</span></h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Client <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(189,94%,38%)] via-[hsl(189,94%,33%)] to-[hsl(189,94%,25%)] dark:from-secondary/40 dark:via-secondary/80 dark:to-secondary">Success Stories</span></h2>
               <p className="text-muted-foreground text-lg">
                 Don't just take our word for it. Here's what our enterprise clients and partners have to say.
               </p>
@@ -494,7 +494,7 @@ export default function HomeClient() {
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 text-secondary mb-4 text-sm font-medium">
               We're Hiring Interns!
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Launch Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Tech Career</span></h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Launch Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(189,94%,38%)] via-[hsl(189,94%,33%)] to-[hsl(189,94%,25%)] dark:from-secondary/40 dark:via-secondary/80 dark:to-secondary">Tech Career</span></h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Join our industry-leading internship programs. Work on live projects, get mentored by senior engineers, and kickstart your career.
             </p>

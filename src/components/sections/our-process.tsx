@@ -1,4 +1,4 @@
-import { Lightbulb, Palette, Code2, CheckCircle2, Globe, Server, Code } from "lucide-react"
+﻿import { Lightbulb, Palette, Code2, CheckCircle2, Globe, Server, Code } from "lucide-react"
 
 export function OurProcess() {
   return (
@@ -11,7 +11,7 @@ export function OurProcess() {
             How We Work
           </div>
           <h2 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">
-            Our Simple <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Process</span>
+            Our Simple <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(189,94%,38%)] via-[hsl(189,94%,33%)] to-[hsl(189,94%,25%)] dark:from-secondary/40 dark:via-secondary/80 dark:to-secondary">Process</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             We make building software easy to understand. No confusing tech jargon, just a clear path from your idea to a live product.
@@ -49,7 +49,7 @@ export function OurProcess() {
         <div className="max-w-5xl mx-auto pt-20">
           <div className="text-center mb-16">
             <h3 className="text-3xl font-bold tracking-tight">
-              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">100% Ownership</span> Guarantee
+              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(189,94%,38%)] via-[hsl(189,94%,33%)] to-[hsl(189,94%,25%)] dark:from-secondary/40 dark:via-secondary/80 dark:to-secondary">100% Ownership</span> Guarantee
             </h3>
             <p className="text-muted-foreground mt-4 text-lg">We build it, but you own it completely. No vendor lock-in, ever.</p>
           </div>

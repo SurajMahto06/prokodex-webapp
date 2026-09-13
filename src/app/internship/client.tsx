@@ -35,7 +35,8 @@ import {
   Users,
   ExternalLink,
   GraduationCap,
-  HelpCircle
+  HelpCircle,
+  Target
 } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -408,7 +409,8 @@ export default function InternshipPage({ initialPrograms = FALLBACK_PROGRAMS }: 
           }
         }
       } catch (err) {
-        console.error("Failed to sync programs in background:", err);
+        // Silently fail if API is offline to prevent Next.js dev server
+        // from throwing noisy network errors in the terminal/overlay.
       }
     }
     syncPrograms();
@@ -701,7 +703,7 @@ export default function InternshipPage({ initialPrograms = FALLBACK_PROGRAMS }: 
               Applications Open for 2026 Batch
             </motion.div>
             <motion.h1 variants={fadeIn} className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-6">
-              Launch Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Tech Career</span>
+              Launch Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(189,94%,38%)] via-[hsl(189,94%,33%)] to-[hsl(189,94%,25%)] dark:from-secondary/40 dark:via-secondary/80 dark:to-secondary">Tech Career</span>
             </motion.h1>
             <motion.p variants={fadeIn} className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto mb-7">
               Build real-world projects with our all-in-one dedicated portal, access complete study notes, practice topic-wise quizzes &amp; mock interviews, and earn an official government-recognized certificate.
@@ -784,6 +786,101 @@ export default function InternshipPage({ initialPrograms = FALLBACK_PROGRAMS }: 
         </div>
       </section>
 
+      {/* 1.5 Why Join Us Module (Borderless & Clean) */}
+      <section className="relative py-12 sm:py-16 bg-background overflow-hidden border-b border-border/40">
+        {/* Subtle Ambient Background */}
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-secondary/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="max-w-6xl mx-auto"
+          >
+            <div className="text-center mb-12 sm:mb-16">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-secondary/10 text-secondary mb-4 text-xs font-bold tracking-wide uppercase border border-secondary/20 shadow-sm">
+                <Sparkles className="h-3.5 w-3.5" /> Why You Must Join This Program?
+              </div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-foreground leading-tight">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(189,94%,38%)] via-[hsl(189,94%,33%)] to-[hsl(189,94%,25%)] dark:from-secondary/40 dark:via-secondary/80 dark:to-secondary">Not Just Another</span> Certificate
+              </h2>
+              <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed font-medium">
+                Stop watching endless tutorials. Start building. We transform you from a beginner into a production-ready engineer who recruiters actively seek out.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
+              {/* Feature 1 */}
+              <div className="flex flex-col items-center text-center gap-4 group">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-secondary/20 rounded-2xl blur-lg group-hover:blur-xl transition-all duration-300 opacity-0 group-hover:opacity-100" />
+                  <div className="relative h-14 w-14 rounded-2xl bg-gradient-to-br from-secondary/10 to-secondary/5 border border-secondary/20 flex items-center justify-center text-secondary group-hover:scale-110 group-hover:bg-secondary group-hover:text-secondary-foreground transition-all duration-300 shadow-sm">
+                    <Target className="h-6 w-6" />
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold mb-2 text-foreground group-hover:text-secondary transition-colors">Solve Real Problems</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Move beyond simple to-do apps. Build scalable systems that solve actual business challenges, exactly like top-tier tech companies.
+                  </p>
+                </div>
+              </div>
+
+              {/* Feature 2 */}
+              <div className="flex flex-col items-center text-center gap-4 group">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-secondary/20 rounded-2xl blur-lg group-hover:blur-xl transition-all duration-300 opacity-0 group-hover:opacity-100" />
+                  <div className="relative h-14 w-14 rounded-2xl bg-gradient-to-br from-secondary/10 to-secondary/5 border border-secondary/20 flex items-center justify-center text-secondary group-hover:scale-110 group-hover:bg-secondary group-hover:text-secondary-foreground transition-all duration-300 shadow-sm">
+                    <LayoutTemplate className="h-6 w-6" />
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold mb-2 text-foreground group-hover:text-secondary transition-colors">Architect Applications</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Learn the "why" behind code. Master structuring folders, designing databases, and building robust, maintainable architectures.
+                  </p>
+                </div>
+              </div>
+
+              {/* Feature 3 */}
+              <div className="flex flex-col items-center text-center gap-4 group">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-secondary/20 rounded-2xl blur-lg group-hover:blur-xl transition-all duration-300 opacity-0 group-hover:opacity-100" />
+                  <div className="relative h-14 w-14 rounded-2xl bg-gradient-to-br from-secondary/10 to-secondary/5 border border-secondary/20 flex items-center justify-center text-secondary group-hover:scale-110 group-hover:bg-secondary group-hover:text-secondary-foreground transition-all duration-300 shadow-sm">
+                    <GitPullRequest className="h-6 w-6" />
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold mb-2 text-foreground group-hover:text-secondary transition-colors">Collaborate on GitHub</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Experience true team workflows. Master Git branches, PRs, and peer code reviews in an environment matching industry standards.
+                  </p>
+                </div>
+              </div>
+
+              {/* Feature 4 (Added for extra impact) */}
+              <div className="flex flex-col items-center text-center gap-4 group">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-secondary/20 rounded-2xl blur-lg group-hover:blur-xl transition-all duration-300 opacity-0 group-hover:opacity-100" />
+                  <div className="relative h-14 w-14 rounded-2xl bg-gradient-to-br from-secondary/10 to-secondary/5 border border-secondary/20 flex items-center justify-center text-secondary group-hover:scale-110 group-hover:bg-secondary group-hover:text-secondary-foreground transition-all duration-300 shadow-sm">
+                    <TrendingUp className="h-6 w-6" />
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold mb-2 text-foreground group-hover:text-secondary transition-colors">Become Job-Ready</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Deploy your projects to live servers and build a standout, ATS-friendly resume backed by actual proof-of-work.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* 2. Available Programs Accordion */}
       <section id="programs" className="py-10 sm:py-14 bg-muted/30 relative">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -791,7 +888,7 @@ export default function InternshipPage({ initialPrograms = FALLBACK_PROGRAMS }: 
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/10 text-secondary mb-3 text-xs font-semibold tracking-wide uppercase border border-secondary/20">
               <Sparkles className="h-3.5 w-3.5" /> Internship Tracks
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-2">Available <span className="text-secondary">Programs</span></h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-2">Available <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(189,94%,38%)] via-[hsl(189,94%,33%)] to-[hsl(189,94%,25%)] dark:from-secondary/40 dark:via-secondary/80 dark:to-secondary">Programs</span></h2>
             <p className="text-base sm:text-lg text-muted-foreground">
               Hands-on practical tracks designed for real project exposure. Select any program to explore its practical project milestones.
             </p>
@@ -834,7 +931,7 @@ export default function InternshipPage({ initialPrograms = FALLBACK_PROGRAMS }: 
                   <Briefcase className="h-3.5 w-3.5" /> Hands-On Internship Experience
                 </div>
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-3 tracking-tight">
-                  Why <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Intern With Us?</span>
+                  Why <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(189,94%,38%)] via-[hsl(189,94%,33%)] to-[hsl(189,94%,25%)] dark:from-secondary/40 dark:via-secondary/80 dark:to-secondary">Intern With Us?</span>
                 </h2>
                 <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
                   Gain real practical project exposure. Work on live deliverables, receive constructive code feedback from senior developers, and build real development confidence.
@@ -875,7 +972,7 @@ export default function InternshipPage({ initialPrograms = FALLBACK_PROGRAMS }: 
               <Calendar className="h-3.5 w-3.5" /> Program Duration Models
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-3 tracking-tight">
-              Internship <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Overview</span>
+              Internship <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(189,94%,38%)] via-[hsl(189,94%,33%)] to-[hsl(189,94%,25%)] dark:from-secondary/40 dark:via-secondary/80 dark:to-secondary">Overview</span>
             </h2>
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
               Flexible online &amp; offline internship programs designed for students, freshers, and working professionals to build career-ready skills with industry experts.
@@ -945,7 +1042,7 @@ export default function InternshipPage({ initialPrograms = FALLBACK_PROGRAMS }: 
               <Award className="h-3.5 w-3.5" /> Career Proof &amp; Deliverables
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
-              What You Get <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">After Completing</span>
+              What You Get <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(189,94%,38%)] via-[hsl(189,94%,33%)] to-[hsl(189,94%,25%)] dark:from-secondary/40 dark:via-secondary/80 dark:to-secondary">After Completing</span>
             </h2>
             <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               Everything you need to showcase your practical project skills, strengthen your resume, and crack job interviews.
@@ -1000,7 +1097,7 @@ export default function InternshipPage({ initialPrograms = FALLBACK_PROGRAMS }: 
               <GraduationCap className="h-3.5 w-3.5" /> Eligibility Criteria
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-3 tracking-tight">
-              Who Can <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Apply?</span>
+              Who Can <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(189,94%,38%)] via-[hsl(189,94%,33%)] to-[hsl(189,94%,25%)] dark:from-secondary/40 dark:via-secondary/80 dark:to-secondary">Apply?</span>
             </h2>
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
               Designed for ambitious learners at every stage — whether you need college credits or are building proof of work for job interviews.
@@ -1066,7 +1163,7 @@ export default function InternshipPage({ initialPrograms = FALLBACK_PROGRAMS }: 
               <Sparkles className="h-3.5 w-3.5" /> Complete 4-Step Roadmap
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-3 tracking-tight">
-              How It <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/50 via-secondary to-secondary">Works</span>
+              How It <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(189,94%,38%)] via-[hsl(189,94%,33%)] to-[hsl(189,94%,25%)] dark:from-secondary/40 dark:via-secondary/80 dark:to-secondary">Works</span>
             </h2>
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
               A structured, transparent step-by-step pathway — from day one registration to your verified, industry-ready credential.
@@ -1217,7 +1314,7 @@ export default function InternshipPage({ initialPrograms = FALLBACK_PROGRAMS }: 
               <HelpCircle className="h-3.5 w-3.5" /> Got Questions?
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-3 tracking-tight">
-              Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Questions</span>
+              Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(189,94%,38%)] via-[hsl(189,94%,33%)] to-[hsl(189,94%,25%)] dark:from-secondary/40 dark:via-secondary/80 dark:to-secondary">Questions</span>
             </h2>
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
               Find instant answers to common questions about eligibility, portal onboarding, certificates, and college credit compliance.
@@ -1230,11 +1327,10 @@ export default function InternshipPage({ initialPrograms = FALLBACK_PROGRAMS }: 
               return (
                 <div
                   key={idx}
-                  className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
-                    isOpen
-                      ? "bg-card/90 border-secondary/40 shadow-md shadow-secondary/5"
-                      : "bg-card/40 hover:bg-card/70 border-border/60 hover:border-secondary/20"
-                  }`}
+                  className={`rounded-2xl border transition-all duration-300 overflow-hidden ${isOpen
+                    ? "bg-card/90 border-secondary/40 shadow-md shadow-secondary/5"
+                    : "bg-card/40 hover:bg-card/70 border-border/60 hover:border-secondary/20"
+                    }`}
                 >
                   <button
                     onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
@@ -1245,11 +1341,10 @@ export default function InternshipPage({ initialPrograms = FALLBACK_PROGRAMS }: 
                       {faq.q}
                     </span>
                     <div
-                      className={`h-7 w-7 rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-300 ${
-                        isOpen
-                          ? "rotate-180 bg-secondary/15 text-secondary"
-                          : "bg-muted text-muted-foreground"
-                      }`}
+                      className={`h-7 w-7 rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-300 ${isOpen
+                        ? "rotate-180 bg-secondary/15 text-secondary"
+                        : "bg-muted text-muted-foreground"
+                        }`}
                     >
                       <ChevronDown className="h-4 w-4" />
                     </div>

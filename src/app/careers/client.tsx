@@ -273,7 +273,7 @@ export default function CareersPage() {
               We're Hiring for 2026!
             </motion.div>
             <motion.h1 variants={fadeIn} className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8">
-              Join the <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Prokodex Team</span>
+              Join the <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(189,94%,38%)] via-[hsl(189,94%,33%)] to-[hsl(189,94%,25%)] dark:from-secondary/40 dark:via-secondary/80 dark:to-secondary">Prokodex Team</span>
             </motion.h1>
             <motion.p variants={fadeIn} className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-3xl mx-auto mb-10">
               Build the digital infrastructure of tomorrow. Work with a passionate group of designers, developers, and product minds in a high-growth environment.
@@ -298,7 +298,7 @@ export default function CareersPage() {
       <section className="py-16 bg-muted/30 relative">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-4xl font-bold mb-6">Our Core <span className="text-secondary">Values</span></h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-6">Our Core <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(189,94%,38%)] via-[hsl(189,94%,33%)] to-[hsl(189,94%,25%)] dark:from-secondary/40 dark:via-secondary/80 dark:to-secondary">Values</span></h2>
             <p className="text-lg text-muted-foreground">
               What drives our engineers, designers, and project managers every day.
             </p>
@@ -331,7 +331,7 @@ export default function CareersPage() {
       <section id="open-positions" className="py-16 bg-background relative border-t border-border">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-4xl font-bold mb-6">Open <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Opportunities</span></h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-6">Open <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(189,94%,38%)] via-[hsl(189,94%,33%)] to-[hsl(189,94%,25%)] dark:from-secondary/40 dark:via-secondary/80 dark:to-secondary">Opportunities</span></h2>
             <p className="text-lg text-muted-foreground">
               Explore our current open job listings. Click on any card to view detailed requirements.
             </p>
@@ -356,7 +356,7 @@ export default function CareersPage() {
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 text-secondary mb-6 text-sm font-semibold tracking-wide uppercase border border-secondary/20">
                   Life at Prokodex
                 </div>
-                <h2 className="text-4xl font-bold mb-6 tracking-tight">Perks & <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary/40 via-secondary/80 to-secondary">Benefits</span></h2>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-6">Perks & <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(189,94%,38%)] via-[hsl(189,94%,33%)] to-[hsl(189,94%,25%)] dark:from-secondary/40 dark:via-secondary/80 dark:to-secondary">Benefits</span></h2>
                 <p className="text-muted-foreground leading-relaxed text-lg mb-8">
                   We invest heavily in the happiness, health, and career growth of our team members. Enjoy a balanced, innovative culture built for developers and creators.
                 </p>
