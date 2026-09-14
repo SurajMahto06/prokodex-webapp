@@ -24,20 +24,12 @@ export function Navbar() {
 
   React.useEffect(() => {
     if (isMobileMenuOpen) {
-      const scrollY = window.scrollY
-      document.body.style.position = "fixed"
-      document.body.style.top = `-${scrollY}px`
-      document.body.style.width = "100%"
+      // Just hide overflow to prevent scrolling. 
+      // Avoid position: fixed as it causes layout jumps during Framer Motion exit animations.
       document.body.style.overflow = "hidden"
-      document.documentElement.style.overflow = "hidden"
 
       return () => {
-        document.body.style.position = ""
-        document.body.style.top = ""
-        document.body.style.width = ""
         document.body.style.overflow = ""
-        document.documentElement.style.overflow = ""
-        window.scrollTo(0, scrollY)
       }
     }
   }, [isMobileMenuOpen])
@@ -54,11 +46,10 @@ export function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 w-full z-40 transition-all duration-300 flex flex-col ${
-          isScrolled
-            ? "bg-background/80 backdrop-blur-md border-b border-border shadow-sm"
-            : "bg-transparent"
-        }`}
+        className={`fixed top-0 w-full z-40 transition-all duration-300 flex flex-col ${isScrolled
+          ? "bg-background/80 backdrop-blur-md border-b border-border shadow-sm"
+          : "bg-transparent"
+          }`}
       >
         {/* Announcement Marquee */}
         <div className="bg-secondary text-secondary-foreground text-xs font-medium py-2 overflow-hidden flex items-center w-full border-b border-secondary-foreground/10">
@@ -181,11 +172,10 @@ export function Navbar() {
                         setIsMobileMenuOpen(false);
                         if (pathname === link.href) scrollToTop();
                       }}
-                      className={`block px-3.5 py-2.5 rounded-xl text-base font-medium transition-colors ${
-                        isActive
-                          ? "bg-secondary/15 text-secondary font-semibold"
-                          : "hover:bg-accent text-foreground/80"
-                      }`}
+                      className={`block px-3.5 py-2.5 rounded-xl text-base font-medium transition-colors ${isActive
+                        ? "bg-secondary/15 text-secondary font-semibold"
+                        : "hover:bg-accent text-foreground/80"
+                        }`}
                     >
                       {link.name}
                     </Link>
