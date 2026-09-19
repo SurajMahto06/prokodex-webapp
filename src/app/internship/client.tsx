@@ -1419,16 +1419,16 @@ export default function InternshipPage({ initialPrograms = FALLBACK_PROGRAMS }: 
                 {/* Price Display */}
                 <div className="flex items-center gap-1.5 sm:gap-2">
                   <span className="text-sm sm:text-base line-through text-muted-foreground/80 font-medium">
-                    ₹1,299
+                    ₹1,599
                   </span>
                   <span className="text-xl sm:text-2xl md:text-3xl font-black text-foreground tracking-tight">
-                    ₹799
+                    ₹1,299
                   </span>
                 </div>
 
                 {/* Save Pill (Desktop only) */}
                 <span className="hidden sm:inline-flex items-center text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full whitespace-nowrap">
-                  Save ₹500
+                  Save ₹300
                 </span>
               </div>
 

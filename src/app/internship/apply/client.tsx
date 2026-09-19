@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import { useState, useEffect, Suspense, useRef } from "react"
 import { motion } from "framer-motion"
@@ -67,8 +67,8 @@ const pricingTiers = [
   {
     id: "standard",
     name: "Standard Plan",
-    price: "₹799",
-    originalPrice: "₹1,299",
+    price: "₹1,299",
+    originalPrice: "₹1,599",
     description: "Learn at your own pace with full access to premium course materials and resources.",
     features: [
       { title: "Portal Access", desc: "Access to curriculum and reading materials." },

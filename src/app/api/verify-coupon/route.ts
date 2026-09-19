@@ -13,7 +13,7 @@ export async function POST(req: Request) {
     }
 
     const PLAN_PRICES: Record<string, number> = {
-      "standard": 799,
+      "standard": 1299,
       "premium": 1199,
       "elite": 2999,
     };
